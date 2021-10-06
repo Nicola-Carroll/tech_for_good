@@ -8,19 +8,19 @@ describe('POST /users', () => {
         .post('/accounts/create')
         .send({
           type: 'charity',
-          name: 'beau2',
-          email: 'beau',
-          password: 'beau',
+          name: 'test',
+          email: 'test',
+          password: 'test',
           address: {
-            streetAddress: 'beau',
-            city: 'beau',
-            postCode: 'beau',
+            streetAddress: 'test',
+            city: 'test',
+            postCode: 'test',
           },
           telephoneNumber: 13,
-          description: 'beau',
+          description: 'test',
           charityNumber: 14,
-          websiteLink: 'beau',
-          foodHygieneRating: 'beau',
+          websiteLink: 'test',
+          foodHygieneRating: 'test',
         });
       expect(response.statusCode).toBe(200);
     });
@@ -41,19 +41,19 @@ describe('POST /users', () => {
         .post('/accounts/create')
         .send({
           type: 'charity',
-          name: 'beau2',
-          email: 'beau',
-          password: 'beau',
+          name: 'test',
+          email: 'test',
+          password: 'test',
           address: {
-            streetAddress: 'beau',
-            city: 'beau',
-            postCode: 'beau',
+            streetAddress: 'test',
+            city: 'test',
+            postCode: 'test',
           },
-          telephoneNumber: 'beau',
-          description: 'beau',
-          charityNumber: 'beau',
-          websiteLink: 'beau',
-          foodHygieneRating: 'beau',
+          telephoneNumber: 'test',
+          description: 'test',
+          charityNumber: 'test',
+          websiteLink: 'test',
+          foodHygieneRating: 'test',
         });
       expect(response.statusCode).toBe(400);
     });
