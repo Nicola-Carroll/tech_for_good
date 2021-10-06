@@ -21,21 +21,23 @@ const accountSchema = new mongoose.Schema(
   options,
 );
 
-const Charity = Account.discriminator(
-  'Charity',
-  new mongoose.Schema({
-    charityNumber: { type: Number, required: true },
-    websiteLink: { type: String, required: true },
-    options,
-  }),
-);
+// export const Charity = Account.discriminator(
+//   'Charity',
+//   new mongoose.Schema({
+//     charityNumber: { type: Number, required: true },
+//     websiteLink: { type: String, required: true },
+//     options,
+//   }),
+// );
 
-const Restaurant = Account.discriminator(
-  'Restaurant',
-  new mongoose.Schema({
-    foodHygieneRating: { type: String, required: true },
-    options,
-  }),
-);
+// const Restaurant = Account.discriminator(
+//   'Restaurant',
+//   new mongoose.Schema({
+//     foodHygieneRating: { type: String, required: true },
+//     options,
+//   }),
+// );
 
 const Account = mongoose.model('Account', accountSchema);
+
+export default Account;
