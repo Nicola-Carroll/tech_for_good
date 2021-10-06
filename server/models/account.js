@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 
-const options = { discriminatorKey: 'kind' };
-
 const accountSchema = new mongoose.Schema(
   {
+    type: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
@@ -14,29 +13,14 @@ const accountSchema = new mongoose.Schema(
     },
     telephoneNumber: { type: Number, required: true },
     description: { type: String, required: true },
+    charityNumber: { type: Number, required: true },
+    websiteLink: { type: String, required: true },
+    foodHygieneRating: { type: String, required: true },
   },
   {
     timestamps: true,
   },
-  options,
 );
-
-// export const Charity = Account.discriminator(
-//   'Charity',
-//   new mongoose.Schema({
-//     charityNumber: { type: Number, required: true },
-//     websiteLink: { type: String, required: true },
-//     options,
-//   }),
-// );
-
-// const Restaurant = Account.discriminator(
-//   'Restaurant',
-//   new mongoose.Schema({
-//     foodHygieneRating: { type: String, required: true },
-//     options,
-//   }),
-// );
 
 const Account = mongoose.model('Account', accountSchema);
 
