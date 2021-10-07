@@ -1,7 +1,7 @@
 import Listing from '../models/listing.js';
 
 const ListingsController = {
-  async Index(req, res) {
+  async index(req, res) {
     try {
       const listings = await Listing.find();
       const data = await res.json(listings);
@@ -10,7 +10,7 @@ const ListingsController = {
     }
   },
 
-  async New(req, res) {
+  create(req, res) {
     const listing = req.body;
 
     const newListing = new Listing(listing);

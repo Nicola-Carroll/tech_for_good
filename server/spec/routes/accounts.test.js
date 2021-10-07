@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from '../server.js';
+import app from '../../server.js';
 
-describe('POST /users', () => {
+describe('POST /accounts', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {
       const response = await request(app)
