@@ -10,17 +10,14 @@ import CreateListing from './pages/CreateListing';
 
 function App() {
   return (
-    <>
-      <Router>
-        <Navbar />
-        <br />
-        <Route path="/" exact component={Homepage} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <Route path="/listings/new" component={CreateListing} />
-      </Router>
-      <div className="container">Hello tech for good!</div>
-    </>
+    <Router>
+      <Navbar />
+      <br />
+      <Route path="/" exact component={Homepage} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/login" component={Login} />
+      <Route path="/listings/new" component={CreateListing} />
+    </Router>
   );
 }
 
