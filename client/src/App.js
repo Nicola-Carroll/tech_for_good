@@ -7,6 +7,7 @@ import Homepage from './pages/homepage.component';
 import Signup from './pages/create-user.component';
 import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
+import ViewListings from './pages/view-listings.component';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/listings/new" component={CreateListing} />
+      <Route path="/feed" component={ViewListings} />
     </Router>
   );
 }
