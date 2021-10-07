@@ -1,8 +1,8 @@
 import express from 'express';
-import { createAccount } from '../controllers/accounts.js';
+import AccountsController from '../controllers/accounts.js';
 
-const router = express.Router();
+const accountsRoutes = express.Router();
 
-router.post('/create', createAccount);
+accountsRoutes.post('/create', AccountsController.create);
 
-export default router;
+export default accountsRoutes;
