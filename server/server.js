@@ -14,8 +14,14 @@ app.use(cors());
 app.use('/api/accounts', accountsRoutes);
 app.use('/api/listings', listingsRoutes);
 
+let DB
+if (process.env.NODE_ENV !== 'test') {
+   DB = process.env.CONNECTION_URL
+}
+else {  DB = process.env.TEST_CONNECTION_URL }
+console.log(DB)
 mongoose
-  .connect(process.env.CONNECTION_URL)
+  .connect(DB)
   .catch((error) => console.log(error.message));
 
 const PORT = process.env.PORT || 8000;
