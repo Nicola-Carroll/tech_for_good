@@ -1,8 +1,10 @@
-const express = require('express');
-const ListingRouter = express.Router();
+import express from 'express';
 
-const ListingController = require('../controllers/listings');
+import ListingsController from '../controllers/listings.js';
 
-ListingRouter.post('api/listings/new', ListingController.NewListing);
+const listingsRoutes = express.Router();
 
-module.exports = ListingRouter;
+listingsRoutes.get('/', ListingsController.Index);
+listingsRoutes.post('/create', ListingsController.New);
+
+export default listingsRoutes;
