@@ -112,8 +112,8 @@ export default function CharitySignupForm() {
             className="form-control"
             placeholder="A description of your charity"
             type="text"
-            name="desc"
-            id="desc"
+            name="description"
+            id="description"
             rows="3"
           ></textarea>
         </div>

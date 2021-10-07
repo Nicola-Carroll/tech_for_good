@@ -112,8 +112,8 @@ export default function RestaurantSignupForm() {
             className="form-control"
             placeholder="A description of your restaurant"
             type="text"
-            name="desc"
-            id="desc"
+            name="description"
+            id="description"
             rows="3"
           ></textarea>
         </div>

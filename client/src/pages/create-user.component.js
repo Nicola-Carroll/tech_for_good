@@ -27,6 +27,7 @@ export default class Signup extends Component {
         <div className="text-center">
           <button
             className="btn btn-outline-success m-4"
+            id="charity-btn"
             data-bs-toggle="button"
             autocomplete="off"
             onClick={() =>
@@ -40,6 +41,7 @@ export default class Signup extends Component {
           </button>
           <button
             className="btn btn-outline-success m-4"
+            id="restaurant-btn"
             data-bs-toggle="button"
             autocomplete="off"
             onClick={() =>
