@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import Listing from './listing.component';
 import axios from 'axios';
 
-// function Listing(props) {
-//   return (
-//     <li key={props.key}>
-//       <div>{props.listing.numberOfMeals}</div>
-//       <div>{props.listing.description}</div>
-//       <div>{props.listing.listedBy}</div>
-//       <div>{props.listing.timeAvailableUntil}</div>
-//     </li>
-//   );
-// }
-
 export default class ListingFeed extends Component {
   constructor(props) {
     super(props);
