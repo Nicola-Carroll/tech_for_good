@@ -5,6 +5,6 @@ import ListingsController from '../controllers/listings.js';
 const listingsRouter = express.Router();
 
 listingsRouter.get('/', ListingsController.Index);
-listingsRouter.post('/new', ListingsController.New);
+listingsRouter.post('/create', ListingsController.New);
 
 export default listingsRouter;
