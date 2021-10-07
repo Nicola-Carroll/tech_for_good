@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import accountRoutes from './routes/accounts.js';
+import listingsRouter from './routes/listings.js';
 
 dotenv.config();
 
@@ -10,15 +11,18 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/api/accounts', accountRoutes);
 
-const PORT = process.env.PORT || 8000;
+app.use('/api/accounts', accountRoutes);
+app.use('/listings', listingsRouter);
 
 mongoose
   .connect(process.env.CONNECTION_URL)
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`)),
-  )
   .catch((error) => console.log(error.message));
+
+const PORT = process.env.PORT || 8000;
+
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 export default app;
