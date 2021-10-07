@@ -2,9 +2,9 @@ import express from 'express';
 
 import ListingsController from '../controllers/listings.js';
 
-const listingsRouter = express.Router();
+const listingsRoutes = express.Router();
 
-listingsRouter.get('/', ListingsController.Index);
-listingsRouter.post('/create', ListingsController.New);
+listingsRoutes.get('/', ListingsController.Index);
+listingsRoutes.post('/create', ListingsController.New);
 
-export default listingsRouter;
+export default listingsRoutes;
