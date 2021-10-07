@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-// import Listing from './components/listing.component';
+import Listing from './listing.component';
 import axios from 'axios';
 
-function Listing(props) {
-  return (
-    <li key={props.key}>
-      <div>{props.listing.numberOfMeals}</div>
-      <div>{props.listing.description}</div>
-      <div>{props.listing.listedBy}</div>
-      <div>{props.listing.timeAvailableUntil}</div>
-    </li>
-  );
-}
+// function Listing(props) {
+//   return (
+//     <li key={props.key}>
+//       <div>{props.listing.numberOfMeals}</div>
+//       <div>{props.listing.description}</div>
+//       <div>{props.listing.listedBy}</div>
+//       <div>{props.listing.timeAvailableUntil}</div>
+//     </li>
+//   );
+// }
 
 export default class ListingFeed extends Component {
   constructor(props) {
@@ -40,6 +40,18 @@ export default class ListingFeed extends Component {
   }
 
   render() {
-    return this.listingFeed();
+    return (
+      <table className="table">
+        <thead className="thead-light">
+          <tr>
+            <th>Listed by</th>
+            <th>Number of meals</th>
+            <th>Description</th>
+            <th>Available until</th>
+          </tr>
+        </thead>
+        <tbody>{this.listingFeed()}</tbody>
+      </table>
+    );
   }
 }
