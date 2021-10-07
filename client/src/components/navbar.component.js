@@ -21,7 +21,7 @@ export default class Navbar extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/feed" className="nav-link">
+              <Link id="feed-link" to="/feed" className="nav-link">
                 Feed
               </Link>
             </li>
