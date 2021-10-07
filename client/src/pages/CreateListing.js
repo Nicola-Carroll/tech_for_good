@@ -4,8 +4,8 @@ import ListingForm from '../components/ListingForm';
 export default class CreateListing extends Component {
   render() {
     return (
-      <div>
-        <p>Create listing</p>
+      <div className="m-4">
+        <h1>Create listing</h1>
         <ListingForm />
       </div>
     );
