@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/accounts', accountRoutes);
+app.use('/api/accounts', accountRoutes);
 
 const PORT = process.env.PORT || 8000;
 

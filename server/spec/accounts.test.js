@@ -5,7 +5,7 @@ describe('POST /users', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {
       const response = await request(app)
-        .post('/accounts/create')
+        .post('/api/accounts/create')
         .send({
           type: 'charity',
           name: 'test',
@@ -28,7 +28,7 @@ describe('POST /users', () => {
 
   describe('when not passed all required fields', () => {
     test('should respond with a 400 status code', async () => {
-      const response = await request(app).post('/accounts/create').send({
+      const response = await request(app).post('/api/accounts/create').send({
         type: 'charity',
       });
       expect(response.statusCode).toBe(400);
@@ -38,7 +38,7 @@ describe('POST /users', () => {
   describe('when validation is not satisfied', () => {
     test('should respond with a 400 status code', async () => {
       const response = await request(app)
-        .post('/accounts/create')
+        .post('/api/accounts/create')
         .send({
           type: 'charity',
           name: 'test',
