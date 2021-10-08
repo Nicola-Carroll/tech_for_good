@@ -128,7 +128,11 @@ export default function RestaurantSignupForm() {
           />
         </div>
         <div className="form-submit">
-          <button className="btn btn-outline-success mt-3" type="submit">
+          <button
+            id="restaurantSubmit"
+            className="btn btn-outline-success mt-3"
+            type="submit"
+          >
             Create Account
           </button>
         </div>
