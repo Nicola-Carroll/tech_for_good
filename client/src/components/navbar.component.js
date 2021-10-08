@@ -20,6 +20,16 @@ export default class Navbar extends Component {
                 Login
               </Link>
             </li>
+            <li>
+              <Link id="feed-link" to="/feed" className="nav-link">
+                Feed
+              </Link>
+            </li>
+            <li className="navbar-item">
+            <Link to="/listings/new" className="nav-link">
+                Add listing
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
