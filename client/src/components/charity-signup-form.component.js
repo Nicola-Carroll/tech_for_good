@@ -135,7 +135,7 @@ export default function CharitySignupForm() {
           <input
             className="form-control"
             placeholder="Contact number"
-            type="number"
+            type="tel"
             name="contactNumber"
             id="contactNumber"
             required
