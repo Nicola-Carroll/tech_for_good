@@ -5,10 +5,17 @@ export default function CharitySignupForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    let self = this;
+
     axios
-      .post('http://localhost:5000/api/accounts/create', { allValues })
+      .post('http://localhost:5000/api/accounts/create', allValues)
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
+        // if (response.status === 200) {
+        //   console.log('HERE');
+        //   self.setState({ isSignedUp: true });
+        //   console.log('SIGNEDUP');
+        // }
       })
       .catch((error) => {
         console.log(error);
@@ -16,41 +23,33 @@ export default function CharitySignupForm() {
   }
 
   const [allValues, setAllValues] = useState({
+    type: '',
     username: '',
     emailAddress: '',
     password: '',
-    address: {
-      addressLine1: '',
-      addressLine2: '',
-      city: '',
-      postcode: '',
-    },
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    postCode: '',
     contactNumber: '',
     description: '',
     charityNumber: '',
     websiteLink: '',
+    foodHygieneRating: '',
   });
 
   const allValuesUpdate = (e) => {
     setAllValues({
       ...allValues,
       [e.target.name]: e.target.value,
+      type: 'Charity',
+      foodHygieneRating: 5,
     });
   };
 
   return (
     <section className="section w-50 m-auto">
       <form className="signup-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input
-            className="form-control"
-            type="hidden"
-            name="type"
-            id="type"
-            value="Charity"
-            required
-          />
-        </div>
         <div className="form-group mt-4 mb-4">
           <input
             className="form-control"
@@ -92,7 +91,6 @@ export default function CharitySignupForm() {
             name="passwordConfirmation"
             id="passwordConfirmation"
             required
-            onChange={allValuesUpdate}
           />
         </div>
         <div className="form-group mt-4 mb-4">
@@ -113,7 +111,6 @@ export default function CharitySignupForm() {
             type="string"
             name="addressLine2"
             id="addressLine2"
-            required
             onChange={allValuesUpdate}
           />
         </div>

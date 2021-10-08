@@ -30,25 +30,23 @@ const accountSchema = new mongoose.Schema(
       required: [true, 'Email address required'],
     },
     password: { type: String, required: [true, 'Password required'] },
-    address: {
-      addressLine1: {
-        type: String,
-        required: [true, 'Address line 1 required'],
-      },
-      addressLine2: {
-        type: String,
-      },
-      city: { type: String, required: [true, 'City required'] },
-      postCode: {
-        type: String,
-        validate: {
-          validator: function (v) {
-            return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(v);
-          },
-          message: (props) => `${props.value} is not a valid post code`,
+    addressLine1: {
+      type: String,
+      required: [true, 'Address line 1 required'],
+    },
+    addressLine2: {
+      type: String,
+    },
+    city: { type: String, required: [true, 'City required'] },
+    postCode: {
+      type: String,
+      validate: {
+        validator: function (v) {
+          return /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/.test(v);
         },
-        required: [true, 'Post code required'],
+        message: (props) => `${props.value} is not a valid post code`,
       },
+      required: [true, 'Post code required'],
     },
     contactNumber: {
       type: Number,
