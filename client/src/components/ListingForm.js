@@ -1,17 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import Listing from '../../../server/models/listing';
 
 export default function listingForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
     axios
-      .post('http://localhost:3000/listings/new', {
-        numberOfMeals: '',
-        description: '',
-        timeAvailableUntil: '',
-        listedBy: '',
-      })
+      .post('http://localhost:8000/api/listings/create', listing) 
+
       .then((res) => {
         console.log(res.data);
       });
@@ -19,7 +16,7 @@ export default function listingForm() {
 
   return (
     <section className="section w-50 m-auto">
-      <form className="listing-form" onSubmit={handleSubmit}>
+      <form className="listing-form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="mt-2 mb-2" htmlFor="meals">
             Number of Meals
