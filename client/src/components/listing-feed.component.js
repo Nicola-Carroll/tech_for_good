@@ -3,6 +3,7 @@ import Listing from './listing.component';
 import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
+
 export default class ListingFeed extends Component {
   constructor(props) {
     super(props);
