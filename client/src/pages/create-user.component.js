@@ -29,7 +29,7 @@ export default class Signup extends Component {
             className="btn btn-outline-success m-4"
             id="charity-btn"
             data-bs-toggle="button"
-            autocomplete="off"
+            autoComplete="off"
             onClick={() =>
               this.setState({
                 showCharitySignupForm: true,
@@ -43,7 +43,7 @@ export default class Signup extends Component {
             className="btn btn-outline-success m-4"
             id="restaurant-btn"
             data-bs-toggle="button"
-            autocomplete="off"
+            autoComplete="off"
             onClick={() =>
               this.setState({
                 showCharitySignupForm: false,
