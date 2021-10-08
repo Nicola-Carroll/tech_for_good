@@ -16,11 +16,7 @@ describe('Signup', () => {
     cy.get('#charityNumber').type('012345');
     cy.get('#websiteLink').type('www.google.com');
     cy.get('#charitySubmit').click();
-    cy.intercept('/signup', (req) => {
-      req.continue((res) => {
-        expect(res.status).property('status').to.equal(200);
-      });
-    });
+    cy.location('pathname').should('eq', '/login');
   });
 
   // it('should submit restaurant details', () => {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CharitySignupForm from '../components/charity-signup-form.component.js';
 import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
-import { Redirect } from 'react-router-dom';
 
 export default class Signup extends Component {
   constructor() {
@@ -9,15 +8,10 @@ export default class Signup extends Component {
     this.state = {
       showCharitySignupForm: false,
       showRestaurantSignupForm: false,
-      // isSignedUp: false,
     };
   }
 
   render() {
-    // if (this.state.isSignedUp) {
-    //   return <Redirect to={{ pathname: '/login' }} />;
-    // }
-
     const showCharitySignupForm = this.state.showCharitySignupForm;
     const showRestaurantSignupForm = this.state.showRestaurantSignupForm;
     let form;

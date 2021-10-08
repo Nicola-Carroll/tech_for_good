@@ -5,17 +5,12 @@ export default function CharitySignupForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    let self = this;
-
     axios
       .post('http://localhost:5000/api/accounts/create', allValues)
       .then((response) => {
-        console.log(response.status);
-        // if (response.status === 200) {
-        //   console.log('HERE');
-        //   self.setState({ isSignedUp: true });
-        //   console.log('SIGNEDUP');
-        // }
+        if (response.status === 200) {
+          window.location = '/login';
+        }
       })
       .catch((error) => {
         console.log(error);
