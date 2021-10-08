@@ -7,20 +7,20 @@ describe('POST /accounts', () => {
       const response = await request(app)
         .post('/api/accounts/create')
         .send({
-          type: 'charity',
-          name: 'test',
-          email: 'test',
+          type: 'Charity',
+          username: 'test',
+          emailAddress: 'test@example.com',
           password: 'test',
           address: {
-            streetAddress: 'test',
+            addressLine1: 'test',
             city: 'test',
-            postCode: 'test',
+            postCode: 'SE1 9JA',
           },
-          telephoneNumber: 13,
+          contactNumber: 123456789,
           description: 'test',
-          charityNumber: 14,
+          charityNumber: 12345,
           websiteLink: 'test',
-          foodHygieneRating: 'test',
+          foodHygieneRating: 5,
         });
       expect(response.statusCode).toBe(200);
     });
@@ -29,7 +29,7 @@ describe('POST /accounts', () => {
   describe('when not passed all required fields', () => {
     test('should respond with a 400 status code', async () => {
       const response = await request(app).post('/api/accounts/create').send({
-        type: 'charity',
+        type: 'Charity',
       });
       expect(response.statusCode).toBe(400);
     });
@@ -40,20 +40,20 @@ describe('POST /accounts', () => {
       const response = await request(app)
         .post('/api/accounts/create')
         .send({
-          type: 'charity',
-          name: 'test',
-          email: 'test',
+          type: 'Charity',
+          username: 'test2',
+          emailAddress: 'test.example.com',
           password: 'test',
           address: {
-            streetAddress: 'test',
+            addressLine1: 'test',
             city: 'test',
-            postCode: 'test',
+            postCode: '0000 000',
           },
-          telephoneNumber: 'test',
+          contactNumber: 1234,
           description: 'test',
-          charityNumber: 'test',
+          charityNumber: 12,
           websiteLink: 'test',
-          foodHygieneRating: 'test',
+          foodHygieneRating: 7,
         });
       expect(response.statusCode).toBe(400);
     });
