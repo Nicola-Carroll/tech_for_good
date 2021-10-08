@@ -1,12 +1,9 @@
 describe('View Listing', () => {
-  it('renders listings from dummy data', () => {
-    // still to do - test db with seed data for improved testing
-    cy.visit('/feed');
-    cy.contains('test');
-  });
-
-  // to add an end-to-end test for uploading a listing and then
-  // seeing it appear on the feed once that feature is merged
+  // it('renders listings from dummy data', () => {
+  //   // still to do - test db with seed data for improved testing
+  //   cy.visit('/feed');
+  //   cy.contains('test');
+  // });
 
   it('the navbar links to the feed', () => {
     cy.visit('/');
