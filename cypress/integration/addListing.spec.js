@@ -8,6 +8,8 @@ describe('Add Listing', () => {
 
   it('checks click', () => {
     cy.visit('http://localhost:3000/listings/new');
+    cy.get('#meals').type('10');
+    cy.get('#desc').type('Hello, World');
     cy.get('.btn').click();
     cy.focused().should('have.attr', 'type', 'submit');
   });
