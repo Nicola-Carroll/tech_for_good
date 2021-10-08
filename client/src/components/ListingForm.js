@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-<<<<<<< HEAD
-=======
 const { REACT_APP_ENDPOINT } = process.env;
 
->>>>>>> c07c3d18210de5b7e9ea7ba6952ad35c3e4e29b8
 export default class ListingForm extends Component {
   constructor(props) {
     super(props);
@@ -42,11 +39,9 @@ export default class ListingForm extends Component {
       listedBy: 1, // just a default
     };
 
-    axios
-      .post(`${REACT_APP_ENDPOINT}listings/create`, listing)
-      .then((res) => {
-        console.log(res.data);
-      });
+    axios.post(`${REACT_APP_ENDPOINT}listings/create`, listing).then((res) => {
+      console.log(res.data);
+    });
   }
 
   render() {
