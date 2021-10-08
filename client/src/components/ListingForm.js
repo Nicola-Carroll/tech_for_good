@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+const { REACT_APP_ENDPOINT } = process.env;
+
 export default class ListingForm extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,7 @@ export default class ListingForm extends Component {
     };
 
     axios
-      .post('http://localhost:5000/api/listings/create', listing)
+      .post(`${REACT_APP_ENDPOINT}listings/create`, listing)
       .then((res) => {
         console.log(res.data);
       });
