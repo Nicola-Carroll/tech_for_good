@@ -42,13 +42,13 @@ export default class Signup extends Component {
     this.renderRestaurantForm = this.renderRestaurantForm.bind(this);
   }
 
-  renderCharityForm() {
+  setAccountTypeCharity() {
     this.setState({
       accountType: 'charity',
     });
   }
 
-  renderRestaurantForm() {
+  setAccountTypeRestaurant() {
     this.setState({
       accountType: 'restaurant',
     });
@@ -72,7 +72,7 @@ export default class Signup extends Component {
             id="charity-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={this.renderCharityForm}
+            onClick={this.setAccountTypeCharity}
           >
             I am a charity
           </button>
@@ -81,7 +81,7 @@ export default class Signup extends Component {
             id="restaurant-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={this.renderRestaurantForm}
+            onClick={this.setAccountTypeRestaurant}
           >
             I am a restaurant
           </button>
