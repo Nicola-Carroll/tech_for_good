@@ -2,25 +2,47 @@ import React, { Component } from 'react';
 import CharitySignupForm from '../components/charity-signup-form.component.js';
 import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
 
+class SignupForm extends Component {
+  chooseCorrectForm() {
+    if (this.props.accountType === 'charity') {
+      return <CharitySignupForm />;
+    } else if (this.props.accountType === 'restaurant') {
+      return <RestaurantSignupForm />;
+    }
+  }
+
+  render() {
+    return <div>{this.chooseCorrectForm()}</div>;
+  }
+}
+
 export default class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      showCharitySignupForm: false,
-      showRestaurantSignupForm: false,
+      accountType: '',
     };
+    this.renderCharityForm = this.renderCharityForm.bind(this);
+    this.renderRestaurantForm = this.renderRestaurantForm.bind(this);
+  }
+
+  renderCharityForm() {
+    this.setState({
+      accountType: 'charity',
+    });
+  }
+
+  renderRestaurantForm() {
+    this.setState({
+      accountType: 'restaurant',
+    });
+  }
+
+  renderForm() {
+    return <SignupForm accountType={this.state.accountType}></SignupForm>;
   }
 
   render() {
-    const showCharitySignupForm = this.state.showCharitySignupForm;
-    const showRestaurantSignupForm = this.state.showRestaurantSignupForm;
-    let form;
-    if (showCharitySignupForm) {
-      form = <CharitySignupForm />;
-    } else if (showRestaurantSignupForm) {
-      form = <RestaurantSignupForm />;
-    } else {
-    }
     return (
       <div className="m-4">
         <h1 className="text-center">Signup</h1>
@@ -30,12 +52,7 @@ export default class Signup extends Component {
             id="charity-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={() =>
-              this.setState({
-                showCharitySignupForm: true,
-                showRestaurantSignupForm: false,
-              })
-            }
+            onClick={this.renderCharityForm}
           >
             I am a charity
           </button>
@@ -44,17 +61,12 @@ export default class Signup extends Component {
             id="restaurant-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={() =>
-              this.setState({
-                showCharitySignupForm: false,
-                showRestaurantSignupForm: true,
-              })
-            }
+            onClick={this.renderRestaurantForm}
           >
             I am a restaurant
           </button>
         </div>
-        {form}
+        {this.renderForm()}
       </div>
     );
   }
