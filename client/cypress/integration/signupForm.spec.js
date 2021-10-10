@@ -1,3 +1,4 @@
+/* eslint-disable jest/valid-expect */
 /* eslint-disable no-undef */
 describe('Signup', () => {
   it('should submit charity details', () => {
@@ -17,6 +18,27 @@ describe('Signup', () => {
     cy.get('#websiteLink').type('www.google.com');
     cy.get('#charitySubmit').click();
     cy.location('pathname').should('eq', '/login');
+  });
+
+  it('should give an alert if passwords do not match', () => {
+    cy.visit('/signup');
+    cy.get('#charity-btn').click();
+    cy.get('#username').type('Charity Supreme');
+    cy.get('#emailAddress').type('charity@supreme.com');
+    cy.get('#password').type('Charity123!');
+    cy.get('#passwordConfirmation').type('Charity');
+    cy.get('#addressLine1').type('1 London Road');
+    cy.get('#addressLine2');
+    cy.get('#city').type('London');
+    cy.get('#postCode').type('E2 6LP');
+    cy.get('#contactNumber').type('07777111222');
+    cy.get('#description').type('We do a weekly soup kitchen.');
+    cy.get('#charityNumber').type('012345');
+    cy.get('#websiteLink').type('www.google.com');
+    cy.get('#charitySubmit').click();
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal("Passwords don't match");
+    });
   });
 
   it('should submit restaurant details', () => {
