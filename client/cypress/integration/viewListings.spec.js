@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const { REACT_APP_ENDPOINT } = process.env;
-
 describe('View Listing', () => {
   // it('renders listings from dummy data', () => {
   //   // still to do - test db with seed data for improved testing

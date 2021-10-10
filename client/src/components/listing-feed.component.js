@@ -14,8 +14,6 @@ export default class ListingFeed extends Component {
     axios
       .get(`${REACT_APP_ENDPOINT}listings`)
       .then((response) => {
-        console.log(response);
-        console.log(this.availableListings(response.data));
         this.setState({ listings: this.availableListings(response.data) });
       })
       .catch((error) => {
