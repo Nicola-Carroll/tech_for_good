@@ -5,7 +5,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="m-4">
-        <h1 className="text-center">Signup</h1>
+        <h1 className="text-center">Login</h1>
         <LoginForm />
       </div>
     );
