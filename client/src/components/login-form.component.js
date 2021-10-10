@@ -54,7 +54,7 @@ export default function LoginForm() {
         </div>
         <div className="form-submit">
           <button
-            id="charitySubmit"
+            id="loginSubmit"
             className="btn btn-outline-success mt-3"
             type="submit"
           >
