@@ -24,8 +24,6 @@ export default class ListingFeed extends Component {
 
   claimListing(id) {
     const claim = { claimedBy: 222 };
-    console.log(id);
-    console.log('listing claimed!');
     axios
       .patch(`${REACT_APP_ENDPOINT}listings/update/${id}`, claim)
       .then((response) => {
