@@ -3,7 +3,7 @@ import CharitySignupForm from '../components/charity-signup-form.component.js';
 import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
 
 class SignupHeader extends Component {
-  chooseCorrectContent() {
+  correctContent() {
     if (this.props.accountType === 'charity') {
       return 'Signup your charity';
     } else if (this.props.accountType === 'restaurant') {
@@ -14,12 +14,12 @@ class SignupHeader extends Component {
   }
 
   render() {
-    return <h1 className="text-center">{this.chooseCorrectContent()}</h1>;
+    return <h1 className="text-center">{this.correctContent()}</h1>;
   }
 }
 
 class SignupForm extends Component {
-  chooseCorrectForm() {
+  correctForm() {
     if (this.props.accountType === 'charity') {
       return <CharitySignupForm />;
     } else if (this.props.accountType === 'restaurant') {
@@ -28,7 +28,7 @@ class SignupForm extends Component {
   }
 
   render() {
-    return <div>{this.chooseCorrectForm()}</div>;
+    return <div>{this.correctForm()}</div>;
   }
 }
 
@@ -38,8 +38,8 @@ export default class Signup extends Component {
     this.state = {
       accountType: '',
     };
-    this.renderCharityForm = this.renderCharityForm.bind(this);
-    this.renderRestaurantForm = this.renderRestaurantForm.bind(this);
+    this.setAccountTypeCharity = this.setAccountTypeCharity.bind(this);
+    this.setAccountTypeRestaurant = this.setAccountTypeRestaurant.bind(this);
   }
 
   setAccountTypeCharity() {
