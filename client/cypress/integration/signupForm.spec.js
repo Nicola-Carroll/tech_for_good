@@ -1,4 +1,3 @@
-/* eslint-disable jest/valid-expect */
 /* eslint-disable no-undef */
 describe('Signup', () => {
   it('should submit charity details', () => {
@@ -37,7 +36,7 @@ describe('Signup', () => {
     cy.get('#websiteLink').type('www.google.com');
     cy.get('#charitySubmit').click();
     cy.on('window:alert', (str) => {
-      expect(str).to.equal("Passwords don't match");
+      expect(str).toBe("Passwords don't match");
     });
   });
 
