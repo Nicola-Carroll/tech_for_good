@@ -1,6 +1,12 @@
 import Account from '../models/account.js';
 
 const AccountsController = {
+  index(req, res) {
+    Account.find()
+      .then((accounts) => res.json(accounts))
+      .catch((err) => res.status(400).json('Error: ' + err));
+  },
+
   create(req, res) {
     const account = req.body;
 
