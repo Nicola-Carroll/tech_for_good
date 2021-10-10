@@ -26,7 +26,10 @@ const ListingsController = {
     try {
       const id = req.params.id;
       const listing = await Listing.findById(id);
-      listing.claimedBy = req.body.claimedBy;
+
+      if (!listing.claimedBy) {
+        listing.claimedBy = req.body.claimedBy;
+      }
 
       await listing.save();
 
