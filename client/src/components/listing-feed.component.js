@@ -15,11 +15,18 @@ export default class ListingFeed extends Component {
       .get(`${REACT_APP_ENDPOINT}listings`)
       .then((response) => {
         console.log(response);
-        this.setState({ listings: response.data });
+        console.log(this.availableListings(response.data));
+        this.setState({ listings: this.availableListings(response.data) });
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  availableListings(data) {
+    return data.filter((currentListing) => {
+      return !currentListing.claimedBy;
+    });
   }
 
   claimListing(id) {

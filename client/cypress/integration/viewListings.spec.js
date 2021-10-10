@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+const { REACT_APP_ENDPOINT } = process.env;
+
 describe('View Listing', () => {
   // it('renders listings from dummy data', () => {
   //   // still to do - test db with seed data for improved testing
@@ -20,8 +24,25 @@ describe('View Listing', () => {
   });
 
   it('listings have buttons', () => {
-    // this test is just a placeholder for when we build buttons for listsings
     cy.visit('/feed');
-    cy.contains('Buttons to interact with listing');
+    cy.contains('Claim Listing');
+  });
+
+  it('only shows unclaimed listings', () => {
+    const listing = {
+      numberOfMeals: 10,
+      description: 'This listing should not appear',
+      timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+      listedBy: 1,
+      claimedBy: 2,
+    };
+    axios
+      .post(`http://localhost:5000/api/listings/create`, listing)
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(process.env.NODE_ENV);
+    cy.visit('/feed');
+    cy.get('This listing should not appear').should('not.exist');
   });
 });
