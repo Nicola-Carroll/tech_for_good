@@ -9,15 +9,14 @@ import React from 'react';
 
 function ClaimButton(props) {
   return (
-    <form className="claim-listing-form">
-      <button
-        className="btn btn-outline-success mt-3"
-        type="submit"
-        // id={props.listing._id}
-      >
-        Claim Listing
-      </button>
-    </form>
+    <button
+      className="btn btn-outline-success mt-3"
+      type="submit"
+      id={props.listing._id}
+      onClick={() => props.handleClick(props.id)}
+    >
+      Claim Listing
+    </button>
   );
 }
 

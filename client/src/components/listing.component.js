@@ -10,8 +10,8 @@ function Listing(props) {
       <td>{props.listing.timeAvailableUntil}</td>
       <td>
         <ClaimButton
-        // listing={props.currentListing}
-        // handleSubmit={props.handleSubmit}
+          listing={props.listing}
+          handleClick={() => props.handleClick(props.listing._id)}
         ></ClaimButton>
       </td>
     </tr>

@@ -22,7 +22,8 @@ export default class ListingFeed extends Component {
       });
   }
 
-  claimListing() {
+  claimListing(id) {
+    console.log(id);
     console.log('listing claimed!');
   }
 
@@ -32,7 +33,7 @@ export default class ListingFeed extends Component {
         <Listing
           listing={currentListing}
           key={currentListing._id}
-          handleSubmit={this.claimListing}
+          handleClick={(key) => this.claimListing(key)}
         ></Listing>
       );
     });
