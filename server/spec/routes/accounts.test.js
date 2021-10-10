@@ -8,7 +8,7 @@ describe('POST /accounts', () => {
         .post('/api/accounts/create')
         .send({
           type: 'Charity',
-          username: 'test',
+          username: 'test1',
           emailAddress: 'test@example.com',
           password: 'test',
           address: {
