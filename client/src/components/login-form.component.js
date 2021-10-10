@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
+const { REACT_APP_ENDPOINT } = process.env;
+
 export default function LoginForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/api/accounts/authenticate', {
+      .post(`${REACT_APP_ENDPOINT}accounts/authenticate`, {
         username: username,
         password: password,
       })
@@ -43,7 +45,7 @@ export default function LoginForm() {
           <input
             className="form-control"
             placeholder="Password"
-            type="string"
+            type="password"
             name="password"
             id="password"
             required

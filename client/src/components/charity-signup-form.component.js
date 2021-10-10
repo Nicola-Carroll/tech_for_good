@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
+const { REACT_APP_ENDPOINT } = process.env;
+
 export default function CharitySignupForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/api/accounts/create', allValues)
+      .post(`${REACT_APP_ENDPOINT}accounts/create`, allValues)
       .then((response) => {
         if (response.status === 200) {
           window.location = '/login';
