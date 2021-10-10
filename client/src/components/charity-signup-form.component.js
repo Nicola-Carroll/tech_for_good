@@ -71,7 +71,7 @@ export default function CharitySignupForm() {
           <input
             className="form-control"
             placeholder="Password"
-            type="string"
+            type="password"
             name="password"
             id="password"
             required
@@ -82,7 +82,7 @@ export default function CharitySignupForm() {
           <input
             className="form-control"
             placeholder="Password confirmation"
-            type="string"
+            type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
             required
