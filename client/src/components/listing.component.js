@@ -1,4 +1,5 @@
 import React from 'react';
+import ClaimButton from './ClaimButton.component';
 
 function Listing(props) {
   return (
@@ -7,7 +8,12 @@ function Listing(props) {
       <td>{props.listing.numberOfMeals}</td>
       <td>{props.listing.description}</td>
       <td>{props.listing.timeAvailableUntil}</td>
-      <td>Buttons to interact with listing</td>
+      <td>
+        <ClaimButton
+        // listing={props.currentListing}
+        // handleSubmit={props.handleSubmit}
+        ></ClaimButton>
+      </td>
     </tr>
   );
 }

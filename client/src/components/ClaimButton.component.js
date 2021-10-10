@@ -5,3 +5,20 @@
 // we need to make a page for confirming the listing has been claimed
 // we need to update the listing feed so that only unclaimed listings are shown
 //
+import React from 'react';
+
+function ClaimButton(props) {
+  return (
+    <form className="claim-listing-form">
+      <button
+        className="btn btn-outline-success mt-3"
+        type="submit"
+        // id={props.listing._id}
+      >
+        Claim Listing
+      </button>
+    </form>
+  );
+}
+
+export default ClaimButton;

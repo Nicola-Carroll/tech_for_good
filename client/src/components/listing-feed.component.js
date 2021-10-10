@@ -22,10 +22,18 @@ export default class ListingFeed extends Component {
       });
   }
 
+  claimListing() {
+    console.log('listing claimed!');
+  }
+
   listingFeed() {
     return this.state.listings.map((currentListing) => {
       return (
-        <Listing listing={currentListing} key={currentListing._id}></Listing>
+        <Listing
+          listing={currentListing}
+          key={currentListing._id}
+          handleSubmit={this.claimListing}
+        ></Listing>
       );
     });
   }
