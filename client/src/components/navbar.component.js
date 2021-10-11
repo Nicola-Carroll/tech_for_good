@@ -45,13 +45,15 @@ export default class Navbar extends Component {
                         )}
                       </li>
                     </ul>
-                    <button
-                      class="btn btn-outline-success my-2 my-sm-0"
-                      type="submit"
-                      onClick={logoutUser}
-                    >
-                      Logout
-                    </button>
+                    {user && (
+                      <button
+                        class="btn btn-outline-success my-2 my-sm-0"
+                        type="submit"
+                        onClick={logoutUser}
+                      >
+                        Logout
+                      </button>
+                    )}
                   </div>
                 </nav>
               </>
