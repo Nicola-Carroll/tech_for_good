@@ -17,36 +17,18 @@ export default class Login extends Component {
     console.log(this.state.loggedInUser);
   }
 
-  // renderLoggedInUser() {
-  //   return (
-  //     <userContext.Consumer>
-  //       {({ user, loginUser, logoutUser }) => {
-  //         return (
-  //           <>
-  //             <h1>Logged in user is: {user}</h1>
-  //           </>
-  //         );
-  //       }}
-  //     </userContext.Consumer>
-  //   );
-  // }
-
   render() {
     return (
       <>
-        <div className="m-4">
-          <h1 className="text-center">Login</h1>
-          <LoginForm updateUser={this.loggedInUser} />
-        </div>
         <userContext.Consumer>
           {({ user, loginUser, logoutUser }) => {
             return (
               <>
                 <h1>Logged in user is: {user}</h1>
-                <button onClick={() => loginUser(this.state.loggedInUser)}>
-                  Login
-                </button>
-                <button onClick={() => logoutUser()}>Logout</button>
+                <div className="m-4">
+                  <h1 className="text-center">Login</h1>
+                  <LoginForm updateUser={loginUser} />
+                </div>
               </>
             );
           }}
