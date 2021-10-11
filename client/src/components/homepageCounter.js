@@ -32,7 +32,7 @@ export default class AddTally extends Component {
         <p className="mt-2 mb-2 text-center" htmlFor="meals">
           Number of meals that have been saved from waste thus far:
         </p>
-        <p className="row font-weight-bold justify-content-center text-success display-5">
+        <p id="total" className="row font-weight-bold justify-content-center text-success display-5">
         {this.state.total}
         </p>
       </div>
