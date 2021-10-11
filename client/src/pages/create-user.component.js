@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SignupHeader from '../components/SignupHeader.component.js';
 import SignupForm from '../components/SignupForm.component.js';
+import { userContext } from '../App.js';
 
 export default class Signup extends Component {
   constructor() {
@@ -57,6 +58,10 @@ export default class Signup extends Component {
           </button>
         </div>
         {this.renderForm()}
+        <userContext.Consumer>
+          {(value) => <h1>{value}</h1>}
+        </userContext.Consumer>
+        {form}
       </div>
     );
   }
