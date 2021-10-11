@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './components/navbar.component';
@@ -23,7 +23,9 @@ export default class App extends Component {
   }
 
   login(newUser) {
-    this.setState({ user: newUser });
+    this.setState({
+      user: newUser,
+    });
   }
 
   logout() {
@@ -43,9 +45,39 @@ export default class App extends Component {
           <br />
           <Route path="/" exact component={Homepage} />
           <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/listings/new" component={CreateListing} />
-          <Route path="/feed" component={ViewListings} />
+          {/* <Route path="/login" component={Login} /> */}
+          {/* <Route path="/listings/new" component={CreateListing} /> */}
+          {/* <Route path="/feed" component={ViewListings} /> */}
+
+          <Route exact path="/login">
+            {!this.state.user ? (
+              <Login />
+            ) : this.state.user.type === 'Charity' ? (
+              <Redirect to="/feed" />
+            ) : (
+              <Redirect to="/listings/new" />
+            )}
+          </Route>
+
+          <Route exact path="/feed">
+            {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/listings/new">
+            {this.state.user ? <CreateListing /> : <Redirect to="/login" />}
+          </Route>
+
+          {/* <Route exact path="/signup">
+            {this.state.user ? <Redirect to="/feed" /> : <Signup />}
+          </Route>
+          <Route exact path="/login">
+            {this.state.user ? <Redirect to="/feed" /> : <Login />}
+          </Route>
+          <Route exact path="/listings/new">
+            {this.state.user ? <CreateListing /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/feed">
+            {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
+          </Route> */}
         </Router>
       </userContext.Provider>
     );
