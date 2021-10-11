@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SignupHeader from '../components/SignupHeader.component.js';
 import SignupForm from '../components/SignupForm.component.js';
+import { userContext } from '../App.js';
 
 export default class Signup extends Component {
   constructor() {
@@ -36,6 +37,11 @@ export default class Signup extends Component {
     return (
       <div className="m-4">
         {this.renderHeader()}
+        <userContext.Consumer>
+          {({ user, loginUser, logoutUser }) => {
+            return <>{user && <h2>You're currently logged in as {user}</h2>}</>;
+          }}
+        </userContext.Consumer>
         <div className="text-center">
           <button
             className="btn btn-outline-success m-4"
