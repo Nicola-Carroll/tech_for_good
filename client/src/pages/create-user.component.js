@@ -42,7 +42,6 @@ export default class Signup extends Component {
             return <>{user && <h2>You're currently logged in as {user}</h2>}</>;
           }}
         </userContext.Consumer>
-        <h1 className="text-center">Signup</h1>
         <div className="text-center">
           <button
             className="btn btn-outline-success m-4"
@@ -62,15 +61,6 @@ export default class Signup extends Component {
           >
             I am a restaurant
           </button>
-          <userContext.Consumer>
-            {({ user }) => {
-              return (
-                <>
-                  <h1>Logged in user is: {user}</h1>
-                </>
-              );
-            }}
-          </userContext.Consumer>
         </div>
         {this.renderForm()}
       </div>

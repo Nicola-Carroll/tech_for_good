@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListingFeed from '../components/listing-feed.component';
+import ListingFeed from '../components/ListingFeed.component';
 import { userContext } from '../App.js';
 
 export default class ViewListings extends Component {

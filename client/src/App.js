@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar.component';
 import Homepage from './pages/homepage.component';
 import Signup from './pages/create-user.component';
-import Login from './pages/Login.component';
+import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
 import ViewListings from './pages/view-listings.component';
 
