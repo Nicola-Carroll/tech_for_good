@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CharitySignupForm from '../components/charity-signup-form.component.js';
 import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
+import { userContext } from '../App.js';
 
 export default class Signup extends Component {
   constructor() {
@@ -54,6 +55,9 @@ export default class Signup extends Component {
             I am a restaurant
           </button>
         </div>
+        <userContext.Consumer>
+          {(value) => <h1>{value}</h1>}
+        </userContext.Consumer>
         {form}
       </div>
     );
