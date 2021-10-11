@@ -6,7 +6,7 @@ function Listing(props) {
     <tr>
       <td>{props.listing.listedBy}</td>
       <td>{props.listing.numberOfMeals}</td>
-      <td>{props.listing.description}</td>
+      <td class="desc">{props.listing.description}</td>
       <td>{props.listing.timeAvailableUntil}</td>
       <td>
         <ClaimButton

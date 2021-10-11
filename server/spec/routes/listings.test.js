@@ -100,14 +100,4 @@ describe('PATCH /listings', () => {
       expect(response.body.claimedBy).toBe(2);
     });
   });
-
-  // describe('when not passed all required fields', () => {
-  //   test('should respond with a 400 status code', async () => {
-  //     const response = await request(app)
-  //       .patch('/api/listings/update/615ece4eb85462b09ab6aed4')
-  //       .send({
-  //         numberOfMeals: 10,
-  //       });
-  //     expect(response.statusCode).toBe(400);
-  //   });
 });
