@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-info bg-warning navbar-expand">
+      <nav className="navbar bg-warning navbar-expand">
         <Link to="/" className="navbar-brand">
           Homepage
         </Link>
         <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
-            <li className="navbar-item btn btn-outline-success my-2 my-sm-0">
+            <li className="navbar-item btn btn-outline-success my-2 my-sm-0 ">
               <Link to="/signup" className="nav-link">
                 Signup
               </Link>
