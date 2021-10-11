@@ -26,7 +26,7 @@ describe('Add Listing', () => {
 
   it('prevents invalid submission', () => {
     cy.visit('/listings/new');
-    cy.get('#meals').type('0');
+   cy.get('#meals').type('0');
     cy.get('#desc').type('Hello, World');
     cy.get('.btn').click();
     cy.get('.listing-form').within(() => {
