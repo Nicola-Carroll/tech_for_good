@@ -13,6 +13,12 @@ export default class ListingFeed extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
+  availableListings(data) {
+    return data.filter((currentListing) => {
+      return !currentListing.claimedBy;
+    });
+  }
+
   async componentDidMount() {
     try {
       const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
@@ -27,13 +33,8 @@ export default class ListingFeed extends Component {
   }
 
   handleCloseModal() {
-    this.setState({ showModal: false, selectedListingId: null });
-  }
-
-  availableListings(data) {
-    return data.filter((currentListing) => {
-      return !currentListing.claimedBy;
-    });
+    this.setState({ selectedListingId: null });
+    this.componentDidMount();
   }
 
   listingFeed() {
@@ -49,6 +50,7 @@ export default class ListingFeed extends Component {
   }
 
   render() {
+    console.log(`in render the id is ${this.state.selectedListingId}`);
     return (
       <>
         <table className="table">
@@ -62,9 +64,10 @@ export default class ListingFeed extends Component {
           </thead>
           <tbody>{this.listingFeed()}</tbody>
         </table>
-        {this.state.selectedListingId && (
-          <ListingModal listingId={this.state.selectedListingId} />
-        )}
+        <ListingModal
+          listingId={this.state.selectedListingId}
+          handleClose={this.handleCloseModal}
+        />
       </>
     );
   }

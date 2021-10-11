@@ -7,12 +7,6 @@ const { REACT_APP_ENDPOINT } = process.env;
 Modal.setAppElement('#root');
 
 export default class ListingModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { showModal: true };
-    console.log(this.props.listingId);
-  }
-
   async claimListing(id) {
     // this will change to align with the session id of the account
     const claim = { claimedBy: 222 };
@@ -25,20 +19,22 @@ export default class ListingModal extends Component {
     } catch (error) {
       console.log(error);
     }
-    this.setState({ showModal: false });
-    this.componentDidMount();
+    this.props.handleClose();
   }
 
   render() {
     return (
-      <Modal isOpen={this.state.showModal} contentLabel="Minimal Modal Example">
+      <Modal
+        isOpen={!!this.props.listingId}
+        contentLabel="Minimal Modal Example"
+      >
         <button
           onClick={() => this.claimListing(this.props.listingId)}
           id="claim-button"
         >
           Confirm
         </button>
-        <button onClick={this.handleCloseModal} id="back-button">
+        <button onClick={this.props.handleClose} id="back-button">
           Go back
         </button>
       </Modal>
