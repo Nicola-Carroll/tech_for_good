@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 import Listing from './listing.component';
+import ListingModal from './ListingModal.component';
 import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
-
-Modal.setAppElement('#root');
 
 export default class ListingFeed extends Component {
   constructor(props) {
     super(props);
     this.state = { listings: [], showModal: false, selectedListingId: null };
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get(`${REACT_APP_ENDPOINT}listings`)
-      .then((response) => {
-        this.setState({ listings: this.availableListings(response.data) });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  availableListings(data) {
-    return data.filter((currentListing) => {
-      return !currentListing.claimedBy;
-    });
+  async componentDidMount() {
+    try {
+      const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
+      this.setState({ listings: this.availableListings(response.data) });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   handleOpenModal(id) {
@@ -41,20 +30,10 @@ export default class ListingFeed extends Component {
     this.setState({ showModal: false, selectedListingId: null });
   }
 
-  async claimListing(id) {
-    // this will change to align with the session id of the account
-    const claim = { claimedBy: 222 };
-    try {
-      const response = await axios.patch(
-        `${REACT_APP_ENDPOINT}listings/update/${id}`,
-        claim,
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-    this.handleCloseModal();
-    this.componentDidMount();
+  availableListings(data) {
+    return data.filter((currentListing) => {
+      return !currentListing.claimedBy;
+    });
   }
 
   listingFeed() {
@@ -83,20 +62,9 @@ export default class ListingFeed extends Component {
           </thead>
           <tbody>{this.listingFeed()}</tbody>
         </table>
-        <Modal
-          isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
-        >
-          <button
-            onClick={() => this.claimListing(this.state.selectedListingId)}
-            id="claim-button"
-          >
-            Confirm
-          </button>
-          <button onClick={this.handleCloseModal} id="back-button">
-            Go back
-          </button>
-        </Modal>
+        {this.state.selectedListingId && (
+          <ListingModal listingId={this.state.selectedListingId} />
+        )}
       </>
     );
   }
