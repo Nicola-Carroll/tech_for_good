@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-function ClaimButton(props) {
+function InitiateClaimButton(props) {
   const buttonId = `claim${props.listing._id}`;
   return (
     <button
@@ -17,4 +17,4 @@ function ClaimButton(props) {
   );
 }
 
-export default ClaimButton;
+export default InitiateClaimButton;

@@ -1,18 +1,18 @@
 import React from 'react';
-import ClaimButton from './ClaimButton.component';
+import InitiateClaimButton from './InitiateClaimButton.component';
 
 function Listing(props) {
   return (
     <tr>
       <td>{props.listing.listedBy}</td>
       <td>{props.listing.numberOfMeals}</td>
-      <td class="desc">{props.listing.description}</td>
+      <td className="desc">{props.listing.description}</td>
       <td>{props.listing.timeAvailableUntil}</td>
       <td>
-        <ClaimButton
+        <InitiateClaimButton
           listing={props.listing}
           handleClick={() => props.handleClick(props.listing._id)}
-        ></ClaimButton>
+        ></InitiateClaimButton>
       </td>
     </tr>
   );
