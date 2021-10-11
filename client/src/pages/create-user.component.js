@@ -1,36 +1,6 @@
 import React, { Component } from 'react';
-import CharitySignupForm from '../components/charity-signup-form.component.js';
-import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
-
-class SignupHeader extends Component {
-  correctContent() {
-    if (this.props.accountType === 'charity') {
-      return 'Signup your charity';
-    } else if (this.props.accountType === 'restaurant') {
-      return 'Signup your restaurant';
-    } else {
-      return 'Signup';
-    }
-  }
-
-  render() {
-    return <h1 className="text-center">{this.correctContent()}</h1>;
-  }
-}
-
-class SignupForm extends Component {
-  correctForm() {
-    if (this.props.accountType === 'charity') {
-      return <CharitySignupForm />;
-    } else if (this.props.accountType === 'restaurant') {
-      return <RestaurantSignupForm />;
-    }
-  }
-
-  render() {
-    return <div>{this.correctForm()}</div>;
-  }
-}
+import SignupHeader from '../components/SignupHeader.component.js';
+import SignupForm from '../components/SignupForm.component.js';
 
 export default class Signup extends Component {
   constructor() {
