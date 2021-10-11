@@ -54,10 +54,16 @@ export default class Signup extends Component {
           >
             I am a restaurant
           </button>
+          <userContext.Consumer>
+            {({ user }) => {
+              return (
+                <>
+                  <h1>Logged in user is: {user}</h1>
+                </>
+              );
+            }}
+          </userContext.Consumer>
         </div>
-        <userContext.Consumer>
-          {(value) => <h1>{value}</h1>}
-        </userContext.Consumer>
         {form}
       </div>
     );
