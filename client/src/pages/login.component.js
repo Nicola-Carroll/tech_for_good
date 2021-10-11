@@ -24,7 +24,7 @@ export default class Login extends Component {
           {({ user, loginUser, logoutUser }) => {
             return (
               <>
-                <h1>Logged in user is: {user}</h1>
+                {user && <h2>You're currently logged in as {user}</h2>}
                 <div className="m-4">
                   <h1 className="text-center">Login</h1>
                   <LoginForm updateUser={loginUser} />
