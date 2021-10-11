@@ -14,6 +14,7 @@ export default function LoginForm(props) {
       })
       .then((response) => {
         if (response.data._id) {
+          console.log(props.updateUser);
           props.updateUser(response.data._id);
           // window.location = '/feed';
         } else {
