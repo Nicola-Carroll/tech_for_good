@@ -28,6 +28,7 @@ export default class ListingFeed extends Component {
   }
 
   claimListing(id) {
+    // this will change to align with the session id of the account
     const claim = { claimedBy: 222 };
     axios
       .patch(`${REACT_APP_ENDPOINT}listings/update/${id}`, claim)

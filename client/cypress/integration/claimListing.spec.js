@@ -29,8 +29,9 @@ describe('Claiming a listing', () => {
       .catch((error) => {
         console.log(error);
       });
+    console.log(id);
     cy.visit('/feed');
-    cy.get(`${id}`).click();
+    cy.get(id).click();
     cy.visit('/feed');
     cy.get('Test listing to be claimed').should('not.exist');
   });
