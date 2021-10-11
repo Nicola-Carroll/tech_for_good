@@ -45,10 +45,6 @@ export default class App extends Component {
           <br />
           <Route path="/" exact component={Homepage} />
           <Route path="/signup" component={Signup} />
-          {/* <Route path="/login" component={Login} /> */}
-          {/* <Route path="/listings/new" component={CreateListing} /> */}
-          {/* <Route path="/feed" component={ViewListings} /> */}
-
           <Route exact path="/login">
             {!this.state.user ? (
               <Login />
@@ -58,26 +54,12 @@ export default class App extends Component {
               <Redirect to="/listings/new" />
             )}
           </Route>
-
           <Route exact path="/feed">
             {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/listings/new">
             {this.state.user ? <CreateListing /> : <Redirect to="/login" />}
           </Route>
-
-          {/* <Route exact path="/signup">
-            {this.state.user ? <Redirect to="/feed" /> : <Signup />}
-          </Route>
-          <Route exact path="/login">
-            {this.state.user ? <Redirect to="/feed" /> : <Login />}
-          </Route>
-          <Route exact path="/listings/new">
-            {this.state.user ? <CreateListing /> : <Redirect to="/login" />}
-          </Route>
-          <Route exact path="/feed">
-            {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
-          </Route> */}
         </Router>
       </userContext.Provider>
     );
