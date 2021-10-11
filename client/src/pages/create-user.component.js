@@ -24,6 +24,11 @@ export default class Signup extends Component {
     }
     return (
       <div className="m-4">
+        <userContext.Consumer>
+          {({ user, loginUser, logoutUser }) => {
+            return <>{user && <h2>You're currently logged in as {user}</h2>}</>;
+          }}
+        </userContext.Consumer>
         <h1 className="text-center">Signup</h1>
         <div className="text-center">
           <button
