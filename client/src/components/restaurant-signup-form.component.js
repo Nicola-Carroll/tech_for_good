@@ -7,16 +7,20 @@ export default function RestaurantSignupForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    axios
-      .post(`${REACT_APP_ENDPOINT}accounts/create`, allValues)
-      .then((response) => {
-        if (response.status === 200) {
-          window.location = '/login';
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (e.target['password'].value !== e.target['passwordConfirmation'].value) {
+      alert("Passwords don't match");
+    } else {
+      axios
+        .post(`${REACT_APP_ENDPOINT}accounts/create`, allValues)
+        .then((response) => {
+          if (response.status === 200) {
+            window.location = '/login';
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   const [allValues, setAllValues] = useState({
@@ -74,7 +78,7 @@ export default function RestaurantSignupForm() {
           <input
             className="form-control"
             placeholder="Password"
-            type="string"
+            type="password"
             name="password"
             id="password"
             required
@@ -85,7 +89,7 @@ export default function RestaurantSignupForm() {
           <input
             className="form-control"
             placeholder="Password confirmation"
-            type="string"
+            type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
             required
