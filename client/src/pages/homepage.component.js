@@ -4,7 +4,9 @@ export default class Homepage extends Component {
   render() {
     return (
       <div>
-        <p>This is the homepage component</p>
+        <h1 className="text-center" id="home">
+          Donations to date
+        </h1>
       </div>
     );
   }
