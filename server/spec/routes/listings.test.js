@@ -49,8 +49,17 @@ describe('POST /listings', () => {
 describe('PATCH /listings', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {
+      const postResponse = await request(app)
+        .post('/api/listings/create')
+        .send({
+          numberOfMeals: 10,
+          description: 'test',
+          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+          listedBy: 1,
+        });
+
       const response = await request(app)
-        .patch('/api/listings/update/615ece4eb85462b09ab6aed4')
+        .patch(`/api/listings/update/${postResponse.body._id}`)
         .send({
           claimedBy: 200,
         });
