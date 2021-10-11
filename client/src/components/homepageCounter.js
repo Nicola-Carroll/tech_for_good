@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Listing from './listing.component';
 import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
@@ -9,7 +8,6 @@ export default class AddTally extends Component {
     this.state = { total: 0 };
   }
 
-  // this connects the frontend to the backend
   componentDidMount() {
     axios
       .get(`${REACT_APP_ENDPOINT}listings`)
@@ -28,16 +26,15 @@ export default class AddTally extends Component {
       });
   }
 
-  // function Listing(props) {
-  //   return (
-  //     <tr>{props.listing.numberOfMeals}</tr>
-
   render() {
     return (
       <div className="section w-50 m-auto">
-        <label className="mt-2 mb-2" htmlFor="meals">
-          Number of meals that have been claimed thus far {this.state.total}
-        </label>
+        <p className="mt-2 mb-2 text-center" htmlFor="meals">
+          Number of meals that have been donated thus far:
+        </p>
+        <p className="row font-weight-bold justify-content-center text-success display-5">
+        {this.state.total}
+        </p>
       </div>
     );
   }
