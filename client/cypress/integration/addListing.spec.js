@@ -35,4 +35,32 @@ describe('Add Listing', () => {
         .should('equal', 'Value must be greater than or equal to 1.');
     });
   });
+
+  it('displays notice confirming new listing has been added', () => {
+    cy.visit('http://localhost:3000/listings/new');
+    cy.get('#meals').type('10');
+    cy.get('#desc').type('Hello, World');
+    cy.get('.btn').click();
+    cy.get('#submission-notice').contains(
+      'Your food listing has been successfully added.',
+    );
+  });
+
+  it('clears success notice after 3 seconds', () => {
+    cy.visit('http://localhost:3000/listings/new');
+    cy.get('#meals').type('10');
+    cy.get('#desc').type('Hello, World');
+    cy.get('.btn').click();
+    cy.wait(2001);
+    cy.get('#submission-notice').should('not.exist');
+  });
+
+  it('clears the form after success', () => {
+    cy.visit('http://localhost:3000/listings/new');
+    cy.get('#meals').type('10');
+    cy.get('#desc').type('Hello, World');
+    cy.get('.btn').click();
+    cy.get('#meals').contains('10').should('not.exist');
+    cy.get('#desc').contains('Hello, World').should('not.exist');
+  });
 });

@@ -13,9 +13,28 @@ export default class ListingForm extends Component {
     this.state = {
       numberOfMeals: '',
       description: '',
-      timeAvailableUntil: new Date(),
+      timeAvailableUntil: null,
       listedBy: '',
+      showNotice: false,
     };
+  }
+
+  clearForm() {
+    this.setState({
+      numberOfMeals: '',
+      description: '',
+    });
+  }
+
+  showNotice() {
+    this.setState({
+      showNotice: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        showNotice: false,
+      });
+    }, 2000);
   }
 
   updateNumberOfMeals(e) {
@@ -42,6 +61,8 @@ export default class ListingForm extends Component {
     axios.post(`${REACT_APP_ENDPOINT}listings/create`, listing).then((res) => {
       console.log(res.data);
     });
+    this.clearForm();
+    this.showNotice();
   }
 
   render() {
@@ -76,7 +97,7 @@ export default class ListingForm extends Component {
               value={this.state.description}
               onChange={this.updateDescription}
             ></textarea>
-            <small id="passwordHelpBlock" class="form-text text-muted">
+            <small id="listingDescGuidance" className="form-text text-muted">
               Please describe the type of food along with the dietary
               requirements.
             </small>
@@ -87,6 +108,11 @@ export default class ListingForm extends Component {
             </button>
           </div>
         </form>
+        {this.state.showNotice && (
+          <div id="submission-notice">
+            <p>Your food listing has been successfully added.</p>
+          </div>
+        )}
       </section>
     );
   }
