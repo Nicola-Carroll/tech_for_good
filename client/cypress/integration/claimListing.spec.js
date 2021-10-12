@@ -9,6 +9,7 @@ describe('Claiming a listing', () => {
   it('can claim a listing', () => {
     cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
     cy.switchToCharity();
+    cy.get('#feed-link').click();
     cy.get('.btn').first().click();
     cy.get('#claim-button').click();
     cy.get('#feed-link').click();
