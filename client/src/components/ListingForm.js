@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
@@ -11,6 +11,7 @@ export default class ListingForm extends Component {
     this.updateNumberOfMeals = this.updateNumberOfMeals.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
     this.updateDate = this.updateDateTime.bind(this);
+    this.input = createRef();
 
     this.state = {
       numberOfMeals: '',
@@ -60,11 +61,12 @@ export default class ListingForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const listing = {
       numberOfMeals: this.state.numberOfMeals,
       description: this.state.description,
       timeAvailableUntil: this.state.timeAvailableUntil,
-      listedBy: 1, // just a default
+      listedBy: this.input.current.value,
     };
 
     axios.post(`${REACT_APP_ENDPOINT}listings/create`, listing).then((res) => {
@@ -123,6 +125,17 @@ export default class ListingForm extends Component {
               name="timeAvailableUntil"
               id="timeAvailableUntil"
               onChange={this.updateDateTime.bind(this)}
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="hidden"
+              name="listedBy"
+              id="listedBy"
+              ref={this.input}
+              value="000"
             />
           </div>
 
