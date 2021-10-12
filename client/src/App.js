@@ -13,16 +13,16 @@ import ViewMyClaims from './pages/view-my-claims.component';
 
 export const userContext = createContext(null);
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-    };
+export default function App() {
+  // function constructor(props) {
+  //   // super(props);
+  //   this.state = {
+  //     user: null,
+  //   };
 
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-  }
+  //   this.login = this.login.bind(this);
+  //   this.logout = this.logout.bind(this);
+  // }
 
   login(newUser) {
     this.setState({
@@ -30,9 +30,9 @@ export default class App extends Component {
     });
   }
 
-  logout() {
-    this.setState({ user: null });
-  }
+  // function logout() {
+  //   this.setState({ user: null });
+  // }
 
   render() {
     const value = {
