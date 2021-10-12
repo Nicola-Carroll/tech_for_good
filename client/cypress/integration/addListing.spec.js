@@ -19,8 +19,11 @@ describe('Add Listing', () => {
   it('checks submitted data appears in feed', () => {
     cy.addListing('10', 'Hello, World', '2025-01-01T23:55');
     cy.switchToCharity();
-    cy.contains('Hello, World');
-    cy.contains('Restaurant Extreme');
+    cy.get('.listedBy').first().contains('Restaurant Extreme');
+    cy.get('.meals').first().contains('10');
+    cy.get('.desc').first().contains('Hello, World');
+    // Also checking the correct hour is shown, regardless of format
+    cy.get('.time').first().contains('11');
   });
 
   it('prevents invalid submission', () => {

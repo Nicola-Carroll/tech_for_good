@@ -4,10 +4,10 @@ import InitiateClaimButton from './InitiateClaimButton.component';
 function Listing(props) {
   return (
     <tr>
-      <td>{props.listing.listedBy}</td>
-      <td>{props.listing.numberOfMeals}</td>
+      <td className="listedBy"> {props.listing.listedBy}</td>
+      <td className="meals">{props.listing.numberOfMeals}</td>
       <td className="desc">{props.listing.description}</td>
-      <td>{props.listing.timeAvailableUntil}</td>
+      <td className="time">{props.listing.timeAvailableUntil}</td>
       <td>
         <InitiateClaimButton
           listing={props.listing}
