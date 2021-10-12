@@ -1,6 +1,15 @@
 import Account from '../models/account.js';
 
 const AccountsController = {
+  async index(req, res) {
+    try {
+      const accounts = await Account.find();
+      await res.json(accounts);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
   create(req, res) {
     const account = req.body;
 

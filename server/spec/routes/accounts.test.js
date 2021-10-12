@@ -1,6 +1,13 @@
 import request from 'supertest';
 import app from '../../server.js';
 
+describe('GET /accounts', () => {
+  test('it should respond to the GET method', async () => {
+    const response = await request(app).get('/api/accounts');
+    expect(response.statusCode).toBe(200);
+  });
+});
+
 describe('POST /accounts/create', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {
