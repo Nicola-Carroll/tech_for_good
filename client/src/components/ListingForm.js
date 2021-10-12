@@ -54,7 +54,7 @@ export default class ListingForm extends Component {
 
   updateDateTime(e) {
     this.setState({
-      timeAvailableUntil: e.target.value,
+      timeAvailableUntil: new Date(e.target.value).toISOString(),
     });
   }
 
