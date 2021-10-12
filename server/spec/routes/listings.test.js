@@ -53,7 +53,7 @@ describe('PATCH /listings', () => {
         .post('/api/listings/create')
         .send({
           numberOfMeals: 10,
-          description: 'test',
+          description: 'test to confirm patch responds',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
           listedBy: 1,
         });

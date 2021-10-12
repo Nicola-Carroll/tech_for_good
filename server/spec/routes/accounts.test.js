@@ -5,13 +5,24 @@ describe('GET /accounts/:id', () => {
   describe('when passed a valid ID', () => {
     test('should respond with 200 status code', async () => {
       const postResponse = await request(app)
-        .post('/api/listings/create')
+        .post('/api/accounts/create')
         .send({
-          numberOfMeals: 10,
+          type: 'Charity',
+          username: 'test_b',
+          emailAddress: 'test_b@example.com',
+          password: 'test',
+          addressLine1: 'test',
+          city: 'test',
+          postCode: 'SE1 9JB',
+          contactNumber: 123456789,
           description: 'test',
-          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-          listedBy: 1,
+          charityNumber: 12545,
+          websiteLink: 'test',
+          foodHygieneRating: 5,
         });
+
+      console.log(postResponse.body._id);
+      console.log(postResponse.statusCode);
 
       const response = await request(app).get(
         `/api/accounts/${postResponse.body._id}`,
@@ -22,12 +33,20 @@ describe('GET /accounts/:id', () => {
 
     test('should return the correct account details', async () => {
       const postResponse = await request(app)
-        .post('/api/listings/create')
+        .post('/api/accounts/create')
         .send({
-          numberOfMeals: 10,
+          type: 'Charity',
+          username: 'test_a',
+          emailAddress: 'test_a@example.com',
+          password: 'test',
+          addressLine1: 'test',
+          city: 'test',
+          postCode: 'SE1 9JA',
+          contactNumber: 123456789,
           description: 'test',
-          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-          listedBy: 1,
+          charityNumber: 12345,
+          websiteLink: 'test',
+          foodHygieneRating: 5,
         });
 
       const response = await request(app).get(
@@ -37,15 +56,15 @@ describe('GET /accounts/:id', () => {
       expect(response.body._id).toBe(postResponse.body._id);
     });
   });
+});
 
-  describe('when passed an invalid ID', () => {
-    test('should respond with 400', async () => {
-      const response = await request(app).get(
-        `/api/accounts/123294830248203948xyz`,
-      );
+describe('when passed an invalid ID', () => {
+  test('should respond with 400', async () => {
+    const response = await request(app).get(
+      `/api/accounts/123294830248203948xyz`,
+    );
 
-      expect(response.statusCode).toBe(400);
-    });
+    expect(response.statusCode).toBe(400);
   });
 });
 
@@ -54,7 +73,7 @@ describe('POST /accounts/create', () => {
     test('should respond with a 200 status code', async () => {
       const response = await request(app).post('/api/accounts/create').send({
         type: 'Charity',
-        username: 'test',
+        username: 'test_c',
         emailAddress: 'test@example.com',
         password: 'test',
         addressLine1: 'test',
@@ -83,7 +102,7 @@ describe('POST /accounts/create', () => {
     test('should respond with a 400 status code', async () => {
       const response = await request(app).post('/api/accounts/create').send({
         type: 'Charity',
-        username: 'test2',
+        username: 'test_d',
         emailAddress: 'test.example.com',
         password: 'test',
         addressLine1: 'test',
@@ -127,10 +146,24 @@ describe('POST /accounts/authenticate', () => {
 
   describe('when passed an incorrect password', () => {
     test('should respond with incorrect password message', async () => {
+      await request(app).post('/api/accounts/create').send({
+        type: 'Charity',
+        username: 'test_e',
+        emailAddress: 'test_e@example.com',
+        password: 'test',
+        addressLine1: 'test',
+        city: 'test',
+        postCode: '0000 000',
+        contactNumber: 1234,
+        description: 'test',
+        charityNumber: 12,
+        websiteLink: 'test',
+        foodHygieneRating: 7,
+      });
       const response = await request(app)
         .post('/api/accounts/authenticate')
         .send({
-          username: 'test',
+          username: 'test_e',
           password: 'test999',
         });
       expect(response.text).toBe('Incorrect password');

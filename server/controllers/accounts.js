@@ -14,9 +14,8 @@ const AccountsController = {
 
   async accountDetails(req, res) {
     try {
-      const response = await Listing.findById(req.params.id);
-      const account = await res.json(response);
-      res.send(account);
+      const account = await Account.findById(req.params.id);
+      await res.status(200).json(account);
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
     }
