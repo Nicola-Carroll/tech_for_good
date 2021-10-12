@@ -35,7 +35,7 @@ describe('View Listings', () => {
     cy.get('This listing should not appear').should('not.exist');
   });
 
-  it('only shows listings available in the future', () => {
+  it('should not show listings available in the past', () => {
     let now = new Date(new Date().toString().split('GMT')[0] + ' UTC')
       .toISOString()
       .split('.')[0];
@@ -49,5 +49,13 @@ describe('View Listings', () => {
     cy.wait(1000);
     cy.visit('/feed');
     cy.get('This listing should not appear').should('not.exist');
+  });
+
+  it('should show listings available in the future', () => {
+    cy.switchToRestaurant();
+    cy.addListing('10', 'This listing should appear', `2225-01-01T23:55`);
+    cy.wait(1000);
+    cy.switchToCharity();
+    cy.contains('This listing should appear');
   });
 });
