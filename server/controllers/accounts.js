@@ -12,10 +12,25 @@ const AccountsController = {
       .catch((error) => res.status(400).json('Error: ' + error));
   },
 
-  index(req, res) {
-    Account.find()
-      .then((accounts) => res.json(accounts))
-      .catch((err) => res.status(400).json('Error: ' + err));
+  authenticate(req, res) {
+    Account.findOne(
+      { username: req.body.username },
+      function (error, foundUser) {
+        if (!error) {
+          if (foundUser) {
+            if (foundUser.password == req.body.password) {
+              res.json(foundUser).send;
+            } else {
+              res.send('Incorrect password');
+            }
+          } else {
+            res.send('You have not been registered yet');
+          }
+        } else {
+          res.send(error);
+        }
+      },
+    );
   },
 };
 
