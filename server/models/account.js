@@ -48,6 +48,26 @@ const accountSchema = new mongoose.Schema(
       },
       required: [true, 'Post code required'],
     },
+    lat: {
+      type: Number,
+      validate: {
+        validator: function (v) {
+          return /^[0-9]{6,20}$/.test(v);
+        },
+        message: () => 'Unable to locate your address',
+      },
+      required: [true, 'Latitude required'],
+    },
+    long: {
+      type: Number,
+      validate: {
+        validator: function (v) {
+          return /^[0-9]{6,20}$/.test(v);
+        },
+        message: () => 'Unable to locate your address',
+      },
+      required: [true, 'Longitude required'],
+    },
     contactNumber: {
       type: Number,
       validate: {
