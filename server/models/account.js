@@ -52,7 +52,7 @@ const accountSchema = new mongoose.Schema(
       type: Number,
       validate: {
         validator: function (v) {
-          return /^[0-9]{6,20}$/.test(v);
+          return /^[0-9.-]{6,20}$/.test(v);
         },
         message: () => 'Unable to locate your address',
       },
@@ -62,7 +62,7 @@ const accountSchema = new mongoose.Schema(
       type: Number,
       validate: {
         validator: function (v) {
-          return /^[0-9]{6,20}$/.test(v);
+          return /^[0-9.-]{6,20}$/.test(v);
         },
         message: () => 'Unable to locate your address',
       },
