@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CharitySignupForm from '../components/charity-signup-form.component.js';
-import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
+import CharitySignupForm from './charity-signup-form.component.js';
+import RestaurantSignupForm from './restaurant-signup-form.component.js';
 
 export default class SignupForm extends Component {
   correctForm() {

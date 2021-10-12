@@ -2,7 +2,7 @@ import React, { Component, createContext } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navbar from './components/navbar.component';
+import Navbar from './components/shared/navbar.component';
 import Homepage from './pages/homepage.component';
 import Signup from './pages/create-user.component';
 import Login from './pages/login.component';
