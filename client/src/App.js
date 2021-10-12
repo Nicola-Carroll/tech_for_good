@@ -42,7 +42,6 @@ export default class App extends Component {
       <userContext.Provider value={value}>
         <Router>
           <Navbar />
-          <br />
           <Route path="/" exact component={Homepage} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/login">

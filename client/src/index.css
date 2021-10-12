@@ -1,5 +1,6 @@
 body {
   margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,9 +14,8 @@ code {
 }
 
 .navbar {
-  position: absolute;
-
   background-color: #008037;
+  margin: 0;
 }
 
 #home-logo {
@@ -23,5 +23,11 @@ code {
   padding: 0;
 }
 
-@media screen {
+#intro-section {
+  background-color: #7ed957;
+}
+
+#hero-img {
+  height: 70vh;
+  max-height: 100%;
 }

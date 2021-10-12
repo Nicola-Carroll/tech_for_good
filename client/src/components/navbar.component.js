@@ -10,7 +10,7 @@ export default class Navbar extends Component {
           {({ user, logoutUser }) => {
             return (
               <>
-                <nav className="navbar navbar-dark navbar-expand-sm justify-content-right pt-2 ps-2 pb-2">
+                <nav className="navbar navbar-dark navbar-expand-sm justify-content-right ps-4 sticky-lg-top">
                   <Link id="homepage-link" to="/" className="navbar-brand">
                     <img
                       id="home-logo"
