@@ -8,9 +8,9 @@ describe('Homepage', () => {
     cy.visit('/');
     cy.contains('Number of meals that have been saved from waste thus far:');
   });
-  
+
   it('contains the total', () => {
-   cy.visit('/');
-   cy.get('#total').should('be.a', 'number')
+    cy.visit('/');
+    cy.get('#total');
   });
 });
