@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Listing from './listing.component';
-import ListingModal from '../shared/ListingModal.component';
 import axios from 'axios';
+
+import ListingModal from '../shared/ListingModal.component';
+import ListingMarker from './ListingMarker.component';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
-export default class ListingFeed extends Component {
+export default class AvailableListingMarkers extends Component {
   constructor(props) {
     super(props);
     this.state = { listings: [], showModal: false, selectedListingId: null };
@@ -15,10 +16,7 @@ export default class ListingFeed extends Component {
 
   availableListings(data) {
     return data.filter((currentListing) => {
-      return (
-        !currentListing.claimedBy &&
-        new Date(currentListing.timeAvailableUntil) > new Date()
-      );
+      return !currentListing.claimedBy;
     });
   }
 
@@ -42,12 +40,15 @@ export default class ListingFeed extends Component {
 
   listingFeed() {
     return this.state.listings.map((currentListing) => {
+      console.log(currentListing);
       return (
-        <Listing
+        <ListingMarker
+          lat={50.955413}
+          lng={-0.737844}
           listing={currentListing}
           key={currentListing._id}
           handleClick={(key) => this.handleOpenModal(key)}
-        ></Listing>
+        ></ListingMarker>
       );
     });
   }
@@ -55,17 +56,8 @@ export default class ListingFeed extends Component {
   render() {
     return (
       <>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Listed by</th>
-              <th>Number of meals</th>
-              <th>Description</th>
-              <th>Available until</th>
-            </tr>
-          </thead>
-          <tbody>{this.listingFeed()}</tbody>
-        </table>
+        {this.listingFeed()}
+
         <ListingModal
           listingId={this.state.selectedListingId}
           handleClose={this.handleCloseModal}

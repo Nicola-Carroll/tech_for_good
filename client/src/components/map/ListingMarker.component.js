@@ -4,16 +4,20 @@ import React, { Component } from 'react';
 
 import { greatPlaceStyle } from './MarkerStyles';
 
-export default class MyGreatPlace extends Component {
+export default class ListingMarker extends Component {
   // static propTypes = {
   //   text: PropTypes.string,
   // };
 
   // static defaultProps = {};
 
-  // shouldComponentUpdate = shouldPureComponentUpdate;
+  // shouldComponentUpdate = shouldPureComponentUpdate
+
+  // onClickMarker() {
+  //   console.log('hello');
+  // }
 
   render() {
-    return <div style={greatPlaceStyle}>{this.props.text}</div>;
+    return <div style={greatPlaceStyle} onClick={this.props.handleClick}></div>;
   }
 }

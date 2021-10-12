@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import MyGreatPlace from './Marker.component';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import AvailableListingMarkers from './AvailableListingMarkers.component';
 
-class SimpleMap extends Component {
+const { REACT_APP_MAP_API } = process.env;
+
+class ListingMap extends Component {
   static defaultProps = {
     center: {
       lat: 51.50696956402362,
@@ -18,15 +19,15 @@ class SimpleMap extends Component {
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '75%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyAMHv0IEB_pQtRWuYOWWF_M26b4smtMD3Q' }}
+          bootstrapURLKeys={{ key: REACT_APP_MAP_API }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <MyGreatPlace lat={51.955413} lng={-0.337844} />
+          <AvailableListingMarkers />
         </GoogleMapReact>
       </div>
     );
   }
 }
 
-export default SimpleMap;
+export default ListingMap;
