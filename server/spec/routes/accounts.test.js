@@ -8,8 +8,8 @@ describe('GET /accounts/:id', () => {
         .post('/api/accounts/create')
         .send({
           type: 'Charity',
-          username: 'test_b',
-          emailAddress: 'test_b@example.com',
+          username: 'test',
+          emailAddress: 'test@example.com',
           password: 'test',
           addressLine1: 'test',
           city: 'test',
@@ -74,7 +74,7 @@ describe('POST /accounts/create', () => {
       const response = await request(app).post('/api/accounts/create').send({
         type: 'Charity',
         username: 'test_c',
-        emailAddress: 'test@example.com',
+        emailAddress: 'test_c@example.com',
         password: 'test',
         addressLine1: 'test',
         city: 'test',
@@ -146,24 +146,10 @@ describe('POST /accounts/authenticate', () => {
 
   describe('when passed an incorrect password', () => {
     test('should respond with incorrect password message', async () => {
-      await request(app).post('/api/accounts/create').send({
-        type: 'Charity',
-        username: 'test_e',
-        emailAddress: 'test_e@example.com',
-        password: 'test',
-        addressLine1: 'test',
-        city: 'test',
-        postCode: '0000 000',
-        contactNumber: 1234,
-        description: 'test',
-        charityNumber: 12,
-        websiteLink: 'test',
-        foodHygieneRating: 7,
-      });
       const response = await request(app)
         .post('/api/accounts/authenticate')
         .send({
-          username: 'test_e',
+          username: 'test',
           password: 'test999',
         });
       expect(response.text).toBe('Incorrect password');
