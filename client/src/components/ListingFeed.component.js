@@ -15,7 +15,10 @@ export default class ListingFeed extends Component {
 
   availableListings(data) {
     return data.filter((currentListing) => {
-      return !currentListing.claimedBy;
+      return (
+        !currentListing.claimedBy &&
+        new Date(currentListing.timeAvailableUntil) > new Date()
+      );
     });
   }
 
