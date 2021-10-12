@@ -17,6 +17,7 @@ describe('POST /listings', () => {
         description: 'test',
         timeAvailableUntil: '2019-04-29T21:19:15.187Z',
         listedBy: '1',
+        listedByUsername: '1',
         claimedBy: '2',
       });
       expect(response.statusCode).toBe(200);
@@ -39,6 +40,7 @@ describe('POST /listings', () => {
         description: 'test',
         timeAvailableUntil: 'this is not a date',
         listedBy: 1,
+        listedByUsername: 1,
         claimedBy: 2,
       });
       expect(response.statusCode).toBe(400);
@@ -56,6 +58,7 @@ describe('PATCH /listings', () => {
           description: 'test to confirm patch responds',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
           listedBy: '1',
+          listedByUsername: '1',
         });
 
       const response = await request(app)
@@ -76,6 +79,7 @@ describe('PATCH /listings', () => {
           description: 'test',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
           listedBy: '1',
+          listedByUsername: '1',
         });
 
       const newListing = postResponse.body;
@@ -96,6 +100,7 @@ describe('PATCH /listings', () => {
           description: 'test',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
           listedBy: '1',
+          listedByUsername: '1',
           claimedBy: '2',
         });
 

@@ -6,6 +6,7 @@ const listingSchema = new mongoose.Schema(
     description: { type: String, required: true },
     timeAvailableUntil: { type: Date, required: true },
     listedBy: { type: String, required: true },
+    listedByUsername: { type: String, required: true },
     claimedBy: { type: String },
   },
   {

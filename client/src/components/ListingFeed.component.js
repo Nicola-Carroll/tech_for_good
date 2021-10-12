@@ -53,7 +53,6 @@ export default class ListingFeed extends Component {
   }
 
   render() {
-    console.log(`in render the id is ${this.state.selectedListingId}`);
     return (
       <>
         <table className="table">
