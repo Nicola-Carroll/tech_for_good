@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomepageCounter from '../components/homepageCounter';
+import HomepageLeaderboard from '../components/homepageLeaderboard';
 
 export default class Homepage extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Homepage extends Component {
           Donations to date
         </h1>
         <HomepageCounter />
+        <HomepageLeaderboard />
       </div>
     );
   }
