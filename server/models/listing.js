@@ -5,8 +5,8 @@ const listingSchema = new mongoose.Schema(
     numberOfMeals: { type: Number, required: true },
     description: { type: String, required: true },
     timeAvailableUntil: { type: Date, required: true },
-    listedBy: { type: Number, required: true },
-    claimedBy: { type: Number },
+    listedBy: { type: String, required: true },
+    claimedBy: { type: String },
   },
   {
     timestamps: true,
