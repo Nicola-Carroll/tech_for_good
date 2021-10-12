@@ -47,7 +47,7 @@ describe('View Listings', () => {
     );
     cy.switchToCharity();
     cy.wait(1000);
-    cy.visit('/feed');
+    cy.get('#feed-link').click();
     cy.get('This listing should not appear').should('not.exist');
   });
 
