@@ -2,20 +2,17 @@
 import axios from 'axios';
 
 describe('View Listing', () => {
+  beforeEach(() => {
+    cy.charityLogin();
+  });
+
   // it('renders listings from dummy data', () => {
   //   // still to do - test db with seed data for improved testing
   //   cy.visit('/feed');
   //   cy.contains('test');
   // });
 
-  it('the navbar links to the feed', () => {
-    cy.visit('/');
-    cy.get('#feed-link').click();
-    cy.location('pathname').should('eq', '/feed');
-  });
-
   it('contains the listing headers', () => {
-    cy.visit('/feed');
     cy.contains('Listed by');
     cy.contains('Number of meals');
     cy.contains('Description');
@@ -23,7 +20,6 @@ describe('View Listing', () => {
   });
 
   it('listings have buttons', () => {
-    cy.visit('/feed');
     cy.contains('Claim Listing');
   });
 
@@ -41,7 +37,6 @@ describe('View Listing', () => {
         console.log(error);
       });
     console.log(process.env.NODE_ENV);
-    cy.visit('/feed');
     cy.get('This listing should not appear').should('not.exist');
   });
 });

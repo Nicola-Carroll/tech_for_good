@@ -103,7 +103,11 @@ export default class ListingForm extends Component {
             </small>
           </div>
           <div className="form-submit">
-            <button className="btn btn-outline-success mt-3" type="submit">
+            <button
+              id="create-listing-btn"
+              className="btn btn-outline-success mt-3"
+              type="submit"
+            >
               Create Listing
             </button>
           </div>
