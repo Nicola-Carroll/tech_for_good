@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-import AvailableListingMarkers from './AvailableListingMarkers.component';
+import AvailableListingsMarkers from './AvailableListingsMarkers.component';
 
 const { REACT_APP_MAP_API } = process.env;
 
@@ -23,7 +23,7 @@ class ListingMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AvailableListingMarkers />
+          <AvailableListingsMarkers />
         </GoogleMapReact>
       </div>
     );

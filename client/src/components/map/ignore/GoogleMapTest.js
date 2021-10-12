@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 
-import { MyMapComponent } from './Map.component';
+import { MyMapComponent } from '../Map.component';
 
 var render = function (status) {
   if (status === Status.LOADING) return <h3>{status}..</h3>;
