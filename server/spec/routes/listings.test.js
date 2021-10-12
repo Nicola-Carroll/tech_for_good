@@ -16,8 +16,8 @@ describe('POST /listings', () => {
         numberOfMeals: 10,
         description: 'test',
         timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-        listedBy: 1,
-        claimedBy: 2,
+        listedBy: '1',
+        claimedBy: '2',
       });
       expect(response.statusCode).toBe(200);
     });
@@ -55,13 +55,13 @@ describe('PATCH /listings', () => {
           numberOfMeals: 10,
           description: 'test',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-          listedBy: 1,
+          listedBy: '1',
         });
 
       const response = await request(app)
         .patch(`/api/listings/update/${postResponse.body._id}`)
         .send({
-          claimedBy: 200,
+          claimedBy: '200',
         });
       expect(response.statusCode).toBe(200);
     });
@@ -75,7 +75,7 @@ describe('PATCH /listings', () => {
           numberOfMeals: 10,
           description: 'test',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-          listedBy: 1,
+          listedBy: '1',
         });
 
       const newListing = postResponse.body;
@@ -83,9 +83,9 @@ describe('PATCH /listings', () => {
       const response = await request(app)
         .patch(`/api/listings/update/${newListing._id}`)
         .send({
-          claimedBy: 500,
+          claimedBy: '500',
         });
-      expect(response.body.claimedBy).toBe(500);
+      expect(response.body.claimedBy).toBe('500');
     });
 
     test('should not update the claimed by if already populated', async () => {
@@ -95,8 +95,8 @@ describe('PATCH /listings', () => {
           numberOfMeals: 10,
           description: 'test',
           timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-          listedBy: 1,
-          claimedBy: 2,
+          listedBy: '1',
+          claimedBy: '2',
         });
 
       const newListing = postResponse.body;
@@ -104,9 +104,9 @@ describe('PATCH /listings', () => {
       const response = await request(app)
         .patch(`/api/listings/update/${newListing._id}`)
         .send({
-          claimedBy: 500,
+          claimedBy: '500',
         });
-      expect(response.body.claimedBy).toBe(2);
+      expect(response.body.claimedBy).toBe('2');
     });
   });
 });
