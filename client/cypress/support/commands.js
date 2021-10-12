@@ -18,6 +18,7 @@ Cypress.Commands.add('addListing', (meals, desc, availableTo) => {
   cy.get('#desc').type(desc);
   cy.get('#timeAvailableUntil').type(availableTo);
   cy.get('#create-listing-btn').click();
+ });
 
 Cypress.Commands.add('charityLogin', () => {
   cy.visit('/login');
