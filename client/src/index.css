@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar {
+  position: absolute;
+
+  background-color: #008037;
+}
+
+#home-logo {
+  height: 3em;
+  padding: 0;
+}
+
+@media screen {
+}
