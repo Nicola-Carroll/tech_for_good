@@ -7,7 +7,7 @@ describe('Claiming a listing', () => {
   });
 
   it('can claim a listing', () => {
-    cy.addListing(10, 'Test listing to be claimed');
+    cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
     cy.switchToCharity();
     cy.get('.btn').first().click();
     cy.get('#claim-button').click();
@@ -19,7 +19,7 @@ describe('Claiming a listing', () => {
   });
 
   it('allows the user to confirm', () => {
-    cy.addListing(10, 'Test listing to be claimed');
+    cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
     cy.switchToCharity();
     cy.get('#feed-link').click();
     cy.get('.btn').first().click();
@@ -27,7 +27,7 @@ describe('Claiming a listing', () => {
   });
 
   it('allows the user to go back', () => {
-    cy.addListing(10, 'Test listing to be claimed');
+    cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
     cy.switchToCharity();
     cy.get('#feed-link').click();
     cy.get('.btn').first().click();
@@ -35,7 +35,7 @@ describe('Claiming a listing', () => {
   });
 
   it('go back returns to feed', () => {
-    cy.addListing(10, 'Test listing to be claimed');
+    cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
     cy.switchToCharity();
     cy.get('#feed-link').click();
     cy.get('.btn').first().click();

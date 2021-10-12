@@ -12,10 +12,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('addListing', (meals, desc) => {
+Cypress.Commands.add('addListing', (meals, desc, availableTo) => {
   cy.get('#new-listing-link').click();
   cy.get('#meals').type(meals);
   cy.get('#desc').type(desc);
+  cy.get('#timeAvailableUntil').type(availableTo);
   cy.get('#create-listing-btn').click();
 });
 

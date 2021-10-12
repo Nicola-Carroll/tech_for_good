@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -9,11 +10,12 @@ export default class ListingForm extends Component {
 
     this.updateNumberOfMeals = this.updateNumberOfMeals.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
+    this.updateDate = this.updateDateTime.bind(this);
 
     this.state = {
       numberOfMeals: '',
       description: '',
-      timeAvailableUntil: null,
+      timeAvailableUntil: '',
       listedBy: '',
       showNotice: false,
     };
@@ -23,6 +25,7 @@ export default class ListingForm extends Component {
     this.setState({
       numberOfMeals: '',
       description: '',
+      timeAvailableUntil: '',
     });
   }
 
@@ -49,12 +52,18 @@ export default class ListingForm extends Component {
     });
   }
 
+  updateDateTime(e) {
+    this.setState({
+      timeAvailableUntil: e.target.value,
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const listing = {
       numberOfMeals: this.state.numberOfMeals,
       description: this.state.description,
-      timeAvailableUntil: new Date(),
+      timeAvailableUntil: this.state.timeAvailableUntil,
       listedBy: 1, // just a default
     };
 
@@ -84,6 +93,7 @@ export default class ListingForm extends Component {
               onChange={this.updateNumberOfMeals}
             />
           </div>
+
           <div className="form-group">
             <label className="mt-2 mb-2" htmlFor="desc">
               Description
@@ -102,6 +112,20 @@ export default class ListingForm extends Component {
               requirements.
             </small>
           </div>
+
+          <div className="form-group">
+            <label className="mt-2 mb-2" htmlFor="timeAvailableUntil">
+              Available Until:
+            </label>
+            <input
+              className="form-control"
+              type="datetime-local"
+              name="timeAvailableUntil"
+              id="timeAvailableUntil"
+              onChange={this.updateDateTime.bind(this)}
+            />
+          </div>
+
           <div className="form-submit">
             <button
               id="create-listing-btn"
