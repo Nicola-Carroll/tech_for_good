@@ -12,6 +12,16 @@ const AccountsController = {
       .catch((error) => res.status(400).json('Error: ' + error));
   },
 
+  async accountDetails(req, res) {
+    try {
+      const response = await Listing.findById(req.params.id);
+      const account = await res.json(response);
+      res.send(account);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
   authenticate(req, res) {
     Account.findOne(
       { username: req.body.username },

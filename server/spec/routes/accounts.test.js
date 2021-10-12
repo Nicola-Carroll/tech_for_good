@@ -1,6 +1,54 @@
 import request from 'supertest';
 import app from '../../server.js';
 
+describe('GET /accounts/:id', () => {
+  describe('when passed a valid ID', () => {
+    test('should respond with 200 status code', async () => {
+      const postResponse = await request(app)
+        .post('/api/listings/create')
+        .send({
+          numberOfMeals: 10,
+          description: 'test',
+          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+          listedBy: 1,
+        });
+
+      const response = await request(app).get(
+        `/api/accounts/${postResponse.body._id}`,
+      );
+
+      expect(response.statusCode).toBe(200);
+    });
+
+    test('should return the correct account details', async () => {
+      const postResponse = await request(app)
+        .post('/api/listings/create')
+        .send({
+          numberOfMeals: 10,
+          description: 'test',
+          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+          listedBy: 1,
+        });
+
+      const response = await request(app).get(
+        `/api/accounts/${postResponse.body._id}`,
+      );
+
+      expect(response.body._id).toBe(postResponse.body._id);
+    });
+  });
+
+  describe('when passed an invalid ID', () => {
+    test('should respond with 400', async () => {
+      const response = await request(app).get(
+        `/api/accounts/123294830248203948xyz`,
+      );
+
+      expect(response.statusCode).toBe(400);
+    });
+  });
+});
+
 describe('POST /accounts/create', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {
