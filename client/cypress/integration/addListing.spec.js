@@ -20,6 +20,7 @@ describe('Add Listing', () => {
     cy.addListing('10', 'Hello, World', '2025-01-01T23:55');
     cy.switchToCharity();
     cy.contains('Hello, World');
+    cy.contains('Restaurant Extreme');
   });
 
   it('prevents invalid submission', () => {

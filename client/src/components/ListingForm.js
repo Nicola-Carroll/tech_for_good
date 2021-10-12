@@ -147,7 +147,7 @@ export default class ListingForm extends Component {
                         name="listedBy"
                         id="listedBy"
                         ref={this.input}
-                        value={user._id}
+                        value={user.username}
                       />
                     </div>
 
