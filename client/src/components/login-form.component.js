@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -14,7 +14,7 @@ export default function LoginForm() {
       })
       .then((response) => {
         if (response.data._id) {
-          window.location = '/feed';
+          props.updateUser(response.data);
         } else {
           alert(response.data);
         }

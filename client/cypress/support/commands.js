@@ -13,42 +13,32 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('addListing', (meals, desc, availableTo) => {
-  cy.visit('/listings/new');
+  cy.get('#new-listing-link').click();
   cy.get('#meals').type(meals);
   cy.get('#desc').type(desc);
   cy.get('#timeAvailableUntil').type(availableTo);
-  cy.get('.btn').click();
+  cy.get('#create-listing-btn').click();
+
+Cypress.Commands.add('charityLogin', () => {
+  cy.visit('/login');
+  cy.get('#username').type('Charity Supreme');
+  cy.get('#password').type('Charity123!');
+  cy.get('#loginSubmit').click();
 });
 
-Cypress.Commands.add(
-  'signup',
-  (
-    username,
-    email,
-    password,
-    passwordConfirm,
-    add1,
-    city,
-    postcode,
-    tel,
-    desc,
-    charityNo,
-    website,
-  ) => {
-    cy.visit('/signup');
-    cy.get('#charity-btn').click();
-    cy.get('#username').type(username);
-    cy.get('#emailAddress').type(email);
-    cy.get('#password').type(password);
-    cy.get('#passwordConfirmation').type(passwordConfirm);
-    cy.get('#addressLine1').type(add1);
-    cy.get('#addressLine2');
-    cy.get('#city').type(city);
-    cy.get('#postCode').type(postcode);
-    cy.get('#contactNumber').type(tel);
-    cy.get('#description').type(desc);
-    cy.get('#charityNumber').type(charityNo);
-    cy.get('#websiteLink').type(website);
-    cy.get('#charitySubmit').click();
-  },
-);
+Cypress.Commands.add('restaurantLogin', () => {
+  cy.visit('/login');
+  cy.get('#username').type('Restaurant Extreme');
+  cy.get('#password').type('Password123!');
+  cy.get('#loginSubmit').click();
+});
+
+Cypress.Commands.add('switchToCharity', () => {
+  cy.get('#logout-link').click();
+  cy.charityLogin();
+});
+
+Cypress.Commands.add('switchToRestaurant', () => {
+  cy.get('#logout-link').click();
+  cy.restaurantLogin();
+});

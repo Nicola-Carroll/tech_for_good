@@ -1,25 +1,14 @@
 /* eslint-disable jest/valid-expect */
 /* eslint-disable no-undef */
 describe('Login', () => {
-  it('should redirect to feed after successful login', () => {
-    cy.signup(
-      'Charity Login',
-      'char1@gmail.com',
-      'test',
-      'test',
-      '1 Road St',
-      'London',
-      'SW12 9RG',
-      '07777123456',
-      'Charity',
-      '012345',
-      'www.charity.com',
-    );
-    cy.visit('/login');
-    cy.get('#username').type('Charity Login');
-    cy.get('#password').type('test');
-    cy.get('#loginSubmit').click();
+  it('should redirect to feed after successful charity login', () => {
+    cy.charityLogin();
     cy.location('pathname').should('eq', '/feed');
+  });
+
+  it('should redirect to add listing page after successful restaurant login', () => {
+    cy.restaurantLogin();
+    cy.location('pathname').should('eq', '/listings/new');
   });
 
   it('should give an alert if passwords is incorrect', () => {

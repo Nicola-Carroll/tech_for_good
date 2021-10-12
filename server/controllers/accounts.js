@@ -19,7 +19,7 @@ const AccountsController = {
         if (!error) {
           if (foundUser) {
             if (foundUser.password == req.body.password) {
-              res.json(foundUser).send;
+              res.send(foundUser);
             } else {
               res.send('Incorrect password');
             }

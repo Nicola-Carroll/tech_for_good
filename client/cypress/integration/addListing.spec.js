@@ -1,7 +1,10 @@
 /* eslint-disable no-undef */
 describe('Add Listing', () => {
+  beforeEach(() => {
+    cy.restaurantLogin();
+  });
+
   it('contains new listing form', () => {
-    cy.visit('/listings/new');
     cy.contains('Number of Meals');
     cy.contains('Description');
     cy.contains('Available Until');
@@ -15,7 +18,7 @@ describe('Add Listing', () => {
 
   it('checks submitted data appears in feed', () => {
     cy.addListing('10', 'Hello, World', '2025-01-01T23:55');
-    cy.get('#feed-link').click();
+    cy.switchToCharity();
     cy.contains('Hello, World');
   });
 
