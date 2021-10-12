@@ -1,41 +1,48 @@
 import React, { Component } from 'react';
-import CharitySignupForm from '../components/charity-signup-form.component.js';
-import RestaurantSignupForm from '../components/restaurant-signup-form.component.js';
+import SignupHeader from '../components/SignupHeader.component.js';
+import SignupForm from '../components/SignupForm.component.js';
 
 export default class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      showCharitySignupForm: false,
-      showRestaurantSignupForm: false,
+      accountType: '',
     };
+    this.setAccountTypeCharity = this.setAccountTypeCharity.bind(this);
+    this.setAccountTypeRestaurant = this.setAccountTypeRestaurant.bind(this);
+  }
+
+  setAccountTypeCharity() {
+    this.setState({
+      accountType: 'charity',
+    });
+  }
+
+  setAccountTypeRestaurant() {
+    this.setState({
+      accountType: 'restaurant',
+    });
+  }
+
+  renderForm() {
+    return <SignupForm accountType={this.state.accountType}></SignupForm>;
+  }
+
+  renderHeader() {
+    return <SignupHeader accountType={this.state.accountType}></SignupHeader>;
   }
 
   render() {
-    const showCharitySignupForm = this.state.showCharitySignupForm;
-    const showRestaurantSignupForm = this.state.showRestaurantSignupForm;
-    let form;
-    if (showCharitySignupForm) {
-      form = <CharitySignupForm />;
-    } else if (showRestaurantSignupForm) {
-      form = <RestaurantSignupForm />;
-    } else {
-    }
     return (
       <div className="m-4">
-        <h1 className="text-center">Signup</h1>
+        {this.renderHeader()}
         <div className="text-center">
           <button
             className="btn btn-outline-success m-4"
             id="charity-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={() =>
-              this.setState({
-                showCharitySignupForm: true,
-                showRestaurantSignupForm: false,
-              })
-            }
+            onClick={this.setAccountTypeCharity}
           >
             I am a charity
           </button>
@@ -44,17 +51,12 @@ export default class Signup extends Component {
             id="restaurant-btn"
             data-bs-toggle="button"
             autoComplete="off"
-            onClick={() =>
-              this.setState({
-                showCharitySignupForm: false,
-                showRestaurantSignupForm: true,
-              })
-            }
+            onClick={this.setAccountTypeRestaurant}
           >
             I am a restaurant
           </button>
         </div>
-        {form}
+        {this.renderForm()}
       </div>
     );
   }
