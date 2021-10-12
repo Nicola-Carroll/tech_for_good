@@ -11,21 +11,29 @@ export default class Navbar extends Component {
             return (
               <>
                 <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-                  <Link to="/" className="navbar-brand">
+                  <Link id="homepage-link" to="/" className="navbar-brand">
                     Homepage
                   </Link>
                   <div className="collpase navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                       <li className="navbar-item">
                         {!user && (
-                          <Link to="/signup" className="nav-link">
+                          <Link
+                            id="signup-link"
+                            to="/signup"
+                            className="nav-link"
+                          >
                             Signup
                           </Link>
                         )}
                       </li>
                       <li className="navbar-item">
                         {!user && (
-                          <Link to="/login" className="nav-link">
+                          <Link
+                            id="login-link"
+                            to="/login"
+                            className="nav-link"
+                          >
                             Login
                           </Link>
                         )}
@@ -39,21 +47,28 @@ export default class Navbar extends Component {
                       </li>
                       <li className="navbar-item">
                         {user && user.type === 'Restaurant' && (
-                          <Link to="/listings/new" className="nav-link">
+                          <Link
+                            id="new-listing-link"
+                            to="/listings/new"
+                            className="nav-link"
+                          >
                             Add listing
                           </Link>
                         )}
                       </li>
+                      <li className="navbar-item">
+                        {user && (
+                          <Link
+                            id="logout-link"
+                            className="nav-link"
+                            to="/login"
+                            onClick={logoutUser}
+                          >
+                            Logout
+                          </Link>
+                        )}
+                      </li>
                     </ul>
-                    {user && (
-                      <button
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        type="submit"
-                        onClick={logoutUser}
-                      >
-                        Logout
-                      </button>
-                    )}
                   </div>
                 </nav>
               </>
