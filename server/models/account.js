@@ -48,7 +48,7 @@ const accountSchema = new mongoose.Schema(
       },
       required: [true, 'Post code required'],
     },
-    lat: {
+    latitude: {
       type: Number,
       validate: {
         validator: function (v) {
@@ -58,7 +58,7 @@ const accountSchema = new mongoose.Schema(
       },
       required: [true, 'Latitude required'],
     },
-    long: {
+    longitude: {
       type: Number,
       validate: {
         validator: function (v) {
