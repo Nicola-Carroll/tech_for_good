@@ -5,7 +5,7 @@
     "loginForm.spec.js",
     "navbar.spec.js",
     "addListing.spec.js",
-    "viewListing.spec.js",
+    "viewListings.spec.js",
     "claimListing.spec.js"
   ]
 }

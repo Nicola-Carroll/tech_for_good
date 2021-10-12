@@ -1,16 +1,11 @@
+/* eslint-disable jest/valid-expect-in-promise */
 /* eslint-disable no-undef */
 import axios from 'axios';
 
-describe('View Listing', () => {
+describe('View Listings', () => {
   beforeEach(() => {
     cy.charityLogin();
   });
-
-  // it('renders listings from dummy data', () => {
-  //   // still to do - test db with seed data for improved testing
-  //   cy.visit('/feed');
-  //   cy.contains('test');
-  // });
 
   it('contains the listing headers', () => {
     cy.contains('Listed by');
@@ -38,5 +33,29 @@ describe('View Listing', () => {
       });
     console.log(process.env.NODE_ENV);
     cy.get('This listing should not appear').should('not.exist');
+  });
+
+  it('should not show listings available in the past', () => {
+    let now = new Date(new Date().toString().split('GMT')[0] + ' UTC')
+      .toISOString()
+      .split('.')[0];
+    cy.switchToRestaurant();
+    cy.addListing(
+      '10',
+      'This listing should not appear',
+      `${now.substring(0, now.length - 3)}`,
+    );
+    cy.switchToCharity();
+    cy.wait(1000);
+    cy.get('#feed-link').click();
+    cy.get('This listing should not appear').should('not.exist');
+  });
+
+  it('should show listings available in the future', () => {
+    cy.switchToRestaurant();
+    cy.addListing('10', 'This listing should appear', `2225-01-01T23:55`);
+    cy.wait(1000);
+    cy.switchToCharity();
+    cy.contains('This listing should appear');
   });
 });
