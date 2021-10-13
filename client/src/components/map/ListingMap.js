@@ -14,7 +14,6 @@ class ListingMap extends Component {
   };
 
   renderListingMarker(lat, long, listing) {
-    console.log('rendered listing marker');
     return (
       <ListingMarker
         lat={lat}
