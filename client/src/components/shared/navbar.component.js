@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 export default class Navbar extends Component {
   render() {
