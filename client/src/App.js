@@ -8,6 +8,8 @@ import Signup from './pages/create-user.component';
 import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
 import ViewListings from './pages/view-listings.component';
+import ViewMyListings from './pages/view-my-listings.component';
+import ViewMyClaims from './pages/view-my-claims.component';
 
 export const userContext = createContext(null);
 
@@ -50,11 +52,17 @@ export default class App extends Component {
             ) : this.state.user.type === 'Charity' ? (
               <Redirect to="/feed" />
             ) : (
-              <Redirect to="/listings/new" />
+              <Redirect to="/mylistings" />
             )}
           </Route>
           <Route exact path="/feed">
             {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/mylistings">
+            {this.state.user ? <ViewMyListings /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/myclaims">
+            {this.state.user ? <ViewMyClaims /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/listings/new">
             {this.state.user ? <CreateListing /> : <Redirect to="/login" />}

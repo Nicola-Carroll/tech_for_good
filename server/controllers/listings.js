@@ -10,6 +10,30 @@ const ListingsController = {
     }
   },
 
+  async listingDetails(req, res) {
+    try {
+      const account = await Listing.find()
+        .where('listedBy')
+        .in(req.params.id)
+        .exec();
+      await res.status(200).json(account);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
+  async claimDetails(req, res) {
+    try {
+      const account = await Listing.find()
+        .where('claimedBy')
+        .in(req.params.id)
+        .exec();
+      await res.status(200).json(account);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
   async create(req, res) {
     try {
       const listing = req.body;
@@ -57,6 +81,7 @@ const ListingsController = {
 
       if (!listing.claimedBy) {
         listing.claimedBy = req.body.claimedBy;
+        listing.claimStatus = 'Claimed';
       }
 
       await listing.save();

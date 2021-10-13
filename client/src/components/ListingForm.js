@@ -12,13 +12,15 @@ export default class ListingForm extends Component {
     this.updateNumberOfMeals = this.updateNumberOfMeals.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
     this.updateDate = this.updateDateTime.bind(this);
-    this.input = createRef();
+    this.id = createRef();
+    this.username = createRef();
 
     this.state = {
       numberOfMeals: '',
       description: '',
       timeAvailableUntil: '',
       listedBy: '',
+      listedByUsername: '',
       showNotice: false,
     };
   }
@@ -67,7 +69,8 @@ export default class ListingForm extends Component {
       numberOfMeals: this.state.numberOfMeals,
       description: this.state.description,
       timeAvailableUntil: this.state.timeAvailableUntil,
-      listedBy: this.input.current.value,
+      listedBy: this.id.current.value,
+      listedByUsername: this.username.current.value,
     };
 
     axios.post(`${REACT_APP_ENDPOINT}listings/create`, listing).then((res) => {
@@ -146,8 +149,19 @@ export default class ListingForm extends Component {
                         type="hidden"
                         name="listedBy"
                         id="listedBy"
-                        ref={this.input}
+                        ref={this.id}
                         value={user._id}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <input
+                        className="form-control"
+                        type="hidden"
+                        name="listedByUsername"
+                        id="listedByUsername"
+                        ref={this.username}
+                        value={user.username}
                       />
                     </div>
 
