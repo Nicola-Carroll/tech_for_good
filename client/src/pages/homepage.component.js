@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import HomepageCounter from '../components/homepageCounter';
+import HomepageClaimedCounter from '../components/homepageClaimedCounter';
+import HomepageDonationsCounter from '../components/homepageDonationsCounter';
 
 export default class Homepage extends Component {
   render() {
@@ -8,7 +9,8 @@ export default class Homepage extends Component {
         <h1 className="text-center" id="home">
           Donations to date
         </h1>
-        <HomepageCounter />
+        <HomepageClaimedCounter />
+        <HomepageDonationsCounter />
       </div>
     );
   }

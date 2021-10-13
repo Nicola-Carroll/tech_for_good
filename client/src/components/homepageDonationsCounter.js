@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
-export default class AddTally extends Component {
+export default class AddDonatedMeals extends Component {
   constructor(props) {
     super(props);
-    this.state = { total: 0 };
+    this.state = { totaldonated: 0 };
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ export default class AddTally extends Component {
           sum += response.data[i].numberOfMeals;
         }
         this.setState({
-          total: sum,
+          totaldonated: sum,
         });
       })
       .catch((error) => {
@@ -32,8 +32,11 @@ export default class AddTally extends Component {
         <p className="mt-2 mb-2 text-center" htmlFor="meals">
           Number of meals that have been saved from waste thus far:
         </p>
-        <p id="total" className="row font-weight-bold justify-content-center text-success display-5">
-        {this.state.total}
+        <p
+          id="total"
+          className="row font-weight-bold justify-content-center text-success display-5"
+        >
+          {this.state.totaldonated}
         </p>
       </div>
     );
