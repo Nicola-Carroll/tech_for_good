@@ -41,7 +41,9 @@ class ListingMap extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
-      const availableListings = this.availableListings(response.data);
+      // .reverse() is added so that if a restaurant has more than one active listing
+      // the marker on the map is for the most recent listing as opposed to the oldest
+      const availableListings = this.availableListings(response.data).reverse();
       await this.listedByAccountCoords(availableListings);
       this.setState({
         listings: availableListings,
@@ -82,9 +84,9 @@ class ListingMap extends Component {
   }
 
   renderAllListingMarkers() {
-    return this.state.listings.reverse().map((currentListing) => {
-      const lat = 51.00696956402362;
-      const long = -0.12783497069894073;
+    return this.state.listings.map((currentListing, index) => {
+      const lat = this.state.listedByAccountCoords[index][0];
+      const long = this.state.listedByAccountCoords[index][1];
       return this.renderListingMarker(lat, long, currentListing._id);
     });
   }
