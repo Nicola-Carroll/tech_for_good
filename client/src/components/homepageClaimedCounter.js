@@ -39,7 +39,7 @@ export default class AddClaimedMeals extends Component {
           Number of meals that have been given to those in need thus far:
         </p>
         <p
-          id="total"
+          id="totalClaimed"
           className="row font-weight-bold justify-content-center text-success display-5"
         >
           {this.state.total}

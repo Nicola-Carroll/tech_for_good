@@ -13,4 +13,12 @@ describe('Homepage', () => {
     cy.visit('/');
     cy.get('#total');
   });
+
+
+  it('contains a subheader for total meals claimed', () => {
+    cy.visit('/');
+    cy.contains('Number of meals that have been saved from waste thus far:');
+  });
+
+
 });
