@@ -71,7 +71,7 @@ const ListingsController = {
       totalDonations.sort(function (a, b) {
         return b[1] - a[1];
       });
-      await res.json(totalDonations);
+      await res.json(totalDonations.slice(0, 5));
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
     }
