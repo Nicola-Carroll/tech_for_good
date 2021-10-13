@@ -4,12 +4,12 @@ describe('Homepage', () => {
     cy.contains('Donations to date');
   });
 
-  it('contains a subheader', () => {
+  it('contains a subheader for total donations', () => {
     cy.visit('/');
-    cy.contains('Number of meals that have been saved from waste thus far:');
+    cy.contains('Number of meals that have been given to those in need thus far:');
   });
 
-  it('contains the total', () => {
+  it('contains the total for donations', () => {
     cy.visit('/');
     cy.get('#total');
   });
