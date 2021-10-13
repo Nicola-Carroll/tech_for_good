@@ -10,7 +10,7 @@ function InitiateClaimButton(props) {
       className="btn btn-outline-success mt-3"
       type="submit"
       id={buttonId}
-      onClick={() => props.handleClick(props.id)}
+      onClick={() => props.handleClick(props.listing)}
     >
       Claim Listing
     </button>

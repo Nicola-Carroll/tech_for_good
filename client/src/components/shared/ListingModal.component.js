@@ -37,7 +37,7 @@ export default class ListingModal extends Component {
             return (
               <>
                 <Modal
-                  isOpen={!!this.props.listingId}
+                  isOpen={!!this.props.listing}
                   contentLabel="Minimal Modal Example"
                   style={{
                     content: {

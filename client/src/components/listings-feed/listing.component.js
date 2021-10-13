@@ -11,7 +11,7 @@ function Listing(props) {
       <td>
         <InitiateClaimButton
           listing={props.listing}
-          handleClick={() => props.handleClick(props.listing._id)}
+          handleClick={() => props.handleClick(props.listing)}
         ></InitiateClaimButton>
       </td>
     </tr>
