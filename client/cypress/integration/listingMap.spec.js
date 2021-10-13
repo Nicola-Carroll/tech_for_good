@@ -20,6 +20,14 @@ describe('View Listings', () => {
 
   // cannot get this to work, even though it manually works
 
+  // manual test - first add listing as a restaurant
+  // log in as charity
+  // scroll to the map and click on the marker
+  // the listing modal opens
+  // clicking claim listing closes the modeal and removes that listing from the listing feed
+  // if the restaurant has more than one listing the next oldest one will be rendered as a marker in place
+  // clicking "go back" just closes the modal and changes nothing
+
   // it('clicking a marker opens the modal', () => {
   //   cy.get('.listing-marker').first().click();
   //   cy.get('.listing-modal');

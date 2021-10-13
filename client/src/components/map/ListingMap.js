@@ -44,9 +44,6 @@ class ListingMap extends Component {
       // the marker on the map is for the most recent listing as opposed to the oldest
       const availableListings = this.availableListings(response.data).reverse();
       await this.listedByAccountCoords(availableListings);
-      this.setState({
-        listings: availableListings,
-      });
     } catch (error) {
       console.log(error);
     }
@@ -60,14 +57,15 @@ class ListingMap extends Component {
     return { lat: response.data.latitude, long: response.data.longitude };
   }
 
-  async listedByAccountCoords(listings) {
+  async listedByAccountCoords(availableListings) {
     const promises = [];
-    listings.forEach((listing) => {
+    availableListings.forEach((listing) => {
       promises.push(this.accountCoords(listing));
     });
     const accountsCoords = await Promise.all(promises);
     this.setState({
       listedByAccountCoords: accountsCoords,
+      listings: availableListings,
     });
   }
 
