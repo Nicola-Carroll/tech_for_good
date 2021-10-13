@@ -20,5 +20,8 @@ describe('Homepage', () => {
     cy.contains('Number of meals that have been saved from waste thus far:');
   });
 
-
+  it('contains the total for meals claimed', () => {
+    cy.visit('/');
+    cy.get('#totalClaimed');
+  });
 });
