@@ -13,8 +13,15 @@ export default class ListingFeed extends Component {
     this.state = {
       listings: [],
       showModal: false,
-      selectedListingId: null,
+      selectedListing: null,
       listedByAccountCoords: [],
+
+      modalContent: {
+        listedByAccount: null,
+        listingNumberOfMeals: null,
+        listingDescription: null,
+        listingAvailableTill: null,
+      },
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -59,12 +66,26 @@ export default class ListingFeed extends Component {
     }
   }
 
-  handleOpenModal(id) {
-    this.setState({ showModal: true, selectedListingId: id });
+  async handleOpenModal(listing) {
+    const listedById = listing.listedBy;
+    const response = await axios.get(
+      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
+    );
+
+    this.setState({
+      showModal: true,
+      selectedListing: listing,
+      modalContent: {
+        listedByAccount: response.data,
+        listingNumberOfMeals: listing.numberOfMeals,
+        listingDescription: listing.description,
+        listingAvailableTill: listing.timeAvailableUntil,
+      },
+    });
   }
 
   handleCloseModal() {
-    this.setState({ selectedListingId: null });
+    this.setState({ selectedListing: null });
     this.componentDidMount();
   }
 
@@ -82,8 +103,9 @@ export default class ListingFeed extends Component {
         />
         <ListingModal
           className="listing-modal"
-          listingId={this.state.selectedListingId}
+          listing={this.state.selectedListing}
           handleClose={this.handleCloseModal}
+          content={this.state.modalContent}
         />
       </>
     );

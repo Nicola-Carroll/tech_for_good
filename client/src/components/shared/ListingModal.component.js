@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { userContext } from '../../App.js';
+import ModalContent from './ModalContent.component.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
@@ -36,7 +37,7 @@ export default class ListingModal extends Component {
             return (
               <>
                 <Modal
-                  isOpen={!!this.props.listingId}
+                  isOpen={!!this.props.listing}
                   contentLabel="Minimal Modal Example"
                   style={{
                     content: {
@@ -49,9 +50,11 @@ export default class ListingModal extends Component {
                   }}
                 >
                   <h3 className="m-3 mb-4">
-                    {`${this.props.listingId}`}
                     Are you sure you want to claim this listing?
                   </h3>
+                  <div>
+                    <ModalContent content={this.props.content} />
+                  </div>
                   <button
                     className="btn btn-secondary mx-3"
                     onClick={this.props.handleClose}
@@ -61,7 +64,7 @@ export default class ListingModal extends Component {
                   </button>
                   <button
                     className="btn btn-primary mx-1"
-                    onClick={() => this.claimListing(this.props.listingId)}
+                    onClick={() => this.claimListing(this.props.listing._id)}
                     id="claim-button"
                     ref={this.input}
                     value={user._id}
