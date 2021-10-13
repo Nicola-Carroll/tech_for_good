@@ -15,16 +15,11 @@ describe('View My Listings', () => {
     cy.contains('Claim status');
   });
 
-  // it('shows only my listings', () => {
-  //   cy.get('.table')
-  //     .find('tr')
-  //     .then((row) => {
-  //       //row.length will give you the row count
-  //       expect(row.length).toBe();
-  //     });
-
-  //   cy.get('This listing should not appear').should('not.exist');
-  // });
+  it('shows only my listings', () => {
+    cy.get('.listedBy').each(($el) => {
+      cy.contains('Restaurant Extreme');
+    });
+  });
 
   it('should show most recent listing at top', () => {
     cy.addListing(
