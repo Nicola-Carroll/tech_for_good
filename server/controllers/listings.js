@@ -22,6 +22,34 @@ const ListingsController = {
     }
   },
 
+  async donations(req, res) {
+    try {
+      const listings = await Listing.find();
+      let donators = [];
+      let donations = [];
+
+      listings.forEach((listings) => donators.push(listings.listedBy));
+      let uniq = [...new Set(donators)];
+
+      uniq.forEach((donator) => {
+        let counter = 0;
+        listings.forEach((listing) => {
+          if (listing.listedBy === donator) {
+            counter += listing.numberOfMeals;
+          }
+        });
+        donations.push(counter);
+      });
+      let totalDonations = {};
+      for (let i = 0; i < uniq.length; i++) {
+        totalDonations[uniq[i]] = donations[i];
+      }
+      console.log(totalDonations);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
   async update(req, res) {
     try {
       const id = req.params.id;
