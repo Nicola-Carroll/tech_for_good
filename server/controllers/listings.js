@@ -64,11 +64,14 @@ const ListingsController = {
         });
         donations.push(counter);
       });
-      let totalDonations = {};
+      let totalDonations = [];
       for (let i = 0; i < uniq.length; i++) {
-        totalDonations[uniq[i]] = donations[i];
+        totalDonations.push([uniq[i], donations[i]]);
       }
-      await res.json(totalDonations);
+      totalDonations.sort(function (a, b) {
+        return b[1] - a[1];
+      });
+      await res.json(totalDonations.slice(0, 5));
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
     }
