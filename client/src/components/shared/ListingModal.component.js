@@ -28,10 +28,6 @@ export default class ListingModal extends Component {
     this.props.handleClose();
   }
 
-  listingFromId(id) {
-    return id;
-  }
-
   render() {
     return (
       <>

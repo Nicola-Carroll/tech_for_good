@@ -29,11 +29,6 @@ export default class ListingTable extends Component {
           </thead>
           <tbody>{this.listingFeed()}</tbody>
         </table>
-        {/* <ListingModal
-          className="listing-modal"
-          listingId={this.state.selectedListingId}
-          handleClose={this.handleCloseModal}
-        /> */}
       </>
     );
   }
