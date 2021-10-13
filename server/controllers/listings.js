@@ -53,13 +53,13 @@ const ListingsController = {
       let donators = [];
       let donations = [];
 
-      listings.forEach((listings) => donators.push(listings.listedBy));
+      listings.forEach((listings) => donators.push(listings.listedByUsername));
       let uniq = [...new Set(donators)];
 
       uniq.forEach((donator) => {
         let counter = 0;
         listings.forEach((listing) => {
-          if (listing.listedBy === donator) {
+          if (listing.listedByUsername === donator) {
             counter += listing.numberOfMeals;
           }
         });
