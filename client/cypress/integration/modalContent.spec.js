@@ -7,19 +7,19 @@ describe('Claiming a listing', () => {
     cy.get('.btn').first().click();
   });
 
-  it('can claim a listing', () => {
+  it('shows the restaurants name', () => {
     cy.get('#restaurant-name');
     cy.contains('Restaurant Extreme');
   });
 
-  it('can claim a listing', () => {
+  it('shows the restaurants details', () => {
     cy.get('#restaurant-address');
     cy.contains('2 London Road');
     cy.contains('London');
     cy.contains('SE19 3PR');
   });
 
-  it('can claim a listing', () => {
+  it('shows the listing details', () => {
     cy.get('#listing-details');
     cy.contains('10');
     cy.contains('Test listing to be claimed');
