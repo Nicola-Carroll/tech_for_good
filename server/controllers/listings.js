@@ -33,7 +33,7 @@ const ListingsController = {
 
       await listing.save();
 
-      res.send(listing);
+      res.status(200).send(listing);
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
     }

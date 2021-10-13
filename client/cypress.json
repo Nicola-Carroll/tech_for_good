@@ -1,3 +1,11 @@
 {
-  "baseUrl": "http://localhost:3000"
+  "baseUrl": "http://localhost:3000",
+  "testFiles": [
+    "signupForm.spec.js",
+    "loginForm.spec.js",
+    "navbar.spec.js",
+    "addListing.spec.js",
+    "viewListings.spec.js",
+    "claimListing.spec.js"
+  ]
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component, createContext } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './components/navbar.component';
@@ -9,18 +9,58 @@ import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
 import ViewListings from './pages/view-listings.component';
 
-function App() {
-  return (
-    <Router>
-      <Navbar />
-      <br />
-      <Route path="/" exact component={Homepage} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/login" component={Login} />
-      <Route path="/listings/new" component={CreateListing} />
-      <Route path="/feed" component={ViewListings} />
-    </Router>
-  );
-}
+export const userContext = createContext(null);
 
-export default App;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  login(newUser) {
+    this.setState({
+      user: newUser,
+    });
+  }
+
+  logout() {
+    this.setState({ user: null });
+  }
+
+  render() {
+    const value = {
+      user: this.state.user,
+      loginUser: this.login,
+      logoutUser: this.logout,
+    };
+    return (
+      <userContext.Provider value={value}>
+        <Router>
+          <Navbar />
+          <Route path="/" exact component={Homepage} />
+          <Route path="/signup" component={Signup} />
+          <Route exact path="/login">
+            {!this.state.user ? (
+              <Login />
+            ) : this.state.user.type === 'Charity' ? (
+              <Redirect to="/feed" />
+            ) : (
+              <Redirect to="/listings/new" />
+            )}
+          </Route>
+          <Route exact path="/feed">
+            {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/listings/new">
+            {this.state.user ? <CreateListing /> : <Redirect to="/login" />}
+          </Route>
+        </Router>
+      </userContext.Provider>
+    );
+  }
+}
