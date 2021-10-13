@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import MyListing from './myListing.component';
 import axios from 'axios';
 import { userContext } from '../App.js';
@@ -9,12 +9,13 @@ export default class MyListingFeed extends Component {
   constructor(props) {
     super(props);
     this.state = { listings: [] };
+    MyListingFeed.contextType = userContext;
   }
 
   availableListings(data) {
     return data.filter((currentListing) => {
       return (
-        !currentListing.claimedBy &&
+        // !currentListing.claimedBy &&
         new Date(currentListing.timeAvailableUntil) > new Date()
       );
     });
@@ -22,7 +23,9 @@ export default class MyListingFeed extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
+      const response = await axios.get(
+        `${REACT_APP_ENDPOINT}listings/account/${this.context.user._id}`,
+      );
       this.setState({ listings: this.availableListings(response.data) });
     } catch (error) {
       console.log(error);
@@ -43,32 +46,18 @@ export default class MyListingFeed extends Component {
   render() {
     return (
       <>
-        <userContext.Consumer>
-          {({ user }) => {
-            // <input
-            //   type="hidden"
-            //   ref={this.listedByUsername}
-            //   value="test1"
-            // ></input>;
-            // console.log(this.getListings());
-            return (
-              <>
-                <table className="table">
-                  <thead className="thead-light">
-                    <tr>
-                      <th>Listed by</th>
-                      <th>Number of meals</th>
-                      <th>Description</th>
-                      <th>Available until</th>
-                      <th>{user.username}</th>
-                    </tr>
-                  </thead>
-                  <tbody>{this.listingFeed()}</tbody>
-                </table>
-              </>
-            );
-          }}
-        </userContext.Consumer>
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+              <th>Listed by</th>
+              <th>Number of meals</th>
+              <th>Description</th>
+              <th>Available until</th>
+              <th>Claim status</th>
+            </tr>
+          </thead>
+          <tbody>{this.listingFeed()}</tbody>
+        </table>
       </>
     );
   }
