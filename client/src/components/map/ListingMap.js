@@ -26,7 +26,10 @@ class ListingMap extends Component {
 
   availableListings(data) {
     return data.filter((currentListing) => {
-      return !currentListing.claimedBy;
+      return (
+        !currentListing.claimedBy &&
+        new Date(currentListing.timeAvailableUntil) > new Date()
+      );
     });
   }
 
@@ -56,7 +59,7 @@ class ListingMap extends Component {
   }
 
   renderAllListingMarkers() {
-    return this.state.listings.map((currentListing) => {
+    return this.state.listings.reverse().map((currentListing) => {
       const lat = 51.00696956402362;
       const long = -0.12783497069894073;
       return this.renderListingMarker(lat, long, currentListing._id);
@@ -64,7 +67,6 @@ class ListingMap extends Component {
   }
 
   handleOpenModal(id) {
-    console.log(`this listing marker that was clicked is ${id}`);
     this.setState({ showModal: true, selectedListingId: id });
   }
 

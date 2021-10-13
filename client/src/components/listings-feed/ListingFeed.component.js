@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import Listing from './listing.component';
 import ListingModal from '../shared/ListingModal.component';
-import axios from 'axios';
 
 const { REACT_APP_ENDPOINT } = process.env;
 

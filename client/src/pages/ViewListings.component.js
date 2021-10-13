@@ -8,7 +8,6 @@ export default class ViewListings extends Component {
   render() {
     return (
       <>
-        <div>Listing feed</div>
         <userContext.Consumer>
           {({ user, loginUser, logoutUser }) => {
             return (
