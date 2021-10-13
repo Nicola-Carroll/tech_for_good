@@ -68,6 +68,7 @@ export default class ListingFeed extends Component {
           <tbody>{this.listingFeed()}</tbody>
         </table>
         <ListingModal
+          className="listing-modal"
           listingId={this.state.selectedListingId}
           handleClose={this.handleCloseModal}
         />

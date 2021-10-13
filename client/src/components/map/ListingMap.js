@@ -26,7 +26,6 @@ class ListingMap extends Component {
       lat: 51.50696956402362,
       lng: -0.12783497069894073,
     },
-    zoom: 9,
   };
 
   availableListings(data) {
@@ -41,7 +40,7 @@ class ListingMap extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
-      // .reverse() is added so that if a restaurant has more than one active listing
+      // .reverse() is added here so that if a restaurant has more than one active listing
       // the marker on the map is for the most recent listing as opposed to the oldest
       const availableListings = this.availableListings(response.data).reverse();
       await this.listedByAccountCoords(availableListings);
@@ -58,7 +57,7 @@ class ListingMap extends Component {
     const response = await axios.get(
       `${REACT_APP_ENDPOINT}accounts/${listedById}`,
     );
-    return [response.data.latitude, response.data.longitude];
+    return { lat: response.data.latitude, long: response.data.longitude };
   }
 
   async listedByAccountCoords(listings) {
@@ -79,14 +78,15 @@ class ListingMap extends Component {
         lng={long}
         key={id}
         handleClick={() => this.handleOpenModal(id)}
+        className="listing-marker"
       ></ListingMarker>
     );
   }
 
   renderAllListingMarkers() {
     return this.state.listings.map((currentListing, index) => {
-      const lat = this.state.listedByAccountCoords[index][0];
-      const long = this.state.listedByAccountCoords[index][1];
+      const lat = this.state.listedByAccountCoords[index].lat;
+      const long = this.state.listedByAccountCoords[index].long;
       return this.renderListingMarker(lat, long, currentListing._id);
     });
   }
@@ -103,16 +103,20 @@ class ListingMap extends Component {
   render() {
     return (
       <>
-        <div style={{ height: '100vh', width: '75%' }}>
+        <div
+          className="map-container"
+          style={{ height: '100vh', width: '75%' }}
+        >
           <GoogleMapReact
             bootstrapURLKeys={{ key: REACT_APP_MAP_API }}
             defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom}
+            defaultZoom={11.25}
           >
             {this.renderAllListingMarkers()}
           </GoogleMapReact>
         </div>
         <ListingModal
+          className="listing-modal"
           listingId={this.state.selectedListingId}
           handleClose={this.handleCloseModal}
         />

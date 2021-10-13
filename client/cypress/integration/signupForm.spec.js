@@ -13,7 +13,9 @@ describe('Signup', () => {
     cy.get('#city').type('London');
     cy.get('#postCode').type('E2 6LP');
     cy.get('#contactNumber').type('07777111222');
-    cy.get('#description').type('We do a weekly soup kitchen.');
+    cy.get('#description').type('We do a weekly soup kitchen.', {
+      force: true,
+    });
     cy.get('#charityNumber').type('012345');
     cy.get('#websiteLink').type('www.google.com');
     cy.get('#charitySubmit').click();
@@ -32,7 +34,9 @@ describe('Signup', () => {
     cy.get('#city').type('London');
     cy.get('#postCode').type('E2 6LP');
     cy.get('#contactNumber').type('07777111222');
-    cy.get('#description').type('We do a weekly soup kitchen.');
+    cy.get('#description').type('We do a weekly soup kitchen.', {
+      force: true,
+    });
     cy.get('#charityNumber').type('012345');
     cy.get('#websiteLink').type('www.google.com');
     cy.get('#charitySubmit').click();
