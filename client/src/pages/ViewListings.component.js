@@ -9,10 +9,13 @@ export default class ViewListings extends Component {
     return (
       <>
         <div>Listing feed</div>
-        <ListingFeed></ListingFeed>
         <userContext.Consumer>
           {({ user, loginUser, logoutUser }) => {
-            return <>{user && <h2>You're currently logged in as {user}</h2>}</>;
+            return (
+              <>
+                {user && <h2>You're currently logged in as {user.username}</h2>}
+              </>
+            );
           }}
         </userContext.Consumer>
         <ListingFeed />

@@ -53,6 +53,7 @@ export default class ListingModal extends Component {
                   }}
                 >
                   <h3 className="m-3 mb-4">
+                    {`${this.props.listingId}`}
                     Are you sure you want to claim this listing?
                   </h3>
                   <button
