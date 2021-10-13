@@ -10,12 +10,16 @@ export default class Navbar extends Component {
           {({ user, logoutUser }) => {
             return (
               <>
-                <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+                <nav className="navbar navbar-dark navbar-expand-sm justify-content-right ps-4 sticky-lg-top">
                   <Link id="homepage-link" to="/" className="navbar-brand">
-                    Homepage
+                    <img
+                      id="home-logo"
+                      src="/SECONDHELPINGS.png"
+                      alt="Second Helpings"
+                    />
                   </Link>
                   <div className="collpase navbar-collapse">
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav ms-auto me-3">
                       <li className="navbar-item">
                         {!user && (
                           <Link
