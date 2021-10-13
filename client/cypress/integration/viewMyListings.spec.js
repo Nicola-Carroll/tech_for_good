@@ -1,7 +1,5 @@
 /* eslint-disable jest/valid-expect-in-promise */
 /* eslint-disable no-undef */
-import axios from 'axios';
-
 describe('View My Listings', () => {
   beforeEach(() => {
     cy.restaurantLogin();
