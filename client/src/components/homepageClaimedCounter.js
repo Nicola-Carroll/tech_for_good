@@ -6,35 +6,22 @@ export default class AddClaimedMeals extends Component {
   constructor(props) {
     super(props);
     this.state = { total: 0 };
-    // this.state = { listings: [] };
   }
-
-  // availableListings(data) {
-  //   return data.filter((currentListing) => {
-  //     return currentListing.claimedBy;
-  //   });
-  // }
 
   componentDidMount() {
     axios
       .get(`${REACT_APP_ENDPOINT}listings`)
       .then((response) => {
-        // this.setState({ listings: this.availableListings(response.data) });
         console.log(response);
         let sum = 0;
-        // for (let i = 0; i < foo.length; i++) {
-        //   sum += foo[i].numberOfMeals;
-        // }
-        let foo = response.data.filter((currentListing) => {
+
+        let claimed = response.data.filter((currentListing) => {
           return currentListing.claimedBy;
         });
 
-        console.log(foo, 'Here is foo');
-        for (let i = 0; i < foo.length; i++) {
-          sum += foo[i].numberOfMeals;
+        for (let i = 0; i < claimed.length; i++) {
+          sum += claimed[i].numberOfMeals;
         }
-
-        // sum = foo.length;
 
         this.setState({
           total: sum,

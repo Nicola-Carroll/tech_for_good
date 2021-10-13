@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import HomepageClaimedCounter from '../components/homepageCounter';
+import HomepageClaimedCounter from '../components/homepageClaimedCounter';
 import HomepageDonationsCounter from '../components/homepageDonationsCounter';
-// import HomepageLeaderboard from '../components/homepageLeaderboard';
 
 export default class Homepage extends Component {
   render() {
@@ -12,7 +11,6 @@ export default class Homepage extends Component {
         </h1>
         <HomepageClaimedCounter />
         <HomepageDonationsCounter />
-        {/* <HomepageLeaderboard /> */}
       </div>
     );
   }

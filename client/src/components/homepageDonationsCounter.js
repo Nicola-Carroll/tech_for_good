@@ -5,7 +5,7 @@ const { REACT_APP_ENDPOINT } = process.env;
 export default class AddDonatedMeals extends Component {
   constructor(props) {
     super(props);
-    this.state = { total: 0 };
+    this.state = { totaldonated: 0 };
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ export default class AddDonatedMeals extends Component {
           sum += response.data[i].numberOfMeals;
         }
         this.setState({
-          total: sum,
+          totaldonated: sum,
         });
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ export default class AddDonatedMeals extends Component {
           id="total"
           className="row font-weight-bold justify-content-center text-success display-5"
         >
-          {this.state.total}
+          {this.state.totaldonated}
         </p>
       </div>
     );
