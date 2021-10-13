@@ -108,6 +108,8 @@ describe('POST /accounts/create', () => {
         addressLine1: 'test',
         city: 'test',
         postCode: '0000 000',
+        latitude: 'hi',
+        longitude: 'hi',
         contactNumber: 1234,
         description: 'test',
         charityNumber: 12,
