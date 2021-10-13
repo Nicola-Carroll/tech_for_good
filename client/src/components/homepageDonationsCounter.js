@@ -30,7 +30,7 @@ export default class AddDonatedMeals extends Component {
     return (
       <div className="section w-50 m-auto">
         <p className="mt-2 mb-2 text-center" htmlFor="meals">
-          Number of meals that have been saved from waste thus far:
+          Number of meals that have been donated thus far:
         </p>
         <p
           id="total"
