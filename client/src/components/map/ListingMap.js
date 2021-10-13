@@ -11,7 +11,12 @@ const { REACT_APP_ENDPOINT } = process.env;
 class ListingMap extends Component {
   constructor(props) {
     super(props);
-    this.state = { listings: [], showModal: false, selectedListingId: null };
+    this.state = {
+      listings: [],
+      showModal: false,
+      selectedListingId: null,
+      listedByAccountCoords: [],
+    };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -36,16 +41,34 @@ class ListingMap extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
-      this.setState({ listings: this.availableListings(response.data) });
+      const availableListings = this.availableListings(response.data);
+      await this.listedByAccountCoords(availableListings);
+      this.setState({
+        listings: availableListings,
+      });
     } catch (error) {
       console.log(error);
     }
   }
 
-  // get coords of listing is async
-  // first we need the listing object, then we need to get the listed by id
-  // then we need to make a get request to obtain lat & long from db
-  // then we need to generate the marker for that lat & long
+  async accountCoords(listing) {
+    const listedById = listing.listedBy;
+    const response = await axios.get(
+      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
+    );
+    return [response.data.latitude, response.data.longitude];
+  }
+
+  async listedByAccountCoords(listings) {
+    const promises = [];
+    listings.forEach((listing) => {
+      promises.push(this.accountCoords(listing));
+    });
+    const accountsCoords = await Promise.all(promises);
+    this.setState({
+      listedByAccountCoords: accountsCoords,
+    });
+  }
 
   renderListingMarker(lat, long, id) {
     return (
