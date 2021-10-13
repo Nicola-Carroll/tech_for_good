@@ -11,6 +11,7 @@ describe('Navbar', () => {
     cy.location('pathname').should('eq', '/');
     cy.get('#feed-link').should('not.exist');
     cy.get('#new-listing-link').should('not.exist');
+    cy.get('#my-listings-link').should('not.exist');
   });
 
   it('should only show homepage and feed page to logged in charity', () => {
@@ -22,12 +23,15 @@ describe('Navbar', () => {
     cy.get('#signup-link').should('not.exist');
     cy.get('#login-link').should('not.exist');
     cy.get('#new-listing-link').should('not.exist');
+    cy.get('#my-listings-link').should('not.exist');
   });
 
-  it('should only show homepage and add listing page to logged in restaurant', () => {
+  it('should only show homepage, my listings page and add listing page to logged in restaurant', () => {
     cy.restaurantLogin();
     cy.get('#new-listing-link').click();
     cy.location('pathname').should('eq', '/listings/new');
+    cy.get('#my-listings-link').click();
+    cy.location('pathname').should('eq', '/mylistings');
     cy.get('#homepage-link').click();
     cy.location('pathname').should('eq', '/');
     cy.get('#signup-link').should('not.exist');

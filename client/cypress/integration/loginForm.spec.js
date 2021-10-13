@@ -6,9 +6,9 @@ describe('Login', () => {
     cy.location('pathname').should('eq', '/feed');
   });
 
-  it('should redirect to add listing page after successful restaurant login', () => {
+  it('should redirect to my listings page after successful restaurant login', () => {
     cy.restaurantLogin();
-    cy.location('pathname').should('eq', '/listings/new');
+    cy.location('pathname').should('eq', '/mylistings');
   });
 
   it('should give an alert if passwords is incorrect', () => {

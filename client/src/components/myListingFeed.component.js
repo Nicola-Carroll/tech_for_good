@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import Listing from './listing.component';
-import ListingModal from './ListingModal.component';
+import MyListing from './myListing.component';
 import axios from 'axios';
+import { userContext } from '../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
-export default class ListingFeed extends Component {
+export default class MyListingFeed extends Component {
   constructor(props) {
     super(props);
-    this.state = { listings: [], showModal: false, selectedListingId: null };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.state = { listings: [] };
+    MyListingFeed.contextType = userContext;
   }
 
   availableListings(data) {
     return data.filter((currentListing) => {
       return (
-        !currentListing.claimedBy &&
         new Date(currentListing.timeAvailableUntil) > new Date()
       );
     });
@@ -24,30 +22,22 @@ export default class ListingFeed extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
+      const response = await axios.get(
+        `${REACT_APP_ENDPOINT}listings/account/${this.context.user._id}`,
+      );
       this.setState({ listings: this.availableListings(response.data) });
     } catch (error) {
       console.log(error);
     }
   }
 
-  handleOpenModal(id) {
-    this.setState({ showModal: true, selectedListingId: id });
-  }
-
-  handleCloseModal() {
-    this.setState({ selectedListingId: null });
-    this.componentDidMount();
-  }
-
   listingFeed() {
-    return this.state.listings.map((currentListing) => {
+    return this.state.listings.reverse().map((currentListing) => {
       return (
-        <Listing
+        <MyListing
           listing={currentListing}
           key={currentListing._id}
-          handleClick={(key) => this.handleOpenModal(key)}
-        ></Listing>
+        ></MyListing>
       );
     });
   }
@@ -62,14 +52,11 @@ export default class ListingFeed extends Component {
               <th>Number of meals</th>
               <th>Description</th>
               <th>Available until</th>
+              <th>Claim status</th>
             </tr>
           </thead>
           <tbody>{this.listingFeed()}</tbody>
         </table>
-        <ListingModal
-          listingId={this.state.selectedListingId}
-          handleClose={this.handleCloseModal}
-        />
       </>
     );
   }
