@@ -9,8 +9,6 @@ export default function RestaurantSignupForm() {
 
     if (e.target['password'].value !== e.target['passwordConfirmation'].value) {
       alert("Passwords don't match");
-    } else if (!e.target['postCode'].value) {
-      alert('Postcode required');
     } else {
       axios
         .post(`${REACT_APP_ENDPOINT}accounts/create`, allValues)
@@ -34,8 +32,6 @@ export default function RestaurantSignupForm() {
     addressLine2: '',
     city: '',
     postCode: '',
-    latitude: '',
-    longitude: '',
     contactNumber: '',
     description: '',
     charityNumber: '',

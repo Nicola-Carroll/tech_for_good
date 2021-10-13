@@ -3,7 +3,7 @@ import Account from '../models/account.js';
 
 const AccountsController = {
   async create(req, res) {
-    let account = req.body;
+    const account = req.body;
     let postcode;
     if (account.postCode) {
       postcode = account.postCode.replace(/\s/g, '');
@@ -13,24 +13,18 @@ const AccountsController = {
       .get(`http://api.getthedata.com/postcode/${postcode}`)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
-          let lat = `${response.data.data.latitude}`;
-          let long = `${response.data.data.longitude}`;
-          account.latitude = lat;
-          account.longitude = long;
-          console.log(account.latitude);
+          account.latitude = `${response.data.data.latitude}`;
+          account.longitude = `${response.data.data.longitude}`;
           return account;
         }
       })
       .then((account) => {
-        const newAccount = new Account(account);
-        newAccount.save();
+        new Account(account).save();
       })
       .then(() => {
         res.status(200).json('Account created');
       })
       .catch((error) => {
-        // console.log(error);
         res.status(400).json(`Error: ${error}`);
       });
   },
