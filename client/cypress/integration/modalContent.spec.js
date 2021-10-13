@@ -1,8 +1,8 @@
 describe('Claiming a listing', () => {
   beforeEach(() => {
     cy.restaurantLogin();
-    cy.switchToCharity();
     cy.addListing('10', 'Test listing to be claimed', '2025-01-01T23:55');
+    cy.switchToCharity();
     cy.get('#feed-link').click();
     cy.get('.btn').first().click();
   });
