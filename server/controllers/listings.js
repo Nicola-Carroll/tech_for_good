@@ -10,6 +10,18 @@ const ListingsController = {
     }
   },
 
+  async listingDetails(req, res) {
+    try {
+      const account = await Listing.find()
+        .where('listedBy')
+        .in(req.params.id)
+        .exec();
+      await res.status(200).json(account);
+    } catch (error) {
+      res.status(400).json(`Error: ${error}`);
+    }
+  },
+
   async create(req, res) {
     try {
       const listing = req.body;

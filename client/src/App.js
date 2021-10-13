@@ -8,6 +8,7 @@ import Signup from './pages/create-user.component';
 import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
 import ViewListings from './pages/view-listings.component';
+import ViewMyListings from './pages/view-my-listings.component';
 
 export const userContext = createContext(null);
 
@@ -56,6 +57,9 @@ export default class App extends Component {
           </Route>
           <Route exact path="/feed">
             {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/mylistings">
+            {this.state.user ? <ViewMyListings /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/listings/new">
             {this.state.user ? <CreateListing /> : <Redirect to="/login" />}

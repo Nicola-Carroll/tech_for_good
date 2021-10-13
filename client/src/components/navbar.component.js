@@ -48,6 +48,17 @@ export default class Navbar extends Component {
                       <li className="navbar-item">
                         {user && user.type === 'Restaurant' && (
                           <Link
+                            id="my-listings-link"
+                            to="/mylistings"
+                            className="nav-link"
+                          >
+                            My listings
+                          </Link>
+                        )}
+                      </li>
+                      <li className="navbar-item">
+                        {user && user.type === 'Restaurant' && (
+                          <Link
                             id="new-listing-link"
                             to="/listings/new"
                             className="nav-link"
