@@ -4,30 +4,14 @@ import React, { useState } from 'react';
 const { REACT_APP_ENDPOINT } = process.env;
 
 export default function RestaurantSignupForm() {
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    let postcode = e.target['postCode'].value;
+
     if (e.target['password'].value !== e.target['passwordConfirmation'].value) {
       alert("Passwords don't match");
-    } else if (!postcode) {
+    } else if (!e.target['postCode'].value) {
       alert('Postcode required');
     } else {
-      await axios
-        .get(`http://api.getthedata.com/postcode/${postcode}`)
-        .then((response) => {
-          if (response.status === 200) {
-            let address = response.data;
-            // These console logs show that address.data.lat/long are the numbers we want.
-            console.log(address.data.latitude);
-            console.log(address.data.longitude);
-            let lat = `${address.data.latitude}`;
-            let long = `${address.data.longitude}`;
-            updateLatLong(lat, long);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
       axios
         .post(`${REACT_APP_ENDPOINT}accounts/create`, allValues)
         .then((response) => {
@@ -40,13 +24,6 @@ export default function RestaurantSignupForm() {
         });
     }
   }
-
-  const updateLatLong = (lat, long) => {
-    this.setState({
-      latitude: lat,
-      longitude: long,
-    });
-  };
 
   const [allValues, setAllValues] = useState({
     type: '',
