@@ -20,17 +20,9 @@ describe('Claiming a listing', () => {
   });
 
   it('can claim a listing', () => {
-    cy.get('#listing-size');
-    cy.contains('10');
-  });
-
-  it('can claim a listing', () => {
     cy.get('#listing-details');
+    cy.contains('10');
     cy.contains('Test listing to be claimed');
-  });
-
-  it('can claim a listing', () => {
-    cy.get('#listing-time');
     cy.contains('2025-01-01T23:55');
   });
 });

@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { userContext } from '../../App.js';
+import ModalContent from './ModalContent.component.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
@@ -29,7 +30,6 @@ export default class ListingModal extends Component {
   }
 
   render() {
-    console.log(this.props.content);
     return (
       <>
         <userContext.Consumer>
@@ -50,10 +50,11 @@ export default class ListingModal extends Component {
                   }}
                 >
                   <h3 className="m-3 mb-4">
-                    {`${this.props.content.listedByName}`}
-                    <div>{this.renderRestaurantDetails()}</div>
                     Are you sure you want to claim this listing?
                   </h3>
+                  <div>
+                    <ModalContent content={this.props.content} />
+                  </div>
                   <button
                     className="btn btn-secondary mx-3"
                     onClick={this.props.handleClose}

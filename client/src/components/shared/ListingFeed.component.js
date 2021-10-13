@@ -18,13 +18,9 @@ export default class ListingFeed extends Component {
       listedByAccountCoords: [],
 
       modalContent: {
-        listedByName: null,
-        listedByAddress1: null,
-        listedByAddress2: null,
-        listedByCity: null,
-        listedByPostcode: null,
+        listedByAccount: null,
         listingNumberOfMeals: null,
-        listingDetails: null,
+        listingDescription: null,
         listingAvailableTill: null,
       },
     };
@@ -85,13 +81,9 @@ export default class ListingFeed extends Component {
       selectedListingId: id,
       selectedListing: listing,
       modalContent: {
-        listedByName: response.data.username,
-        listedByAddress1: response.data.addressLine1,
-        listedByAddress2: response.data.addressLine2,
-        listedByCity: response.data.city,
-        listedByPostcode: response.data.postCode,
+        listedByAccount: response.data,
         listingNumberOfMeals: listing.numberOfMeals,
-        listingDetails: listing.description,
+        listingDescription: listing.description,
         listingAvailableTill: listing.timeAvailableUntil,
       },
     });
