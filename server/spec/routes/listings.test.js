@@ -25,72 +25,57 @@ describe('GET /listings/donations', () => {
     });
 
     const response = await request(app).get('/api/listings/donations');
-    expect(response.body).toMatchObject(['donator', 12]);
+    expect(response.body).toMatchObject([['donator', 12]]);
   });
-}),
-  describe('GET /listings/account/:id', () => {
-    describe('when passed a valid ID', () => {
-      test('should respond with 200 status code', async () => {
-        const postResponse = await request(app)
-          .post('/api/accounts/create')
-          .send({
-            type: 'Restaurant',
-            username: 'test_z',
-            emailAddress: 'test_z@example.com',
-            password: 'test',
-            addressLine1: 'test',
-            city: 'test',
-            postCode: 'SE1 9JB',
-            contactNumber: 123456789,
-            description: 'test',
-            charityNumber: 12545,
-            websiteLink: 'test',
-            foodHygieneRating: 5,
-          });
+});
 
-        const response = await request(app).get(
-          `/api/listings/account/${postResponse.body._id}`,
-        );
-
-        expect(response.statusCode).toBe(200);
-      });
-
-      test('should return the correct number of listings', async () => {
-        const postResponse = await request(app)
-          .post('/api/listings/create')
-          .send({
-            numberOfMeals: 10,
-            description: 'test',
-            timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-            listedBy: 'test_id',
-            listedByUsername: 1,
-            claimedBy: 2,
-          });
-
-        const response = await request(app).get(
-          `/api/listings/account/${postResponse.body.listedBy}`,
-        );
-      }),
-        test('should return the correct number of listings', async () => {
-          const postResponse = await request(app)
-            .post('/api/listings/create')
-            .send({
-              numberOfMeals: 10,
-              description: 'test',
-              timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-              listedBy: 'test_id',
-              listedByUsername: 1,
-              claimedBy: 2,
-            });
-
-          const response = await request(app).get(
-            `/api/listings/account/${postResponse.body.listedBy}`,
-          );
-
-          expect(response.body.length).toBe(1);
+describe('GET /listings/account/:id', () => {
+  describe('when passed a valid ID', () => {
+    test('should respond with 200 status code', async () => {
+      const postResponse = await request(app)
+        .post('/api/accounts/create')
+        .send({
+          type: 'Restaurant',
+          username: 'test_z',
+          emailAddress: 'test_z@example.com',
+          password: 'test',
+          addressLine1: 'test',
+          city: 'test',
+          postCode: 'SE1 9JB',
+          contactNumber: 123456789,
+          description: 'test',
+          charityNumber: 12545,
+          websiteLink: 'test',
+          foodHygieneRating: 5,
         });
+
+      const response = await request(app).get(
+        `/api/listings/account/${postResponse.body._id}`,
+      );
+
+      expect(response.statusCode).toBe(200);
+    });
+
+    test('should return the correct number of listings', async () => {
+      const postResponse = await request(app)
+        .post('/api/listings/create')
+        .send({
+          numberOfMeals: 10,
+          description: 'test',
+          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+          listedBy: 'test_id',
+          listedByUsername: 1,
+          claimedBy: 2,
+        });
+
+      const response = await request(app).get(
+        `/api/listings/account/${postResponse.body.listedBy}`,
+      );
+
+      expect(response.body.length).toBe(1);
     });
   });
+});
 
 describe('GET /listings/claimed/:id', () => {
   describe('when passed a valid ID', () => {
@@ -117,25 +102,26 @@ describe('GET /listings/claimed/:id', () => {
       );
 
       expect(response.statusCode).toBe(200);
-    }),
-      test('should return the correct number of listings', async () => {
-        const postResponse = await request(app)
-          .post('/api/listings/create')
-          .send({
-            numberOfMeals: 10,
-            description: 'test',
-            timeAvailableUntil: '2019-04-29T21:19:15.187Z',
-            listedBy: 1,
-            listedByUsername: 1,
-            claimedBy: 'test_id',
-          });
+    });
 
-        const response = await request(app).get(
-          `/api/listings/claimed/${postResponse.body.claimedBy}`,
-        );
+    test('should return the correct number of listings', async () => {
+      const postResponse = await request(app)
+        .post('/api/listings/create')
+        .send({
+          numberOfMeals: 10,
+          description: 'test',
+          timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+          listedBy: 1,
+          listedByUsername: 1,
+          claimedBy: 'test_id',
+        });
 
-        expect(response.body.length).toBe(1);
-      });
+      const response = await request(app).get(
+        `/api/listings/claimed/${postResponse.body.claimedBy}`,
+      );
+
+      expect(response.body.length).toBe(1);
+    });
   });
 });
 
