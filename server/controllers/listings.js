@@ -25,6 +25,7 @@ const ListingsController = {
   async claimDetails(req, res) {
     try {
       const account = await Listing.find()
+        .sort({ $natural: -1 })
         .where('claimedBy')
         .in(req.params.id)
         .exec();
