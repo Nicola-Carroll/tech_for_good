@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomepageClaimedCounter from '../components/homepageClaimedCounter';
 import HomepageDonationsCounter from '../components/homepageDonationsCounter';
+import HomepageDonatorsLeaderboard from '../components/homepageDonatorsLeaderboard.component.js';
 
 export default class Homepage extends Component {
   render() {
@@ -16,11 +17,12 @@ export default class Homepage extends Component {
         </section>
         <section id="counters">
           <div>
-            <h1 className="text-center" id="home">
+            <h2 className="text-center" id="home">
               Donations to date
-            </h1>
+            </h2>
             <HomepageClaimedCounter />
             <HomepageDonationsCounter />
+            <HomepageDonatorsLeaderboard />
           </div>
         </section>
       </>

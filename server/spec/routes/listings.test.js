@@ -24,7 +24,7 @@ describe('GET /listings/donations', () => {
     });
 
     const response = await request(app).get('/api/listings/donations');
-    expect(response.body).toMatchObject([donator, 12]);
+    expect(response.body).toMatchObject(['donator', 12]);
   });
 }),
   describe('GET /listings/account/:id', () => {

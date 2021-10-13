@@ -8,6 +8,7 @@
     "viewListings.spec.js",
     "claimListing.spec.js",
     "viewMyListings.spec.js",
-    "viewMyClaims.spec.js"
+    "viewMyClaims.spec.js",
+    "homepage.spec.js"
   ]
 }
