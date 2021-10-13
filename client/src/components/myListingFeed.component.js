@@ -15,8 +15,7 @@ export default class MyListingFeed extends Component {
   availableListings(data) {
     return data.filter((currentListing) => {
       return (
-        // !currentListing.claimedBy &&
-        new Date(currentListing.timeAvailableUntil) > new Date() // format expired listings?
+        new Date(currentListing.timeAvailableUntil) > new Date()
       );
     });
   }
