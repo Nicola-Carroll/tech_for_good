@@ -21,13 +21,14 @@ describe('GET /listings/donations', () => {
       description: 'test',
       timeAvailableUntil: '2019-04-29T21:19:15.187Z',
       listedBy: 'donator',
+      listedByUsername: 'donator',
     });
 
     const response = await request(app).get('/api/listings/donations');
     expect(response.body).toMatchObject({ donator: 12 });
-  }
-}
-       
+  });
+});
+
 describe('GET /listings/account/:id', () => {
   describe('when passed a valid ID', () => {
     test('should respond with 200 status code', async () => {
