@@ -14,7 +14,7 @@ describe('View Listings', () => {
   // we also trust that a component rendered inside GoogleMapReact with
   // a lat & long prop will be added as a marker in the correct spot
 
-  it('the map container exitst', () => {
+  it('should have a map container', () => {
     cy.get('.map-container');
   });
 
