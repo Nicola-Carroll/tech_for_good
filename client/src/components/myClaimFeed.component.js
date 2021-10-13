@@ -15,7 +15,7 @@ export default class MyClaimFeed extends Component {
   availableListings(data) {
     return data.filter((currentListing) => {
       return (
-        new Date(currentListing.timeAvailableUntil) > new Date() // format expired listings?
+        new Date(currentListing.timeAvailableUntil) > new Date()
       );
     });
   }
