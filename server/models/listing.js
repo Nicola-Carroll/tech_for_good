@@ -8,6 +8,7 @@ const listingSchema = new mongoose.Schema(
     listedBy: { type: String, required: true },
     listedByUsername: { type: String, required: true },
     claimedBy: { type: String },
+    claimStatus: { type: String },
   },
   {
     timestamps: true,

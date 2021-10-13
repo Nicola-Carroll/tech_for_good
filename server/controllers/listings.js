@@ -53,6 +53,7 @@ const ListingsController = {
 
       if (!listing.claimedBy) {
         listing.claimedBy = req.body.claimedBy;
+        listing.claimStatus = 'Claimed';
       }
 
       await listing.save();

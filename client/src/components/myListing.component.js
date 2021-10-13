@@ -7,7 +7,7 @@ function MyListing(props) {
       <td className="meals">{props.listing.numberOfMeals}</td>
       <td className="desc">{props.listing.description}</td>
       <td className="time">{props.listing.timeAvailableUntil}</td>
-      <td className="claimStatus">{props.listing.claimedBy}</td>
+      <td className="claimStatus">{props.listing.claimStatus}</td>
     </tr>
   );
 }
