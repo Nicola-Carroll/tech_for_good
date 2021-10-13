@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import MyListing from './myListing.component';
+import MyClaim from './myClaim.component';
 import axios from 'axios';
 import { userContext } from '../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
-export default class MyListingFeed extends Component {
+export default class MyClaimFeed extends Component {
   constructor(props) {
     super(props);
     this.state = { listings: [] };
-    MyListingFeed.contextType = userContext;
+    MyClaimFeed.contextType = userContext;
   }
 
   availableListings(data) {
     return data.filter((currentListing) => {
       return (
-        // !currentListing.claimedBy &&
         new Date(currentListing.timeAvailableUntil) > new Date() // format expired listings?
       );
     });
@@ -24,7 +23,7 @@ export default class MyListingFeed extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(
-        `${REACT_APP_ENDPOINT}listings/account/${this.context.user._id}`,
+        `${REACT_APP_ENDPOINT}listings/claimed/${this.context.user._id}`,
       );
       this.setState({ listings: this.availableListings(response.data) });
     } catch (error) {
@@ -32,13 +31,10 @@ export default class MyListingFeed extends Component {
     }
   }
 
-  listingFeed() {
+  claimFeed() {
     return this.state.listings.reverse().map((currentListing) => {
       return (
-        <MyListing
-          listing={currentListing}
-          key={currentListing._id}
-        ></MyListing>
+        <MyClaim listing={currentListing} key={currentListing._id}></MyClaim>
       );
     });
   }
@@ -53,10 +49,9 @@ export default class MyListingFeed extends Component {
               <th>Number of meals</th>
               <th>Description</th>
               <th>Available until</th>
-              <th>Claim status</th>
             </tr>
           </thead>
-          <tbody>{this.listingFeed()}</tbody>
+          <tbody>{this.claimFeed()}</tbody>
         </table>
       </>
     );

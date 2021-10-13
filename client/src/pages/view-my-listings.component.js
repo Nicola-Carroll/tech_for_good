@@ -5,7 +5,7 @@ export default class ViewMyListings extends Component {
   render() {
     return (
       <>
-        <div>Listing feed</div>
+        <div>My listings</div>
         <MyListingFeed></MyListingFeed>
       </>
     );
