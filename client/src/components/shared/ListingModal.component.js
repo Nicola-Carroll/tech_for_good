@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
@@ -49,6 +49,7 @@ export default class ListingModal extends Component {
                   }}
                 >
                   <h3 className="m-3 mb-4">
+                    {`${this.props.listingId}`}
                     Are you sure you want to claim this listing?
                   </h3>
                   <button

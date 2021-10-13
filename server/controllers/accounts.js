@@ -19,10 +19,10 @@ const AccountsController = {
         }
       })
       .then((account) => {
-        new Account(account).save();
+        return new Account(account).save();
       })
-      .then(() => {
-        res.status(200).json('Account created');
+      .then((newAccount) => {
+        res.status(200).json(newAccount);
       })
       .catch((error) => {
         res.status(400).json(`Error: ${error}`);
