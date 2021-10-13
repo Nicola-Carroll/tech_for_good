@@ -13,10 +13,16 @@ export default class ModalContent extends Component {
     return (
       <div id="restaurant-address">
         <h3 className="m-3 mb-4">Pick-up address</h3>
-        <p>{this.props.content.listedByAccount.addressLine1}</p>
-        <p>{this.props.content.listedByAccount.addressLine2}</p>
-        <p>{this.props.content.listedByAccount.city}</p>
-        <p>{this.props.content.listedByAccount.postCode}</p>
+        <p>
+          {this.props.content.listedByAccount.addressLine1}
+          {this.props.content.listedByAccount.addressLine2 && <br />}
+          {this.props.content.listedByAccount.addressLine2}
+          <br />
+          {this.props.content.listedByAccount.city}
+          <br />
+          {this.props.content.listedByAccount.postCode}
+          <br />
+        </p>
       </div>
     );
   }
