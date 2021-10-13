@@ -52,7 +52,7 @@ export default class App extends Component {
             ) : this.state.user.type === 'Charity' ? (
               <Redirect to="/feed" />
             ) : (
-              <Redirect to="/listings/new" />
+              <Redirect to="/mylistings" />
             )}
           </Route>
           <Route exact path="/feed">

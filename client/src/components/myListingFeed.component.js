@@ -33,7 +33,7 @@ export default class MyListingFeed extends Component {
   }
 
   listingFeed() {
-    return this.state.listings.map((currentListing) => {
+    return this.state.listings.reverse().map((currentListing) => {
       return (
         <MyListing
           listing={currentListing}

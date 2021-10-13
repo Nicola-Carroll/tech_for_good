@@ -6,6 +6,7 @@
     "navbar.spec.js",
     "addListing.spec.js",
     "viewListings.spec.js",
-    "claimListing.spec.js"
+    "claimListing.spec.js",
+    "viewMyListings.spec.js"
   ]
 }

@@ -5,6 +5,7 @@ describe('Add Listing', () => {
   });
 
   it('contains new listing form', () => {
+    cy.get('#new-listing-link').click();
     cy.contains('Number of Meals');
     cy.contains('Description');
     cy.contains('Available Until');
