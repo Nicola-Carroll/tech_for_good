@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { Component, createRef } from 'react';
 import axios from 'axios';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 

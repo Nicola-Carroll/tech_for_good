@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 export default class Navbar extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class Navbar extends Component {
           {({ user, logoutUser }) => {
             return (
               <>
-                <nav className="navbar navbar-dark navbar-expand-sm justify-content-right ps-4 sticky-lg-top">
+                <nav className="navbar navbar-dark navbar-expand-sm justify-content-right ps-4 static-lg-top">
                   <Link id="homepage-link" to="/" className="navbar-brand">
                     <img
                       id="home-logo"

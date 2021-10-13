@@ -2,12 +2,12 @@ import React, { Component, createContext } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navbar from './components/navbar.component';
+import Navbar from './components/shared/navbar.component';
 import Homepage from './pages/homepage.component';
 import Signup from './pages/create-user.component';
 import Login from './pages/login.component';
 import CreateListing from './pages/CreateListing';
-import ViewListings from './pages/view-listings.component';
+import ViewListings from './pages/ViewListings.component';
 import ViewMyListings from './pages/view-my-listings.component';
 import ViewMyClaims from './pages/view-my-claims.component';
 

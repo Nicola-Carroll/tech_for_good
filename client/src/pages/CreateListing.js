@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListingForm from '../components/ListingForm';
+import ListingForm from '../components/new-listing/ListingForm';
 
 export default class CreateListing extends Component {
   render() {
