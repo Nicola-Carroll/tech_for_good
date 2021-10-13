@@ -7,7 +7,7 @@ function InitiateClaimButton(props) {
   const buttonId = `claim${props.listing._id}`;
   return (
     <button
-      className="btn btn-outline-success mt-3"
+      className="btn btn-outline-success"
       type="submit"
       id={buttonId}
       onClick={() => props.handleClick(props.id)}

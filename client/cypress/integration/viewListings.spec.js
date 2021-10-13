@@ -7,13 +7,6 @@ describe('View Listings', () => {
     cy.charityLogin();
   });
 
-  it('contains the listing headers', () => {
-    cy.contains('Listed by');
-    cy.contains('Number of meals');
-    cy.contains('Description');
-    cy.contains('Available until');
-  });
-
   it('listings have buttons', () => {
     cy.contains('Claim Listing');
   });
