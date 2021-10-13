@@ -14,7 +14,19 @@ export default class ListingFeed extends Component {
       listings: [],
       showModal: false,
       selectedListingId: null,
+      selectedListing: null,
       listedByAccountCoords: [],
+
+      modalContent: {
+        listedByName: null,
+        listedByAddress1: null,
+        listedByAddress2: null,
+        listedByCity: null,
+        listedByPostcode: null,
+        listingNumberOfMeals: null,
+        listingDetails: null,
+        listingAvailableTill: null,
+      },
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -59,12 +71,35 @@ export default class ListingFeed extends Component {
     }
   }
 
-  handleOpenModal(id) {
-    this.setState({ showModal: true, selectedListingId: id });
+  async handleOpenModal(id, listing) {
+    console.log(listing);
+    console.log('listed by id');
+    const listedById = listing.listedBy;
+    console.log(listedById);
+    const response = await axios.get(
+      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
+    );
+
+    this.setState({
+      showModal: true,
+      selectedListingId: id,
+      selectedListing: listing,
+      modalContent: {
+        listedByName: response.data.username,
+        listedByAddress1: response.data.addressLine1,
+        listedByAddress2: response.data.addressLine2,
+        listedByCity: response.data.city,
+        listedByPostcode: response.data.postCode,
+        listingNumberOfMeals: listing.numberOfMeals,
+        listingDetails: listing.description,
+        listingAvailableTill: listing.timeAvailableUntil,
+      },
+    });
   }
 
   handleCloseModal() {
     this.setState({ selectedListingId: null });
+    this.setState({ selectedListing: null });
     this.componentDidMount();
   }
 
@@ -83,7 +118,9 @@ export default class ListingFeed extends Component {
         <ListingModal
           className="listing-modal"
           listingId={this.state.selectedListingId}
+          listing={this.state.selectedListing}
           handleClose={this.handleCloseModal}
+          content={this.state.modalContent}
         />
       </>
     );
