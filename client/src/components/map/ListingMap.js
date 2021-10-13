@@ -1,26 +1,11 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import axios from 'axios';
 
-import ListingModal from '../shared/ListingModal.component';
 import ListingMarker from './ListingMarker.component';
 
 const { REACT_APP_MAP_API } = process.env;
-const { REACT_APP_ENDPOINT } = process.env;
 
 class ListingMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listings: [],
-      showModal: false,
-      selectedListingId: null,
-      listedByAccountCoords: [],
-    };
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
-
   static defaultProps = {
     center: {
       lat: 51.50696956402362,
@@ -28,65 +13,26 @@ class ListingMap extends Component {
     },
   };
 
-  availableListings(data) {
-    return data.filter((currentListing) => {
-      return (
-        !currentListing.claimedBy &&
-        new Date(currentListing.timeAvailableUntil) > new Date()
-      );
-    });
-  }
-
-  async componentDidMount() {
-    try {
-      const response = await axios.get(`${REACT_APP_ENDPOINT}listings`);
-      // .reverse() is added here so that if a restaurant has more than one active listing
-      // the marker on the map is for the most recent listing as opposed to the oldest
-      const availableListings = this.availableListings(response.data).reverse();
-      await this.listedByAccountCoords(availableListings);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async accountCoords(listing) {
-    const listedById = listing.listedBy;
-    const response = await axios.get(
-      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
-    );
-    return { lat: response.data.latitude, long: response.data.longitude };
-  }
-
-  async listedByAccountCoords(availableListings) {
-    const promises = [];
-    availableListings.forEach((listing) => {
-      promises.push(this.accountCoords(listing));
-    });
-    const accountsCoords = await Promise.all(promises);
-    this.setState({
-      listedByAccountCoords: accountsCoords,
-      listings: availableListings,
-    });
-  }
-
   renderListingMarker(lat, long, id) {
     return (
       <ListingMarker
         lat={lat}
         lng={long}
         key={id}
-        handleClick={() => this.handleOpenModal(id)}
+        handleClick={() => this.props.handleOpenModal(id)}
         className="listing-marker"
       ></ListingMarker>
     );
   }
 
   renderAllListingMarkers() {
-    return this.state.listings.map((currentListing, index) => {
-      const lat = this.state.listedByAccountCoords[index].lat;
-      const long = this.state.listedByAccountCoords[index].long;
-      return this.renderListingMarker(lat, long, currentListing._id);
-    });
+    if (this.props.listings.length > 0) {
+      return this.props.listings.map((currentListing, index) => {
+        const lat = this.props.accountCoords[index].lat;
+        const long = this.props.accountCoords[index].long;
+        return this.renderListingMarker(lat, long, currentListing._id);
+      });
+    }
   }
 
   handleOpenModal(id) {
@@ -113,11 +59,6 @@ class ListingMap extends Component {
             {this.renderAllListingMarkers()}
           </GoogleMapReact>
         </div>
-        <ListingModal
-          className="listing-modal"
-          listingId={this.state.selectedListingId}
-          handleClose={this.handleCloseModal}
-        />
       </>
     );
   }
