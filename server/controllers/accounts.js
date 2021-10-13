@@ -3,7 +3,7 @@ import Account from '../models/account.js';
 const AccountsController = {
   async index(req, res) {
     try {
-      const accounts = await Account.find();
+      const accounts = await Account.find().sort({ $natural: -1 });
       await res.json(accounts);
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
