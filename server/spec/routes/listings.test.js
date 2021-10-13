@@ -15,7 +15,7 @@ describe('GET /listings/donations', () => {
     expect(response.statusCode).toBe(200);
   });
 
-  test('it should respond to the GET method', async () => {
+  test('it should respond with total donations from each donator', async () => {
     const postResponse = await request(app).post('/api/listings/create').send({
       numberOfMeals: 12,
       description: 'test',
