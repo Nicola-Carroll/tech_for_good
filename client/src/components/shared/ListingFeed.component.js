@@ -13,7 +13,6 @@ export default class ListingFeed extends Component {
     this.state = {
       listings: [],
       showModal: false,
-      // selectedListingId: null,
       selectedListing: null,
       listedByAccountCoords: [],
 
@@ -75,7 +74,6 @@ export default class ListingFeed extends Component {
 
     this.setState({
       showModal: true,
-      // selectedListingId: id,
       selectedListing: listing,
       modalContent: {
         listedByAccount: response.data,
@@ -87,7 +85,6 @@ export default class ListingFeed extends Component {
   }
 
   handleCloseModal() {
-    // this.setState({ selectedListingId: null });
     this.setState({ selectedListing: null });
     this.componentDidMount();
   }
@@ -106,7 +103,6 @@ export default class ListingFeed extends Component {
         />
         <ListingModal
           className="listing-modal"
-          // listingId={this.state.selectedListingId}
           listing={this.state.selectedListing}
           handleClose={this.handleCloseModal}
           content={this.state.modalContent}
