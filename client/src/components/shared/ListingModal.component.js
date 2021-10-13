@@ -64,7 +64,7 @@ export default class ListingModal extends Component {
                   </button>
                   <button
                     className="btn btn-primary mx-1"
-                    onClick={() => this.claimListing(this.props.listingId)}
+                    onClick={() => this.claimListing(this.props.listing._id)}
                     id="claim-button"
                     ref={this.input}
                     value={user._id}
