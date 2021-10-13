@@ -9,6 +9,25 @@ describe('GET /listings', () => {
   });
 });
 
+describe('GET /listings/donations', () => {
+  test('it should respond to the GET method', async () => {
+    const response = await request(app).get('/api/listings/donations');
+    expect(response.statusCode).toBe(200);
+  });
+
+  test('it should respond to the GET method', async () => {
+    const postResponse = await request(app).post('/api/listings/create').send({
+      numberOfMeals: 12,
+      description: 'test',
+      timeAvailableUntil: '2019-04-29T21:19:15.187Z',
+      listedBy: 'donator',
+    });
+
+    const response = await request(app).get('/api/listings/donations');
+    expect(response.body).toMatchObject({ donator: 12 });
+  });
+});
+
 describe('POST /listings', () => {
   describe('when passed all required fields', () => {
     test('should respond with a 200 status code', async () => {

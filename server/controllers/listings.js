@@ -44,7 +44,7 @@ const ListingsController = {
       for (let i = 0; i < uniq.length; i++) {
         totalDonations[uniq[i]] = donations[i];
       }
-      console.log(totalDonations);
+      await res.json(totalDonations);
     } catch (error) {
       res.status(400).json(`Error: ${error}`);
     }
