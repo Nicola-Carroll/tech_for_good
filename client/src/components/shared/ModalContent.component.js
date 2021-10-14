@@ -34,7 +34,17 @@ export default class ModalContent extends Component {
         <p class="font-weight-bold">
           There are {this.props.content.listingNumberOfMeals} meals available to
           collect until{' '}
-          {Date(this.props.content.listingAvailableTill).slice(0, -34)}.
+          {`${this.props.content.listingAvailableTill.slice(
+            11,
+            16,
+          )} - ${this.props.content.listingAvailableTill.slice(
+            0,
+            2,
+          )}/${this.props.content.listingAvailableTill.slice(
+            5,
+            7,
+          )}/${this.props.content.listingAvailableTill.slice(8, 10)}`}
+          .
         </p>
         <h6>Full details </h6>
         <p class="font-weight-light">{this.props.content.listingDescription}</p>
