@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import path from 'path';
 import dotenv from 'dotenv';
 import accountsRoutes from './routes/accounts.js';
 import listingsRoutes from './routes/listings.js';
@@ -44,7 +43,7 @@ async function dropCollections() {
 }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile('client/build/index.html', { root: '.' });
 });
 
 if (process.env.NODE_ENV !== 'test') {
