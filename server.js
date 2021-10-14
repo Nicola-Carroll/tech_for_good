@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/accounts', accountsRoutes);
 app.use('/api/listings', listingsRoutes);
+app.use(express.static('client/build'));
 
 let DB;
 if (process.env.NODE_ENV !== 'test') {
@@ -40,6 +41,10 @@ async function dropCollections() {
     console.log(error);
   }
 }
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
