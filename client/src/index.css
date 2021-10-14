@@ -27,6 +27,22 @@ code {
   background-color: #7ed957;
 }
 
+
+#aboutUs {
+  height: 40vh;
+}
+
+#donations {
+  height: 40vh;
+  background-color: #7ed957;
+}
+
+#leaderboard{
+  height: 60vh;
+}
+#total {
+color:#008037;
+}
 #hero-img {
   height: 60vh;
   max-height: 100%;

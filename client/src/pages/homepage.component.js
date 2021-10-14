@@ -15,12 +15,16 @@ export default class Homepage extends Component {
             alt="Graphic of food and people with caption: Second Helpings, Help Others, Reduce Waste"
           />
         </section>
-        <section id="counters">
+        <section id="aboutUs">
           <div>
             <AboutUs />
-            <HomepageDonationsCounter />
-            <HomepageDonatorsLeaderboard />
           </div>
+        </section>
+        <section id="donations">
+          <HomepageDonationsCounter />
+        </section>
+        <section id="leaderboard">
+          <HomepageDonatorsLeaderboard />
         </section>
       </>
     );
