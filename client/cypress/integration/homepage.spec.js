@@ -17,9 +17,9 @@ describe('Homepage', () => {
     cy.get('#total');
   });
 
-  it('contains a subheader for total meals claimed', () => {
+  it('contains a subheader for total meals donated', () => {
     cy.visit('/');
-    cy.contains('Number of meals that have been donated thus far:');
+    cy.contains('Number of meals that have been donated:');
   });
 
   it('shows a leaderboard with maximum 5 top donators', () => {
