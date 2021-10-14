@@ -152,7 +152,7 @@ export default function RestaurantSignupForm() {
         <div className="form-group mt-4 mb-4">
           <textarea
             className="form-control"
-            placeholder="A description of your restaurant"
+            placeholder="A description of your business"
             type="text"
             name="description"
             id="description"
