@@ -40,7 +40,9 @@ export default class Leaderboard extends Component {
       return (
         <>
           <section id="top-donators">
-            <h2 className="text-center display-5 pt-5">Most food donated</h2>
+            <h2 className="text-center display-5 pt-5 pb-5">
+              Most food donated
+            </h2>
             <table id="top-donators" className="table w-50 mx-auto">
               <thead className="thead-dark">
                 <tr>
