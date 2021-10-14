@@ -1,10 +1,9 @@
 /* eslint-disable no-undef */
 describe('Homepage', () => {
-
   it('contains a What we do section', () => {
     cy.visit('/');
-    cy.contains('What we do:')
-    cy.contains('SecondHelpings')
+    cy.contains('What we do');
+    cy.contains('SecondHelpings');
   });
 
   it('contains a title', () => {

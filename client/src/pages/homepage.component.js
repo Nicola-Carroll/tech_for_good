@@ -4,7 +4,6 @@ import HomepageDonationsCounter from '../components/homepageDonationsCounter';
 import HomepageDonatorsLeaderboard from '../components/homepageDonatorsLeaderboard.component.js';
 import AboutUs from '../components/aboutUs.component';
 
-
 export default class Homepage extends Component {
   render() {
     return (
@@ -19,8 +18,8 @@ export default class Homepage extends Component {
         </section>
         <section id="counters">
           <div>
-          <AboutUs />
-            <h2 className="text-center" id="home">
+            <AboutUs />
+            <h2 className="text-center display-5" id="home">
               Donations to date
             </h2>
             <HomepageClaimedCounter />
