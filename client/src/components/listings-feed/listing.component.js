@@ -16,7 +16,16 @@ function Listing(props) {
         </p>
         <p className="time">
           <b>Pick up available until:</b>{' '}
-          {Date(props.listing.timeAvailableUntil).slice(0, -34)}
+          {`${props.listing.timeAvailableUntil.slice(
+            11,
+            16,
+          )} - ${props.listing.timeAvailableUntil.slice(
+            0,
+            2,
+          )}/${props.listing.timeAvailableUntil.slice(
+            5,
+            7,
+          )}/${props.listing.timeAvailableUntil.slice(8, 10)}`}
         </p>
         <InitiateClaimButton
           className="claim"
