@@ -33,7 +33,7 @@ export default class ModalContent extends Component {
       <div id="restaurant-address">
         <p class="font-weight-bold">
           There are {this.props.content.listingNumberOfMeals} meals available to
-          collect until {this.props.content.listingAvailableTill}.
+          collect until {Date(this.props.content.listingAvailableTill)}.
         </p>
         <h6>Full details </h6>
         <p class="font-weight-light">{this.props.content.listingDescription}</p>

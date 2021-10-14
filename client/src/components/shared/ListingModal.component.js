@@ -53,7 +53,7 @@ export default class ListingModal extends Component {
                     <ModalContent content={this.props.content} />
                   </div>
                   <button
-                    className="btn btn-outline-success mr-3 mt-3"
+                    className="btn btn-outline-success mr-6 mt-3"
                     onClick={() => this.claimListing(this.props.listing._id)}
                     id="claim-button"
                     ref={this.input}
@@ -62,7 +62,7 @@ export default class ListingModal extends Component {
                     Confirm
                   </button>{' '}
                   <button
-                    className="btn btn-outline-success ml-3 mt-3"
+                    className="btn btn-outline-dark mr-3 mt-3"
                     onClick={this.props.handleClose}
                     id="back-button"
                   >
