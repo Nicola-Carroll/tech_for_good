@@ -15,11 +15,11 @@ function MyListing(props) {
         </p>
         <p className="time">
           <b>Pick up available until:</b>{' '}
-          {Date(props.listing.timeAvailableUntil)}
+          {Date(props.listing.timeAvailableUntil).slice(0, -34)}
         </p>
 
-        <p className="claimStatus border d-inline-block p-2 mt-2 rounded-2">
-          <b>{props.listing.claimStatus}</b>
+        <p className="claimStatus">
+          <b>Status:</b> {props.listing.claimStatus}
         </p>
       </div>
     </div>
