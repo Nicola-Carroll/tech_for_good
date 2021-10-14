@@ -28,7 +28,7 @@ export default class AddDonatedMeals extends Component {
 
   render() {
     return (
-      <div className="section w-50 m-auto">
+      <div className="section w-50 m-auto pt-4 pb-4">
         <p className="mt-2 mb-2 text-center" htmlFor="meals">
           Number of meals that have been donated:
         </p>
