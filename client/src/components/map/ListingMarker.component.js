@@ -4,17 +4,20 @@ import { currentUserStyle } from './CurrentUserMarkerStyles';
 
 export default class ListingMarker extends Component {
   style() {
-    if (this.props.type === 'user') {
-      return currentUserStyle;
-    } else {
-      return greatPlaceStyle;
-    }
+    return `${this.props.type}-marker`;
+    // if (this.props.type === 'user') {
+    //   return currentUserStyle;
+    // } else {
+    //   return greatPlaceStyle;
+    // }
   }
+
   render() {
     return (
-      <div style={this.style()} onClick={this.props.handleClick}>
-        {this.props.text}
-      </div>
+      <>
+        <div>{this.props.text}</div>
+        <div className={this.style()} onClick={this.props.handleClick}></div>
+      </>
     );
   }
 }

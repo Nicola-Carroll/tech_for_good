@@ -52,3 +52,44 @@ color:#008037;
   height: 60vh;
   max-height: 100%;
 }
+
+.listing-marker {
+  transform: perspective(40px) rotateX(20deg) rotateZ(-45deg);
+  transform-origin: 50% 50%;
+  border-radius: 50% 50% 50% 0;
+  padding: 0 3px 3px 0;
+  width: 30px;
+  height: 30px;
+  background: #ed1f34;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -2.2em 0 0 -1.3em;
+  -webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+  -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+  box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+}
+ .user-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: #89849b;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -20px 0 0 -20px;
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
+
+.user-marker:after {
+    content: 'You are here';
+    width: 14px;
+    height: 14px;
+    margin: 8px 0 0 8px;
+    background: #ac9696;
+    position: absolute;
+    border-radius: 50%;
+}
