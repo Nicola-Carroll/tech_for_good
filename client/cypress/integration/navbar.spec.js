@@ -17,7 +17,7 @@ describe('Navbar', () => {
   it('should only show homepage and feed page to logged in charity', () => {
     cy.charityLogin();
     cy.get('#feed-link').click();
-    cy.location('pathname').should('eq', '/feed');
+    cy.location('pathname').should('eq', '/availablemeals');
     cy.get('#homepage-link').click();
     cy.location('pathname').should('eq', '/');
     cy.get('#signup-link').should('not.exist');

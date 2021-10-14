@@ -25,6 +25,7 @@ const ListingsController = {
   async claimDetails(req, res) {
     try {
       const account = await Listing.find()
+        .sort({ $natural: -1 })
         .where('claimedBy')
         .in(req.params.id)
         .exec();
@@ -52,13 +53,13 @@ const ListingsController = {
       let donators = [];
       let donations = [];
 
-      listings.forEach((listings) => donators.push(listings.listedBy));
+      listings.forEach((listings) => donators.push(listings.listedByUsername));
       let uniq = [...new Set(donators)];
 
       uniq.forEach((donator) => {
         let counter = 0;
         listings.forEach((listing) => {
-          if (listing.listedBy === donator) {
+          if (listing.listedByUsername === donator) {
             counter += listing.numberOfMeals;
           }
         });

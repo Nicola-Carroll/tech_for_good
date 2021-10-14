@@ -50,12 +50,12 @@ export default class App extends Component {
             {!this.state.user ? (
               <Login />
             ) : this.state.user.type === 'Charity' ? (
-              <Redirect to="/feed" />
+              <Redirect to="/availablemeals" />
             ) : (
               <Redirect to="/mylistings" />
             )}
           </Route>
-          <Route exact path="/feed">
+          <Route exact path="/availablemeals">
             {this.state.user ? <ViewListings /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/mylistings">

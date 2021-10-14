@@ -3,7 +3,7 @@
 describe('Login', () => {
   it('should redirect to feed after successful charity login', () => {
     cy.charityLogin();
-    cy.location('pathname').should('eq', '/feed');
+    cy.location('pathname').should('eq', '/availablemeals');
   });
 
   it('should redirect to my listings page after successful restaurant login', () => {
