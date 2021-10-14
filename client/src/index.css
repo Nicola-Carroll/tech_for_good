@@ -31,3 +31,8 @@ code {
   height: 60vh;
   max-height: 100%;
 }
+
+#claim-button {
+  background-color: #7ed957;
+  margin-left: 3px;
+}

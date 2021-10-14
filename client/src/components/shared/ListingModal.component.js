@@ -44,32 +44,29 @@ export default class ListingModal extends Component {
                       top: '10%',
                       left: '20%',
                       right: '20%',
-                      bottom: '60%',
-                      background: '#39C0ED',
+                      bottom: '30%',
+                      background: '#FFFFFF',
                     },
                   }}
                 >
-                  <h3 className="m-3 mb-4">
-                    Are you sure you want to claim this listing?
-                  </h3>
                   <div>
                     <ModalContent content={this.props.content} />
                   </div>
                   <button
-                    className="btn btn-secondary mx-3"
-                    onClick={this.props.handleClose}
-                    id="back-button"
-                  >
-                    Go back
-                  </button>
-                  <button
-                    className="btn btn-primary mx-1"
+                    className="btn btn-outline-success mr-3 mt-3"
                     onClick={() => this.claimListing(this.props.listing._id)}
                     id="claim-button"
                     ref={this.input}
                     value={user._id}
                   >
                     Confirm
+                  </button>{' '}
+                  <button
+                    className="btn btn-outline-success ml-3 mt-3"
+                    onClick={this.props.handleClose}
+                    id="back-button"
+                  >
+                    Go back
                   </button>
                 </Modal>
               </>

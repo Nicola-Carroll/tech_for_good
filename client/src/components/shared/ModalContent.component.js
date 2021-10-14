@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 export default class ModalContent extends Component {
   renderRestaurantName() {
     return (
-      <h3 className="m-3 mb-4" id="restaurant-name">
-        {this.props.content.listedByAccount.username}
-      </h3>
+      <h4 className="mb-4" id="restaurant-name">
+        Do you want to claim this donation from{' '}
+        {this.props.content.listedByAccount.username}?
+      </h4>
     );
   }
 
   renderRestaurantAddress() {
     return (
       <div id="restaurant-address">
-        <h3 className="m-3 mb-4">Pick-up address</h3>
+        <h6>Pick-up address</h6>
         <p>
           {this.props.content.listedByAccount.addressLine1}
           {this.props.content.listedByAccount.addressLine2 && <br />}
@@ -30,25 +31,29 @@ export default class ModalContent extends Component {
   renderListingDetails() {
     return (
       <div id="restaurant-address">
-        <h3 className="m-3 mb-4">Donation details</h3>
-        <p>
-          There are {this.props.content.listingNumberOfMeals} meals available
+        <p class="font-weight-bold">
+          There are {this.props.content.listingNumberOfMeals} meals available to
+          collect until {this.props.content.listingAvailableTill}.
         </p>
-        <p>Details below: </p>
-        <p>{this.props.content.listingDescription}</p>
-        <p>
-          Grab this donation before {this.props.content.listingAvailableTill}
-        </p>
+        <h6>Full details </h6>
+        <p class="font-weight-light">{this.props.content.listingDescription}</p>
       </div>
     );
+  }
+
+  formatDate(dateAsString) {
+    const date = new Date(dateAsString);
+    const year = date.getFullYear();
+    const month = date.getMonth();
   }
 
   render() {
     return (
       <>
         <div id="restaurant-name">{this.renderRestaurantName()}</div>
-        <div id="restaurant-address">{this.renderRestaurantAddress()}</div>
         <div id="listing-details">{this.renderListingDetails()}</div>
+        <br />
+        <div id="restaurant-address">{this.renderRestaurantAddress()}</div>
       </>
     );
   }
