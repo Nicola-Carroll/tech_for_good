@@ -20,7 +20,7 @@ class ListingMap extends Component {
         lng={long}
         key={listing._id}
         handleClick={() => this.props.handleOpenModal(listing)}
-        className="listing-marker"
+        type={'listing'}
       ></ListingMarker>
     );
   }
