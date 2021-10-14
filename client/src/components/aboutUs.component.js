@@ -35,9 +35,9 @@ export default class AboutUs extends Component {
   render() {
     return (
       <div className="section w-50 m-auto">
-        <p className="mt-2 mb-2 text-center" htmlFor="meals">
-          Number of meals that have been given to those in need thus far:
-        </p>
+        <h2 className="mt-2 mb-2 text-center" htmlFor="meals">
+          Who we are:
+        </h2>
         {/* <p
           id="totalClaimed"
           className="row font-weight-bold justify-content-center text-success display-5"
