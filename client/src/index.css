@@ -65,31 +65,11 @@ color:#008037;
   left: 50%;
   top: 50%;
   margin: -2.2em 0 0 -1.3em;
+  /* do we want any shading??
+  
   -webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
   -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
-  box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
-}
- .user-marker {
-  width: 30px;
-  height: 30px;
-  border-radius: 50% 50% 50% 0;
-  background: #89849b;
-  position: absolute;
-  transform: rotate(-45deg);
-  left: 50%;
-  top: 50%;
-  margin: -20px 0 0 -20px;
-  animation-name: bounce;
-  animation-fill-mode: both;
-  animation-duration: 1s;
+  box-shadow: -1px 1px 4px rgba(0, 0, 0, .5); */
 }
 
-.user-marker:after {
-    content: 'You are here';
-    width: 14px;
-    height: 14px;
-    margin: 8px 0 0 8px;
-    background: #ac9696;
-    position: absolute;
-    border-radius: 50%;
-}
+
