@@ -7,7 +7,10 @@ export default class AboutUs extends Component {
         <h1 className="mt-2 mb-2 display-5 text-center" htmlFor="meals">
           What we do
         </h1>
-        <p className="row font-weight-bold justify-content-center display-8 text-center">
+        <p
+          id="paragraph"
+          className="row font-weight-bold justify-content-center display-7 text-center"
+        >
           SecondHelpings is a London based charity food redistributor. We
           connect businesses that have surplus food with frontline charities.
           Helping others and reducing waste.

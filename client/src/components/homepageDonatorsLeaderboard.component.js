@@ -45,7 +45,7 @@ export default class Leaderboard extends Component {
               <thead className="thead-dark">
                 <tr>
                   <th className="text-center" scope="col">
-                    Name
+                    Business
                   </th>
                   <th className="text-center" scope="col">
                     Donations

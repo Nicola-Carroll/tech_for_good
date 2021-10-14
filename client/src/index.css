@@ -40,8 +40,13 @@ code {
 #leaderboard{
   height: 60vh;
 }
+
 #total {
 color:#008037;
+}
+
+#paragraph{
+  font-size:23px;
 }
 #hero-img {
   height: 60vh;
