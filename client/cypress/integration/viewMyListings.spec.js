@@ -5,12 +5,14 @@ describe('View My Listings', () => {
     cy.restaurantLogin();
   });
 
-  it('contains the listing headers', () => {
-    cy.contains('Listed by');
-    cy.contains('Number of meals');
-    cy.contains('Description');
-    cy.contains('Available until');
-    cy.contains('Claim status');
+  it('contains all details', () => {
+    cy.addListing('10', 'This listing has all details', `2225-01-01T23:55`);
+    cy.get('#my-listings-link').click();
+    cy.get('h5').should('have.class', 'listedBy');
+    cy.get('p').should('have.class', 'meals');
+    cy.get('p').should('have.class', 'desc');
+    cy.get('p').should('have.class', 'time');
+    cy.get('p').should('have.class', 'claimStatus');
   });
 
   it('shows only my listings', () => {

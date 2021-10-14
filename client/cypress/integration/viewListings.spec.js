@@ -11,6 +11,15 @@ describe('View Listings', () => {
     cy.contains('Claim Listing');
   });
 
+  it('contains all details', () => {
+    cy.get('h5').should('have.class', 'listedBy');
+    cy.get('p').should('have.class', 'meals');
+    cy.get('p').should('have.class', 'desc');
+    cy.get('p').should('have.class', 'time');
+    // cy.contains('.address');
+    cy.get('button').contains('Claim Listing');
+  });
+
   it('only shows unclaimed listings', () => {
     const listing = {
       numberOfMeals: 10,

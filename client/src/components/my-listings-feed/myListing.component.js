@@ -1,9 +1,8 @@
 import React from 'react';
-import InitiateClaimButton from './InitiateClaimButton.component';
 
-function Listing(props) {
+function MyListing(props) {
   return (
-    <div className="card mt-4 mb-4 w-75 mx-auto p-2">
+    <div className="card mt-4 w-75 mx-auto p-2">
       <div className="card-body">
         <h5 className="listedBy mb-4">{props.listing.listedByUsername}</h5>
         <p className="meals">
@@ -18,14 +17,13 @@ function Listing(props) {
           <b>Pick up available until:</b>{' '}
           {Date(props.listing.timeAvailableUntil)}
         </p>
-        <InitiateClaimButton
-          className="claim"
-          listing={props.listing}
-          handleClick={() => props.handleClick(props.listing)}
-        ></InitiateClaimButton>
+
+        <p className="claimStatus border d-inline-block p-2 mt-2 rounded-2">
+          <b>{props.listing.claimStatus}</b>
+        </p>
       </div>
     </div>
   );
 }
 
-export default Listing;
+export default MyListing;

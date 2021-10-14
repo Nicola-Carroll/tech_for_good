@@ -17,14 +17,15 @@ describe('Add Listing', () => {
     cy.focused().should('have.attr', 'type', 'submit');
   });
 
-  it('checks submitted data appears in feed', () => {
-    cy.addListing('10', 'Hello, World', '2025-02-02T11:55');
-    cy.switchToCharity();
-    cy.get('.meals').first().contains('10');
-    cy.get('.desc').first().contains('Hello, World');
-    // Also checking the correct hour is shown, regardless of format
-    cy.get('.time').first().contains('11');
-  });
+  // this test if for the listings feed, not for adding. What if we wanted to vet submissions before they show.
+  // it('checks submitted data appears in feed', () => {
+  //   cy.addListing('10', 'Hello, World', '2025-02-02T11:55');
+  //   cy.switchToCharity();
+  //   cy.get('.meals').first().contains('10');
+  //   cy.get('.desc').first().contains('Hello, World');
+  //   // Also checking the correct hour is shown, regardless of format
+  //   cy.get('.time').first().contains('11');
+  // });
 
   it('prevents invalid submission', () => {
     cy.addListing('0', 'Hello, World', '2025-01-01T23:55');

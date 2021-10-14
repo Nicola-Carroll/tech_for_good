@@ -1,7 +1,6 @@
 import React from 'react';
-import InitiateClaimButton from './InitiateClaimButton.component';
 
-function Listing(props) {
+function MyClaim(props) {
   return (
     <div className="card mt-4 mb-4 w-75 mx-auto p-2">
       <div className="card-body">
@@ -18,14 +17,9 @@ function Listing(props) {
           <b>Pick up available until:</b>{' '}
           {Date(props.listing.timeAvailableUntil)}
         </p>
-        <InitiateClaimButton
-          className="claim"
-          listing={props.listing}
-          handleClick={() => props.handleClick(props.listing)}
-        ></InitiateClaimButton>
       </div>
     </div>
   );
 }
 
-export default Listing;
+export default MyClaim;
