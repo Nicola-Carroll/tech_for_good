@@ -2,7 +2,7 @@ import React from 'react';
 
 function MyListing(props) {
   return (
-    <div className="card mt-4 w-75 mx-auto p-2">
+    <div className="card mt-4 w-75 mx-auto p-2 listing-card ">
       <div className="card-body">
         <h5 className="listedBy mb-4">{props.listing.listedByUsername}</h5>
         <p className="meals">
