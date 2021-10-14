@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import MyListingFeed from '../components/myListingFeed.component';
+import MyListingFeed from '../components/my-listings-feed/myListingFeed.component';
 
 export default class ViewMyListings extends Component {
   render() {
     return (
       <>
-        <div>My listings</div>
+        <h2 className="text-center mt-5">Donations you have claimed</h2>
         <MyListingFeed></MyListingFeed>
       </>
     );

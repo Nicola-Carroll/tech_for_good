@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyListing from './myListing.component';
 import axios from 'axios';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
@@ -14,9 +14,7 @@ export default class MyListingFeed extends Component {
 
   availableListings(data) {
     return data.filter((currentListing) => {
-      return (
-        new Date(currentListing.timeAvailableUntil) > new Date()
-      );
+      return new Date(currentListing.timeAvailableUntil) > new Date();
     });
   }
 
@@ -43,21 +41,6 @@ export default class MyListingFeed extends Component {
   }
 
   render() {
-    return (
-      <>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Listed by</th>
-              <th>Number of meals</th>
-              <th>Description</th>
-              <th>Available until</th>
-              <th>Claim status</th>
-            </tr>
-          </thead>
-          <tbody>{this.listingFeed()}</tbody>
-        </table>
-      </>
-    );
+    return <>{this.listingFeed()}</>;
   }
 }
