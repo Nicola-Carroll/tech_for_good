@@ -19,6 +19,7 @@ function Listing(props) {
           {Date(props.listing.timeAvailableUntil)}
         </p>
         <InitiateClaimButton
+          className="claim"
           listing={props.listing}
           handleClick={() => props.handleClick(props.listing)}
         ></InitiateClaimButton>

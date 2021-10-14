@@ -5,6 +5,18 @@ describe('View My Claims', () => {
     cy.charityLogin();
   });
 
+  it('contains all details', () => {
+    cy.switchToRestaurant();
+    cy.addListing('10', 'This listing has all details', `2225-01-01T23:55`);
+    cy.switchToCharity();
+    cy.get('#my-claims-link').click();
+    cy.contains('.listedBy');
+    cy.contains('.meals');
+    cy.contains('.desc');
+    cy.contains('.time');
+    // cy.contains('.address');
+  });
+
   it('shows only my claimed listings', () => {
     cy.switchToRestaurant();
     cy.addListing('10', 'I will claim this', '2025-01-01T23:55');

@@ -11,6 +11,15 @@ describe('View Listings', () => {
     cy.contains('Claim Listing');
   });
 
+  it('contains all details', () => {
+    cy.contains('.listedBy');
+    cy.contains('.meals');
+    cy.contains('.desc');
+    cy.contains('.time');
+    // cy.contains('.address');
+    cy.contains('.claim');
+  });
+
   it('only shows unclaimed listings', () => {
     const listing = {
       numberOfMeals: 10,
