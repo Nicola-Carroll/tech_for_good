@@ -14,6 +14,7 @@ describe('View My Claims', () => {
     cy.get('p').should('have.class', 'meals');
     cy.get('p').should('have.class', 'desc');
     cy.get('p').should('have.class', 'time');
+    cy.get('p').should('have.class', 'contact');
     // cy.contains('.address');
   });
 

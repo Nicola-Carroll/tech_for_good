@@ -41,12 +41,6 @@ export default class ModalContent extends Component {
     );
   }
 
-  formatDate(dateAsString) {
-    const date = new Date(dateAsString);
-    const year = date.getFullYear();
-    const month = date.getMonth();
-  }
-
   render() {
     return (
       <>
