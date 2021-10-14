@@ -43,7 +43,7 @@ async function dropCollections() {
 }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile('client/build/index.html');
 });
 
 if (process.env.NODE_ENV !== 'test') {
