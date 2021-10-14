@@ -19,10 +19,10 @@ export default class Homepage extends Component {
         </section>
         <section id="counters">
           <div>
+          <AboutUs />
             <h2 className="text-center" id="home">
               Donations to date
             </h2>
-            <AboutUs />
             <HomepageClaimedCounter />
             <HomepageDonationsCounter />
             <HomepageDonatorsLeaderboard />
