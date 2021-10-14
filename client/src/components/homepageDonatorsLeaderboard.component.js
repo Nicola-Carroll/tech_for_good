@@ -39,20 +39,22 @@ export default class Leaderboard extends Component {
     if (this.state.top5.length !== 0) {
       return (
         <>
-          <h2 className="text-center">Our top donators</h2>
-          <table id="top-donators" className="table w-50 mx-auto">
-            <thead className="thead-dark">
-              <tr>
-                <th className="text-center" scope="col">
-                  Name
-                </th>
-                <th className="text-center" scope="col">
-                  Donations
-                </th>
-              </tr>
-            </thead>
-            <tbody>{this.leaderboard()}</tbody>
-          </table>
+          <section id="top-donators">
+            <h2 className="text-center display-5 ">Our top donators</h2>
+            <table id="top-donators" className="table w-50 mx-auto">
+              <thead className="thead-dark">
+                <tr>
+                  <th className="text-center" scope="col">
+                    Name
+                  </th>
+                  <th className="text-center" scope="col">
+                    Donations
+                  </th>
+                </tr>
+              </thead>
+              <tbody>{this.leaderboard()}</tbody>
+            </table>
+          </section>
         </>
       );
     } else {
