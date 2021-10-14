@@ -13,13 +13,13 @@ class ListingMap extends Component {
     },
   };
 
-  renderListingMarker(lat, long, id) {
+  renderListingMarker(lat, long, listing) {
     return (
       <ListingMarker
         lat={lat}
         lng={long}
-        key={id}
-        handleClick={() => this.props.handleOpenModal(id)}
+        key={listing._id}
+        handleClick={() => this.props.handleOpenModal(listing)}
         className="listing-marker"
       ></ListingMarker>
     );
@@ -30,20 +30,12 @@ class ListingMap extends Component {
       return this.props.listings.map((currentListing, index) => {
         const lat = this.props.accountCoords[index].lat;
         const long = this.props.accountCoords[index].long;
-        return this.renderListingMarker(lat, long, currentListing._id);
+        return this.renderListingMarker(lat, long, currentListing);
       });
     }
   }
 
-  handleOpenModal(id) {
-    this.setState({ showModal: true, selectedListingId: id });
-  }
-
-  handleCloseModal() {
-    this.setState({ selectedListingId: null });
-    this.componentDidMount();
-  }
-
+  // Important! Always set the container height explicitly
   render() {
     return (
       <>

@@ -16,11 +16,11 @@ export default class ViewListings extends Component {
                     You're currently logged in as {user.username}
                   </h2>
                 )}
+                <ListingFeed />
               </>
             );
           }}
         </userContext.Consumer>
-        <ListingFeed />
       </>
     );
   }

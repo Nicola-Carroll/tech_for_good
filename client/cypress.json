@@ -5,10 +5,12 @@
     "loginForm.spec.js",
     "navbar.spec.js",
     "addListing.spec.js",
+    "modalContent.spec.js",
     "viewListings.spec.js",
     "listingMap.spec.js",
     "claimListing.spec.js",
     "viewMyListings.spec.js",
-    "viewMyClaims.spec.js"
+    "viewMyClaims.spec.js",
+    "homepage.spec.js"
   ]
 }

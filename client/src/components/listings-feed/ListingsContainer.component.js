@@ -9,7 +9,7 @@ export default class ListingsContainer extends Component {
         <Listing
           listing={currentListing}
           key={currentListing._id}
-          handleClick={(id) => this.props.handleOpenModal(id)}
+          handleClick={() => this.props.handleOpenModal(currentListing)}
         ></Listing>
       );
     });

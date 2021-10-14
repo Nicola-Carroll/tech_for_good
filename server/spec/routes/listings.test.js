@@ -16,7 +16,7 @@ describe('GET /listings/donations', () => {
   });
 
   test('it should respond with total donations from each donator', async () => {
-    const postResponse = await request(app).post('/api/listings/create').send({
+    await request(app).post('/api/listings/create').send({
       numberOfMeals: 12,
       description: 'test',
       timeAvailableUntil: '2019-04-29T21:19:15.187Z',
@@ -25,7 +25,7 @@ describe('GET /listings/donations', () => {
     });
 
     const response = await request(app).get('/api/listings/donations');
-    expect(response.body).toMatchObject({ donator: 12 });
+    expect(response.body).toMatchObject([['donator', 12]]);
   });
 });
 
