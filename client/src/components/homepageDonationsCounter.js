@@ -32,9 +32,6 @@ export default class AddDonatedMeals extends Component {
         <h2 className="text-center display-5" id="home">
           Donations to date
         </h2>
-        <p className="mt-2 mb-2 text-center" htmlFor="meals">
-          Number of meals that have been donated:
-        </p>
         <p
           id="total"
           className="row font-weight-bold justify-content-center display-4"
