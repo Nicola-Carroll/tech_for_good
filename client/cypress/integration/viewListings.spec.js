@@ -12,12 +12,12 @@ describe('View Listings', () => {
   });
 
   it('contains all details', () => {
-    cy.contains('.listedBy');
-    cy.contains('.meals');
-    cy.contains('.desc');
-    cy.contains('.time');
+    cy.get('h5').should('have.class', 'listedBy');
+    cy.get('p').should('have.class', 'meals');
+    cy.get('p').should('have.class', 'desc');
+    cy.get('p').should('have.class', 'time');
     // cy.contains('.address');
-    cy.contains('.claim');
+    cy.get('button').contains('Claim Listing');
   });
 
   it('only shows unclaimed listings', () => {

@@ -8,11 +8,11 @@ describe('View My Listings', () => {
   it('contains all details', () => {
     cy.addListing('10', 'This listing has all details', `2225-01-01T23:55`);
     cy.get('#my-listings-link').click();
-    cy.contains('.listedBy');
-    cy.contains('.meals');
-    cy.contains('.desc');
-    cy.contains('.time');
-    cy.contains('.claimStatus');
+    cy.get('h5').should('have.class', 'listedBy');
+    cy.get('p').should('have.class', 'meals');
+    cy.get('p').should('have.class', 'desc');
+    cy.get('p').should('have.class', 'time');
+    cy.get('p').should('have.class', 'claimStatus');
   });
 
   it('shows only my listings', () => {

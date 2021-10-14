@@ -10,10 +10,10 @@ describe('View My Claims', () => {
     cy.addListing('10', 'This listing has all details', `2225-01-01T23:55`);
     cy.switchToCharity();
     cy.get('#my-claims-link').click();
-    cy.contains('.listedBy');
-    cy.contains('.meals');
-    cy.contains('.desc');
-    cy.contains('.time');
+    cy.get('h5').should('have.class', 'listedBy');
+    cy.get('p').should('have.class', 'meals');
+    cy.get('p').should('have.class', 'desc');
+    cy.get('p').should('have.class', 'time');
     // cy.contains('.address');
   });
 
