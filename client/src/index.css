@@ -24,7 +24,7 @@ code {
 }
 
 #intro-section {
-  background-color: #7ed957;
+  background-color: #71d957;
 }
 
 
@@ -51,4 +51,8 @@ color:#008037;
 #hero-img {
   height: 60vh;
   max-height: 100%;
+}
+
+.listing-card {
+  background-color: #EEFCF5 !important
 }
