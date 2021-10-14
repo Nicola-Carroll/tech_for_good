@@ -94,18 +94,19 @@ export default class ListingFeed extends Component {
   render() {
     return (
       <>
-        <h2 className="text-center mt-5">All donations currently available</h2>
-        <ListingsContainer
-          className="w-75"
-          listings={this.state.listings}
-          handleOpenModal={this.handleOpenModal}
-        />
+        <h1 className="text-center mt-5 mb-4">Available Donations</h1>
         <ListingMap
           id="listing-map"
           listings={this.state.listings.reverse()}
           accountCoords={this.state.listedByAccountCoords.reverse()}
           handleOpenModal={this.handleOpenModal}
           userCoords={this.state.currentUserCoords}
+        />
+        <div className="p-2"></div>
+        <ListingsContainer
+          className="w-75"
+          listings={this.state.listings}
+          handleOpenModal={this.handleOpenModal}
         />
         <ListingModal
           className="listing-modal"
