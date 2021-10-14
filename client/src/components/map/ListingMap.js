@@ -35,13 +35,26 @@ class ListingMap extends Component {
     }
   }
 
+  youAreHereMarker() {
+    if (this.props.userCoords)
+      return (
+        <ListingMarker
+          lat={this.props.userCoords.lat}
+          lng={this.props.userCoords.long}
+          className="user-marker"
+          type={'user'}
+          text={'You are here'}
+        ></ListingMarker>
+      );
+  }
+
   // Important! Always set the container height explicitly
   render() {
     return (
       <>
         <div
-          className="map-container"
-          style={{ height: '100vh', width: '75%' }}
+          className="map-container mx-auto"
+          style={{ height: '60vh', width: '75%' }}
         >
           <GoogleMapReact
             bootstrapURLKeys={{ key: REACT_APP_MAP_API }}
@@ -49,6 +62,7 @@ class ListingMap extends Component {
             defaultZoom={11.25}
           >
             {this.renderAllListingMarkers()}
+            {this.youAreHereMarker()}
           </GoogleMapReact>
         </div>
       </>

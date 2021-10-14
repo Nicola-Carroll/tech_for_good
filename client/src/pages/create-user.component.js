@@ -53,7 +53,7 @@ export default class Signup extends Component {
             autoComplete="off"
             onClick={this.setAccountTypeRestaurant}
           >
-            I am a restaurant
+            I want to donate
           </button>
         </div>
         {this.renderForm()}

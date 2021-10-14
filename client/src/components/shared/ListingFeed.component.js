@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import ListingMap from '../map/ListingMap';
-import ListingTable from '../listings-feed/ListingTable.component';
+import ListingsContainer from '../listings-feed/ListingsContainer.component';
 import ListingModal from './ListingModal.component';
 
 const { REACT_APP_ENDPOINT } = process.env;
@@ -15,6 +15,7 @@ export default class ListingFeed extends Component {
       showModal: false,
       selectedListing: null,
       listedByAccountCoords: [],
+      currentUserCoords: null,
 
       modalContent: {
         listedByAccount: null,
@@ -36,23 +37,24 @@ export default class ListingFeed extends Component {
     });
   }
 
-  async accountCoords(listing) {
-    const listedById = listing.listedBy;
-    const response = await axios.get(
-      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
-    );
+  async accountCoords(id) {
+    const response = await axios.get(`${REACT_APP_ENDPOINT}accounts/${id}`);
     return { lat: response.data.latitude, long: response.data.longitude };
   }
 
   async listedByAccountCoords(availableListings) {
     const promises = [];
     availableListings.forEach((listing) => {
-      promises.push(this.accountCoords(listing));
+      promises.push(this.accountCoords(listing.listedBy));
     });
     const accountsCoords = await Promise.all(promises);
+    const currentUserCoords = await this.accountCoords(
+      this.props.currentUserId,
+    );
     this.setState({
       listedByAccountCoords: accountsCoords,
       listings: availableListings,
+      currentUserCoords: currentUserCoords,
     });
   }
 
@@ -92,14 +94,18 @@ export default class ListingFeed extends Component {
   render() {
     return (
       <>
-        <ListingTable
+        <h2 className="text-center mt-5">All donations currently available</h2>
+        <ListingsContainer
+          className="w-75"
           listings={this.state.listings}
           handleOpenModal={this.handleOpenModal}
         />
         <ListingMap
+          id="listing-map"
           listings={this.state.listings.reverse()}
           accountCoords={this.state.listedByAccountCoords.reverse()}
           handleOpenModal={this.handleOpenModal}
+          userCoords={this.state.currentUserCoords}
         />
         <ListingModal
           className="listing-modal"

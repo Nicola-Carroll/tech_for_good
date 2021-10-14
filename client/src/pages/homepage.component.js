@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HomepageClaimedCounter from '../components/homepageClaimedCounter';
 import HomepageDonationsCounter from '../components/homepageDonationsCounter';
 import HomepageDonatorsLeaderboard from '../components/homepageDonatorsLeaderboard.component.js';
 import AboutUs from '../components/aboutUs.component';
@@ -22,7 +21,6 @@ export default class Homepage extends Component {
             <h2 className="text-center display-5" id="home">
               Donations to date
             </h2>
-            <HomepageClaimedCounter />
             <HomepageDonationsCounter />
             <HomepageDonatorsLeaderboard />
           </div>
