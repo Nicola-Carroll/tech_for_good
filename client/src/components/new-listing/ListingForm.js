@@ -21,6 +21,7 @@ export default class ListingForm extends Component {
       timeAvailableUntil: '',
       listedBy: '',
       listedByUsername: '',
+      claimStatus: 'Available',
       showNotice: false,
     };
   }
@@ -71,6 +72,7 @@ export default class ListingForm extends Component {
       timeAvailableUntil: this.state.timeAvailableUntil,
       listedBy: this.id.current.value,
       listedByUsername: this.username.current.value,
+      claimStatus: this.state.claimStatus,
     };
 
     axios.post(`${REACT_APP_ENDPOINT}listings/create`, listing).then((res) => {

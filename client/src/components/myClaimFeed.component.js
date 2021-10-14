@@ -14,9 +14,7 @@ export default class MyClaimFeed extends Component {
 
   availableListings(data) {
     return data.filter((currentListing) => {
-      return (
-        new Date(currentListing.timeAvailableUntil) > new Date()
-      );
+      return new Date(currentListing.timeAvailableUntil) > new Date();
     });
   }
 
@@ -32,7 +30,7 @@ export default class MyClaimFeed extends Component {
   }
 
   claimFeed() {
-    return this.state.listings.reverse().map((currentListing) => {
+    return this.state.listings.map((currentListing) => {
       return (
         <MyClaim listing={currentListing} key={currentListing._id}></MyClaim>
       );

@@ -44,8 +44,12 @@ export default class Navbar extends Component {
                       </li>
                       <li className="navbar-item">
                         {user && user.type === 'Charity' && (
-                          <Link id="feed-link" to="/feed" className="nav-link">
-                            Feed
+                          <Link
+                            id="feed-link"
+                            to="/availablemeals"
+                            className="nav-link"
+                          >
+                            Available meals
                           </Link>
                         )}
                       </li>

@@ -15,6 +15,7 @@ export default class ListingFeed extends Component {
       showModal: false,
       selectedListing: null,
       listedByAccountCoords: [],
+      currentUserCoords: null,
 
       modalContent: {
         listedByAccount: null,
@@ -36,23 +37,24 @@ export default class ListingFeed extends Component {
     });
   }
 
-  async accountCoords(listing) {
-    const listedById = listing.listedBy;
-    const response = await axios.get(
-      `${REACT_APP_ENDPOINT}accounts/${listedById}`,
-    );
+  async accountCoords(id) {
+    const response = await axios.get(`${REACT_APP_ENDPOINT}accounts/${id}`);
     return { lat: response.data.latitude, long: response.data.longitude };
   }
 
   async listedByAccountCoords(availableListings) {
     const promises = [];
     availableListings.forEach((listing) => {
-      promises.push(this.accountCoords(listing));
+      promises.push(this.accountCoords(listing.listedBy));
     });
     const accountsCoords = await Promise.all(promises);
+    const currentUserCoords = await this.accountCoords(
+      this.props.currentUserId,
+    );
     this.setState({
       listedByAccountCoords: accountsCoords,
       listings: availableListings,
+      currentUserCoords: currentUserCoords,
     });
   }
 
@@ -103,6 +105,7 @@ export default class ListingFeed extends Component {
           listings={this.state.listings.reverse()}
           accountCoords={this.state.listedByAccountCoords.reverse()}
           handleOpenModal={this.handleOpenModal}
+          userCoords={this.state.currentUserCoords}
         />
         <ListingModal
           className="listing-modal"
