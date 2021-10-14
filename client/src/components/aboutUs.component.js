@@ -4,7 +4,7 @@ export default class AboutUs extends Component {
   render() {
     return (
       <div className="w-50 m-auto pt-5 pb-5">
-        <h1 className="mt-2 mb-2 display-5 text-center" htmlFor="meals">
+        <h1 className="mt-2 mb-2 display-5 text-center pb-5" htmlFor="meals">
           What we do
         </h1>
         <p

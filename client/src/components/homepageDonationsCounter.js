@@ -34,7 +34,7 @@ export default class AddDonatedMeals extends Component {
         </h2>
         <p
           id="total"
-          className="row font-weight-bold justify-content-center display-4"
+          className="row font-weight-bold justify-content-center display-4 pt-5"
         >
           {this.state.totaldonated}
         </p>
