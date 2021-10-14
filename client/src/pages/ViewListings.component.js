@@ -11,7 +11,6 @@ export default class ViewListings extends Component {
           {({ user, loginUser, logoutUser }) => {
             return (
               <>
-                {user && <h2 className="m-3 pt-4 pb-4 text-center">You're currently logged in as {user.username}</h2>}
                 <ListingFeed currentUserId={user._id} />
               </>
             );

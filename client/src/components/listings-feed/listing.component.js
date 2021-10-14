@@ -3,7 +3,7 @@ import InitiateClaimButton from './InitiateClaimButton.component';
 
 function Listing(props) {
   return (
-    <div className="card mt-4 mb-4 w-75 mx-auto p-2">
+    <div className="card mt-4 mb-4 w-75 mx-auto p-2 listing-card">
       <div className="card-body">
         <h5 className="listedBy mb-4">{props.listing.listedByUsername}</h5>
         <p className="meals">
@@ -16,7 +16,7 @@ function Listing(props) {
         </p>
         <p className="time">
           <b>Pick up available until:</b>{' '}
-          {Date(props.listing.timeAvailableUntil)}
+          {Date(props.listing.timeAvailableUntil).slice(0, -34)}
         </p>
         <InitiateClaimButton
           className="claim"

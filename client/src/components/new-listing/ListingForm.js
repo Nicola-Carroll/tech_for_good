@@ -156,7 +156,7 @@ export default class ListingForm extends Component {
                       />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group mb-3">
                       <input
                         className="form-control"
                         type="hidden"
@@ -170,18 +170,18 @@ export default class ListingForm extends Component {
                     <div className="form-submit">
                       <button
                         id="create-listing-btn"
-                        className="btn btn-outline-success mt-3"
+                        className="btn btn-outline-success mt-4 mb-4 d-inline-block"
                         type="submit"
                       >
                         Create Listing
                       </button>
+                      {this.state.showNotice && (
+                        <p className="d-inline-block submission-notice m-4">
+                          Your food listing has been successfully added.
+                        </p>
+                      )}
                     </div>
                   </form>
-                  {this.state.showNotice && (
-                    <div id="submission-notice">
-                      <p>Your food listing has been successfully added.</p>
-                    </div>
-                  )}
                 </section>
               </>
             );
