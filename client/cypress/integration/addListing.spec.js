@@ -38,7 +38,7 @@ describe('Add Listing', () => {
 
   it('displays notice confirming new listing has been added', () => {
     cy.addListing('10', 'Hello, World', '2025-01-01T23:55');
-    cy.get('#submission-notice').contains(
+    cy.get('.submission-notice').contains(
       'Your food listing has been successfully added.',
     );
   });
@@ -46,7 +46,7 @@ describe('Add Listing', () => {
   it('clears success notice after 3 seconds', () => {
     cy.addListing('10', 'Hello, World', '2025-01-01T23:55');
     cy.wait(2001);
-    cy.get('#submission-notice').should('not.exist');
+    cy.get('.submission-notice').should('not.exist');
   });
 
   it('clears the form after success', () => {

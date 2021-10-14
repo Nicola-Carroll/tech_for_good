@@ -34,7 +34,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="m-4">
+      <div className="m-5">
         {this.renderHeader()}
         <div className="text-center">
           <button
