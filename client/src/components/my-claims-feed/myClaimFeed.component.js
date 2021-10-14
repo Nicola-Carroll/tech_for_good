@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyClaim from './myClaim.component';
 import axios from 'axios';
-import { userContext } from '../App.js';
+import { userContext } from '../../App.js';
 
 const { REACT_APP_ENDPOINT } = process.env;
 
@@ -38,20 +38,6 @@ export default class MyClaimFeed extends Component {
   }
 
   render() {
-    return (
-      <>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Listed by</th>
-              <th>Number of meals</th>
-              <th>Description</th>
-              <th>Available until</th>
-            </tr>
-          </thead>
-          <tbody>{this.claimFeed()}</tbody>
-        </table>
-      </>
-    );
+    return <>{this.claimFeed()}</>;
   }
 }

@@ -5,7 +5,7 @@ export default class ViewMyListings extends Component {
   render() {
     return (
       <>
-        <h2 className="text-center mt-5">Donations you have claimed</h2>
+        <h2 className="text-center mt-5">Donations you have listed</h2>
         <MyListingFeed></MyListingFeed>
       </>
     );
