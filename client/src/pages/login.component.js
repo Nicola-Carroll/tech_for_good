@@ -10,7 +10,7 @@ export default class Login extends Component {
           {({ loginUser }) => {
             return (
               <>
-                <div className="m-4">
+                <div className="m-5">
                   <h1 className="text-center">Login</h1>
                   <LoginForm updateUser={loginUser} />
                 </div>
