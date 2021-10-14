@@ -12,7 +12,7 @@ export default class ViewListings extends Component {
             return (
               <>
                 {user && <h2>You're currently logged in as {user.username}</h2>}
-                <ListingFeed />
+                <ListingFeed currentUserId={user._id} />
               </>
             );
           }}
