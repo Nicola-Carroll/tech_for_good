@@ -16,8 +16,8 @@ export default class Homepage extends Component {
           />
         </section>
         <section id="counters">
-          <div>
-            <h2 className="text-center" id="home">
+          <div className="p-5">
+            <h2 className="text-center pb-3" id="home">
               Donations to date
             </h2>
             <HomepageClaimedCounter />

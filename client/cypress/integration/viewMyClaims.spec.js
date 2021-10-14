@@ -5,13 +5,6 @@ describe('View My Claims', () => {
     cy.charityLogin();
   });
 
-  it('contains the listing headers', () => {
-    cy.contains('Listed by');
-    cy.contains('Number of meals');
-    cy.contains('Description');
-    cy.contains('Available until');
-  });
-
   it('shows only my claimed listings', () => {
     cy.switchToRestaurant();
     cy.addListing('10', 'I will claim this', '2025-01-01T23:55');

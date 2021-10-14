@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import ListingMap from '../map/ListingMap';
-import ListingTable from '../listings-feed/ListingTable.component';
+import ListingsContainer from '../listings-feed/ListingsContainer.component';
 import ListingModal from './ListingModal.component';
 
 const { REACT_APP_ENDPOINT } = process.env;
@@ -94,11 +94,14 @@ export default class ListingFeed extends Component {
   render() {
     return (
       <>
-        <ListingTable
+        <h2 className="text-center mt-5">All donations currently available</h2>
+        <ListingsContainer
+          className="w-75"
           listings={this.state.listings}
           handleOpenModal={this.handleOpenModal}
         />
         <ListingMap
+          id="listing-map"
           listings={this.state.listings.reverse()}
           accountCoords={this.state.listedByAccountCoords.reverse()}
           handleOpenModal={this.handleOpenModal}

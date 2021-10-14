@@ -53,8 +53,8 @@ class ListingMap extends Component {
     return (
       <>
         <div
-          className="map-container"
-          style={{ height: '100vh', width: '75%' }}
+          className="map-container mx-auto"
+          style={{ height: '60vh', width: '75%' }}
         >
           <GoogleMapReact
             bootstrapURLKeys={{ key: REACT_APP_MAP_API }}
