@@ -13,6 +13,11 @@ function MyClaim(props) {
           <br />
           {props.listing.description}
         </p>
+        <p className="contact">
+          <b>Contact details:</b>
+          <br />
+          {props.contactNumber}
+        </p>
         <p className="time">
           <b>Pick up available until:</b>{' '}
           {Date(props.listing.timeAvailableUntil)}
