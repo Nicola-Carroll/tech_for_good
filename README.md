@@ -1,8 +1,8 @@
-# Tech-for-good
+# Second Helpings
 
 ## Overview
 
-A website that connects businesses with left over food to charities.
+This is our third (and final) Makers Academy bootcamp group project. Our team was formed by a shared interest in building a "Tech for Good" web application. And so we've built Second Helpings, a website that connects businesses with left over food to charities looking for donations.
 
 ![image](https://user-images.githubusercontent.com/83607124/137516096-a558dc22-890e-4af2-a8c2-09e0d1c15705.png)
 
@@ -59,3 +59,17 @@ REACT_APP_MAP_API = < GOOGLE MAPS API KEY >
 An example of the server's local host end point is `http://localhost:5000/api/`
 
 ## Running tests
+
+When in the root directory, the command
+
+```
+npm test
+
+```
+
+will run Jest for the back-end unit tests. To run the integration tests with Cypress, the command is
+
+```
+cd client
+npm test
+```
