@@ -24,7 +24,8 @@ This is our third (and final) Makers Academy bootcamp group project. Our team wa
 - Testing: Jest unit testing on the backend, Cypress for integration testing
 - API Testing: Insomnia, Postman
 - APIs: Google API, Open Postcode Geo API
-- Heroku for deployment
+- CSS: Bootstrap
+- Deployment: Heroku
 
 ## Setting up databases
 
