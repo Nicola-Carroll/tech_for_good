@@ -24,8 +24,9 @@ This is our third (and final) Makers Academy bootcamp group project. Our team wa
 - Testing: Jest unit testing on the backend, Cypress for integration testing
 - API Testing: Insomnia, Postman
 - APIs: Google API, Open Postcode Geo API
+- Heroku for deployment
 
-## Set up databases
+## Setting up databases
 
 1. Create a .env file in the root directory
 
@@ -58,7 +59,7 @@ REACT_APP_MAP_API = < GOOGLE MAPS API KEY >
 
 An example of the server's local host end point is `http://localhost:5000/api/`
 
-## Running tests
+## Running the tests
 
 When in the root directory, the command
 
