@@ -17,7 +17,7 @@ This is our third (and final) Makers Academy bootcamp group project. Our team wa
 - [Zainab Baruud](https://github.com/zb-coder)
 
 
-## Technologies used
+## Technologies and tools used
 
 - MERN Stack (MongoDB, Express, React, Node)
 - DB Hosting: MongoDB Atlas
@@ -26,6 +26,12 @@ This is our third (and final) Makers Academy bootcamp group project. Our team wa
 - APIs: Google API, Open Postcode Geo API
 - CSS: Bootstrap
 - Deployment: Heroku
+- Business tools: Miro, Trello, EasyRetro
+
+## Initial domain model
+
+![image](https://user-images.githubusercontent.com/83607124/137963016-bd0b5e53-3db2-437f-bdc8-20ffb17a1967.png)
+
 
 ## Setting up databases
 
