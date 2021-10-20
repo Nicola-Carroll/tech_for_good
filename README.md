@@ -30,7 +30,8 @@ This is our third (and final) Makers Academy bootcamp group project. Our team wa
 
 ## Initial domain model
 
-![image](https://user-images.githubusercontent.com/83607124/137963016-bd0b5e53-3db2-437f-bdc8-20ffb17a1967.png)
+![image](https://user-images.githubusercontent.com/83607124/138064186-76baac40-81ad-481a-8684-c7772e21ac2e.png)
+
 
 
 ## Setting up databases
